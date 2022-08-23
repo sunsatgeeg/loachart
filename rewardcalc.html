@@ -75,6 +75,43 @@
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
       transform: rotate(-180deg);
     }
+    .itemTitle{
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      height: 68px;
+      padding-left: 83px;
+    }
+
+    .slotData[data-grade="0"]{
+      background: linear-gradient(135deg,#232323,#575757);
+    }
+    .slotData[data-grade="2"]{
+      background: linear-gradient(135deg,#111f2c,#113d5d);
+    }
+    .slotData[data-grade="3"]{
+      background: linear-gradient(135deg,#261331,#480d5d);
+    }
+    .slotData[data-grade="5"]{
+      background: linear-gradient(135deg,#232323,#575757);background: linear-gradient(135deg,#341a09,#a24006);
+    }
+    .slotData{
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+      word-wrap: break-word;
+      color: #fff;
+      font-size: 14px;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 68px;
+      height: 68px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 
@@ -131,10 +168,95 @@
       </div>
       
       <div class="mx-auto w-100 pt-5 pb-5">
-        <!-- test1 -->
         <div class="clearfix">
           <h6 class="float-start"><span>더보기 보상 기준 : 2022-04-27 엘가시아 패치</span></h6>
           <h6 class="float-end"><span>아이템 값 기준 : </span><span id="date"></span></h6>
+        </div>
+        <div class="accordion mb-3" id="itemaccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseitem" aria-expanded="true" aria-controls="collapseitem">
+                더보기 아이템 목록
+              </button>
+            </h2>
+            <div id="collapseitem" class="accordion-collapse collapse show" aria-labelledby="headingitem" data-bs-parent="#itemaccordion">
+              <div class="accordion-body p-0">
+                <table class="table table-dark table-hover mb-0">
+                  <tbody>
+                    <tr>
+                      <td colspan="3">모든 아이템들은 귀속 기준입니다.<br>계산기에 제외하고 싶은 아이템을 선택해 주세요.</td>
+                    </tr>
+                    <tr>
+                      <td><div class="itemTitle">
+                        <span class="slotData" data-grade="3"><img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_8_227.png" alt=""></span>
+                        <div class="form-check mt-auto mb-auto">
+                          <input class="form-check-input" type="checkbox" value="명예의 파편" id="flexCheckDefaultjewel">
+                          <label class="form-check-label" for="flexCheckDefaultjewel">명예의 파편</label>
+                        </div>
+                      </div></td>
+                      <td><div class="itemTitle">
+                        <span class="slotData" data-grade="5"><img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_6_89.png" alt=""></span>
+                        <div class="form-check mt-auto mb-auto">
+                          <input class="form-check-input" type="checkbox" value="혼돈의 돌" id="flexCheckDefaultstone">
+                          <label class="form-check-label" for="flexCheckDefaultstone">레이드 재료 1개당 100골 계산(혼돈의 돌)</label>
+                        </div>
+                      </div></td>
+                      <td style="vertical-align: middle;">
+                        <button type="button" class="btn btn-outline-light btn-lg" id="allcheck">모두 제외</button>
+                        <button type="button" class="btn btn-outline-light btn-lg" id="allnocheck">모두 제외해제</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><div class="itemTitle">
+                        <span class="slotData" data-grade="0"><img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_6_104.png" alt=""></span>
+                        <div class="form-check mt-auto mb-auto">
+                          <input class="form-check-input" type="checkbox" value="수호석 결정" id="flexCheckDefault1">
+                          <label class="form-check-label" for="flexCheckDefault1">수호석 결정</label>
+                        </div>
+                      </div></td>
+                      <td><div class="itemTitle">
+                        <span class="slotData" data-grade="0"><img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_6_105.png" alt=""></span>
+                        <div class="form-check mt-auto mb-auto">
+                          <input class="form-check-input" type="checkbox" value="파괴석 결정" id="flexCheckDefault2">
+                          <label class="form-check-label" for="flexCheckDefault2">파괴석 결정</label>
+                        </div>
+                      </div></td>
+                      <td><div class="itemTitle">
+                        <span class="slotData" data-grade="2"><img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_156.png" alt=""></span>
+                        <div class="form-check mt-auto mb-auto">
+                          <input class="form-check-input" type="checkbox" value="위대한 명예의 돌파석" id="flexCheckDefault3">
+                          <label class="form-check-label" for="flexCheckDefault3">위대한 명예의 돌파석</label>
+                        </div>
+                      </div></td>
+                    </tr>
+                    <tr>
+                      <td><div class="itemTitle">
+                        <span class="slotData" data-grade="0"><img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_10_59.png" alt=""></span>
+                        <div class="form-check mt-auto mb-auto">
+                          <input class="form-check-input" type="checkbox" value="수호강석" id="flexCheckDefault4">
+                          <label class="form-check-label" for="flexCheckDefault4">수호강석</label>
+                        </div>
+                      </div></td>
+                      <td><div class="itemTitle">
+                        <span class="slotData" data-grade="0"><img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_10_58.png" alt=""></span>
+                        <div class="form-check mt-auto mb-auto">
+                          <input class="form-check-input" type="checkbox" value="파괴강석" id="flexCheckDefault5">
+                          <label class="form-check-label" for="flexCheckDefault5">파괴강석</label>
+                        </div>
+                      </div></td>
+                      <td><div class="itemTitle">
+                        <span class="slotData" data-grade="2"><img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_157.png" alt=""></span>
+                        <div class="form-check mt-auto mb-auto">
+                          <input class="form-check-input" type="checkbox" value="경이로운 명예의 돌파석" id="flexCheckDefault6">
+                          <label class="form-check-label" for="flexCheckDefault6">경이로운 명예의 돌파석</label>
+                        </div>
+                      </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="accordion" id="bossaccordion">
 
