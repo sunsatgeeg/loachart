@@ -429,7 +429,7 @@ async function cardsetcalcstart(){
     document.querySelector('#matchstatus').style.display = '';
     document.querySelector('#matchingment').textContent = 'Required operation in progress... (up to 30 seconds depending on environment)';
     
-    await loadJavascript('js/cardcalc_steam/cardeffect.js?v=08262022');
+    await loadJavascript('js/cardcalc_steam/cardeffect.js?v=11200153');
     autocomplete(document.getElementById("manualEditNameInput"), Object.keys(cardgrade));
 
     document.querySelector('#matchingment').textContent = 'Start books calculating';
