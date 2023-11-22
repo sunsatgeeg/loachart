@@ -720,14 +720,14 @@ function removeBookmarkItem(element) {
   let name = element.getAttribute('data-itemName');
   let bookmark = localStorage.getItem("craftcalc_bookmark").split(",");
 
-  let isFind = false;
+  let removedCount = 0;
   document.querySelectorAll(".bookmarkIcon").forEach((e)=>{
-    if(isFind) return;
+    if(removedCount >= 2) return;
 
     if(e.getAttribute("data-itemname") === name){
       e.classList.remove('active');
       e.setAttribute('onclick', 'addBookmarkItem(this)');
-      isFind = true;
+      removedCount += 1;
     }
   })
 
@@ -786,6 +786,7 @@ function loadBookmarkItem() {
       
       document.querySelectorAll(".bookmarkIcon").forEach((e)=>{
         if(e.getAttribute("data-itemname") === originE){
+          e.setAttribute('onclick', 'removeBookmarkItem(this)');
           e.classList.add('active');
           return;
         }
