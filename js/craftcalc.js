@@ -1,397 +1,374 @@
-    `
-    .pricehide {
-      white-space: pre;
-      display: inline-block;
-      visibility: hidden;
-    }
+function isEmptyValue(value) {
+  if (isNaN(value)) return 0;
+  return value;
+}
 
-    function hasClass(elem, className) {
-      return elem.className.split(' ').indexOf(className) > -1;
+function createqtyperset(event, ele) {
+  event.preventDefault();
+  event.stopPropagation();
+  if (event.deltaY < 0) {
+    if (ele.value == "") {
+      ele.value = 0;
     }
+    ele.value = parseInt(ele.value) + 1;
+  } else if (event.deltaY > 0) {
+    ele.value = parseInt(ele.value) - 1;
+  }
+  if (parseInt(ele.value) <= -1) ele.value = 0;
 
-    document.querySelector('.fresh-table').addEventListener('input', function(e) {
-      if(hasClass(e.target, 'pricetxt')) {
-        e.target.parentNode.firstChild.innerText = e.target.value;
-        e.target.style.width = String(e.target.parentNode.firstChild.offsetWidth + 16) + "px";
-        e.target.parentNode.firstChild.innerText = "";
+  ele.parentElement.parentElement.querySelectorAll('.dynamic-calc').forEach((e) => {
+    if (e.getAttribute('origin-value').includes('.')) {
+      if (Number.isInteger((parseFloat(e.getAttribute('origin-value')) * parseInt(ele.value)))) {
+        e.textContent = (parseFloat(e.getAttribute('origin-value')) * parseInt(ele.value));
+      } else {
+        e.textContent = (parseFloat(e.getAttribute('origin-value')) * parseInt(ele.value)).toFixed((e.getAttribute('origin-value').substring(e.getAttribute('origin-value').indexOf('.') + 1)).length);
       }
-    });
+    } else {
+      e.textContent = parseInt(e.getAttribute('origin-value')) * parseInt(ele.value);
+    }
+  });
+}
 
-    <td><span class="pricehide"></span><input class="pricetxt" type="text" value="1" style="width:25.5px"></td>
-    <th scope="col">제작개수</th>
-    `
+tippy('.bi', {
+  allowHTML: true,
+  onShow(instance) {
+    instance.setContent(instance.reference.getAttribute('tooltipcontent'));
+  },
+  theme: 'light',
+  placement: 'right',
+});
 
-    function isEmptyValue(value){
-      if(isNaN(value)) return 0;
-      return value;
+function reloadPriceTXT() {
+  document.querySelectorAll('#fresh-table .pricetxt').forEach((e) => {
+    e.previousSibling.textContent = e.value;
+
+    e.previousSibling.style.display = 'unset';
+    e.style.width = `${e.previousSibling.offsetWidth + 16}px`;
+    e.previousSibling.style.display = 'none';
+
+    if (e.value == '') {
+      e.value = 0;
+      e.previousSibling.textContent = 0;
+    }
+    if (e.value.indexOf('0') == 0 && e.value.length >= 2) {
+      e.value = e.value.substring(1);
     }
 
-    function createqtyperset(event,ele){
-      event.preventDefault();
-      event.stopPropagation();
-      if(event.deltaY<0){
-        if(ele.value == ""){
-          ele.value = 0;
-        }
-        ele.value = parseInt(ele.value) + 1;
-      }else if(event.deltaY>0){
-        ele.value = parseInt(ele.value) - 1;
-      } 
-      if(parseInt(ele.value) <= -1) ele.value = 0;
 
-      ele.parentElement.parentElement.querySelectorAll('.dynamic-calc').forEach((e)=>{
-        if(e.getAttribute('origin-value').includes('.')){
-          if(Number.isInteger((parseFloat(e.getAttribute('origin-value')) * parseInt(ele.value)))){
-            e.textContent = (parseFloat(e.getAttribute('origin-value')) * parseInt(ele.value));
-          }else{
-            e.textContent = (parseFloat(e.getAttribute('origin-value')) * parseInt(ele.value)).toFixed((e.getAttribute('origin-value').substr(e.getAttribute('origin-value').indexOf('.')+1)).length);
-          }
-        }else{
-          e.textContent = parseInt(e.getAttribute('origin-value')) * parseInt(ele.value);
-        }
-      });
+    e.addEventListener('click', () => {
+      $table.bootstrapTable('toggleDetailView', e.parentElement.parentElement.getAttribute('data-index'));
+    })
+
+    e.addEventListener('change', () => {
+      e.previousSibling.textContent = e.value;
+
+      e.previousSibling.style.display = 'unset';
+      e.style.width = `${e.previousSibling.offsetWidth + 16}px`;
+      e.previousSibling.style.display = 'none';
+
+      if (e.value == '') {
+        e.value = 0;
+        e.previousSibling.textContent = 0;
+      }
+      if (e.value.indexOf('0') == 0 && e.value.length >= 2) {
+        e.value = e.value.substring(1);
+      }
+
+      temprowitemname = e.parentElement.parentElement.childNodes[1].textContent;
+      if (temprowitemname.indexOf('(') != -1) {
+        temprowitemname = temprowitemname.substring(0, temprowitemname.indexOf('('))
+      }
+
+      itemPriceEdit(temprowitemname, e.value);
+    })
+  });
+}
+
+function newRow(index, row, $detail) {
+  if ($detail.length == 0) return;
+
+  tippy($detail[0].querySelectorAll('.hasTooltip'), {
+    allowHTML: true,
+    onShow(instance) {
+      instance.setContent(instance.reference.getAttribute('tooltipcontent'));
+    },
+    theme: 'light',
+    placement: 'top',
+  });
+
+  $detail[0].querySelectorAll('.pricetxt').forEach((e) => {
+    e.previousSibling.textContent = e.value;
+
+    e.previousSibling.style.display = 'unset';
+    e.style.width = `${e.previousSibling.offsetWidth + 16}px`;
+    e.previousSibling.style.display = 'none';
+
+    if (e.value == '') {
+      e.value = 0;
+      e.previousSibling.textContent = 0;
+    }
+    if (e.value.indexOf('0') == 0 && e.value.length >= 2) {
+      e.value = e.value.substring(1);
     }
 
-    tippy('.bi', {
-      allowHTML: true, 
-      onShow(instance) {
-        instance.setContent(instance.reference.getAttribute('tooltipcontent'));
-      },
-      theme: 'light', 
-      placement: 'right',
-    });
+    e.addEventListener('change', () => {
+      e.previousSibling.textContent = e.value;
 
-    function reloadPriceTXT(){
-      document.querySelectorAll('#fresh-table .pricetxt').forEach((e)=>{
-        e.previousSibling.textContent = e.value;
+      e.previousSibling.style.display = 'unset';
+      e.style.width = `${e.previousSibling.offsetWidth + 16}px`;
+      e.previousSibling.style.display = 'none';
 
-        e.previousSibling.style.display = 'unset';
-        e.style.width = `${e.previousSibling.offsetWidth + 16}px`;
-        e.previousSibling.style.display = 'none';
-    
-        if(e.value == ''){
-          e.value = 0;
-          e.previousSibling.textContent = 0;
-        }
-        if(e.value.indexOf('0') == 0 && e.value.length >= 2){
-          e.value = e.value.substr(1);
-        }
+      if (e.value == '') {
+        e.value = 0;
+        e.previousSibling.textContent = 0;
+      }
+      if (e.value.indexOf('0') == 0 && e.value.length >= 2) {
+        e.value = e.value.substring(1);
+      }
+    })
+  })
 
+  $detail[0].querySelectorAll('.ableEditPrice').forEach((e) => {
+    e.addEventListener('change', (ele) => {
 
-        e.addEventListener('click', ()=>{
-          $table.bootstrapTable('toggleDetailView', e.parentElement.parentElement.getAttribute('data-index'));
+      var detailElement = e;
+      while (true) {
+        if (detailElement.className == "detail-view") break;
+        detailElement = detailElement.parentElement;
+      }
+      var targetitemname = detailElement.previousSibling.childNodes[1].textContent;
+
+      itemPriceEdit(e.getAttribute('item'), e.value);
+      $table.bootstrapTable('selectPage', 1)
+      var pagewhilestopsign = false;
+      while (true) {
+        document.querySelectorAll("#fresh-table > tbody > tr > td.text-start").forEach((e) => {
+          if (e.textContent == targetitemname) {
+            $table.bootstrapTable('toggleDetailView', parseInt(e.parentElement.getAttribute('data-index')));
+            pagewhilestopsign = true;
+          }
         })
+        if (pagewhilestopsign) break;
+        $table.bootstrapTable('nextPage');
+      }
+    })
+  })
+}
 
-        e.addEventListener('change', ()=>{
-          e.previousSibling.textContent = e.value;
+document.querySelector('#helpbtn').addEventListener('click', function () {
+  var helpimage = document.createElement('img');
+  helpimage.src = "img/wisdom.png";
+  document.querySelector('#modalimg1').appendChild(helpimage);
 
-          e.previousSibling.style.display = 'unset';
-          e.style.width = `${e.previousSibling.offsetWidth + 16}px`;
-          e.previousSibling.style.display = 'none';
-      
-          if(e.value == ''){
-            e.value = 0;
-            e.previousSibling.textContent = 0;
-          }
-          if(e.value.indexOf('0') == 0 && e.value.length >= 2){
-            e.value = e.value.substr(1);
-          }
+  helpimage = document.createElement('img');
+  helpimage.src = "img/wisdomeffect.png";
+  document.querySelector('#modalimg2').appendChild(helpimage);
 
-          temprowitemname = e.parentElement.parentElement.childNodes[1].textContent;
-          if(temprowitemname.indexOf('(') != -1){
-            temprowitemname = temprowitemname.substr(0, temprowitemname.indexOf('('))
-          }
+  document.querySelector('#helpbtn').removeEventListener('click', arguments.callee);
+}, false);
 
-          marketData[temprowitemname] = parseInt(e.value);
-          recipecalc();
-        })
-      });
+var marketData;
+var tradeCountData;
+var $table = $('#fresh-table');
+
+function recipecalc() {
+  tabledata = [];
+  temp = [];
+  Object.keys(recipedata).forEach(function (item) {
+    itemname = item;
+    itemMarketName = item
+    if (itemname.lastIndexOf('(') != -1) {
+      temp.push(itemname.substring(0, itemname.lastIndexOf('(')));
+      itemMarketName = itemname.substring(0, itemname.lastIndexOf('('));
+    } else {
+      temp.push(itemname);
     }
+    recipe = recipedata[item];
 
-    function newRow(index, row, $detail){
-      if($detail.length == 0) return;
-
-      tippy($detail[0].querySelectorAll('.hasTooltip'), {
-        allowHTML: true, 
-        onShow(instance) {
-          instance.setContent(instance.reference.getAttribute('tooltipcontent'));
-        },
-        theme: 'light', 
-        placement: 'top',
-      });
-      
-      $detail[0].querySelectorAll('.pricetxt').forEach((e)=>{
-        e.previousSibling.textContent = e.value;
-
-        e.previousSibling.style.display = 'unset';
-        e.style.width = `${e.previousSibling.offsetWidth + 16}px`;
-        e.previousSibling.style.display = 'none';
-    
-        if(e.value == ''){
-          e.value = 0;
-          e.previousSibling.textContent = 0;
-        }
-        if(e.value.indexOf('0') == 0 && e.value.length >= 2){
-          e.value = e.value.substr(1);
-        }
-        
-        e.addEventListener('change', ()=>{
-          e.previousSibling.textContent = e.value;
-
-          e.previousSibling.style.display = 'unset';
-          e.style.width = `${e.previousSibling.offsetWidth + 16}px`;
-          e.previousSibling.style.display = 'none';
-      
-          if(e.value == ''){
-            e.value = 0;
-            e.previousSibling.textContent = 0;
-          }
-          if(e.value.indexOf('0') == 0 && e.value.length >= 2){
-            e.value = e.value.substr(1);
-          }
-        })
-      })
-      
-      $detail[0].querySelectorAll('.ableEditPrice').forEach((e)=>{
-        e.addEventListener('change', (ele)=>{
-          marketData[e.getAttribute('item')] = parseInt(e.value);
-
-          var detailElement = e;
-          while(true){
-            if(detailElement.className == "detail-view") break;
-            detailElement = detailElement.parentElement;
-          }
-          var targetitemname = detailElement.previousSibling.childNodes[1].textContent;
-
-          recipecalc();
-          $table.bootstrapTable('selectPage', 1)
-          var pagewhilestopsign = false;
-          while(true){
-            document.querySelectorAll("#fresh-table > tbody > tr > td.text-start").forEach((e)=>{
-              if(e.textContent == targetitemname){
-                $table.bootstrapTable('toggleDetailView', parseInt(e.parentElement.getAttribute('data-index')));
-                pagewhilestopsign = true;
-              }
-            })
-            if(pagewhilestopsign) break;
-            $table.bootstrapTable('nextPage');
-          }
-        })
-      })
+    type = recipe['분류'];
+    if (type == '배틀아이템') {
+      type = "b";
+    } else if (type == "요리") {
+      type = "c";
+    } else if (type == "특수") {
+      type = "s";
+    } else if (type == "생활도구") {
+      type = "lt";
     }
+    qty = recipe['수량'];
+    requireEnerge = recipe['활동력'];
 
-    document.querySelector('#helpbtn').addEventListener('click', function(){
-      var helpimage = document.createElement('img');
-      helpimage.src = "img/wisdom.png";
-      document.querySelector('#modalimg1').appendChild(helpimage);
-      
-      helpimage = document.createElement('img');
-      helpimage.src = "img/wisdomeffect.png";
-      document.querySelector('#modalimg2').appendChild(helpimage);
+    craftprice = 0;
+    for (var i = 4; i < Object.keys(recipe).length; i++) {
+      thisitemname = Object.keys(recipe)[i];
+      if (thisitemname.lastIndexOf('(') != -1) {
+        thisitemname = thisitemname.substring(0, thisitemname.lastIndexOf('('));
+      }
+      thisitmeqty = recipe[Object.keys(recipe)[i]];
 
-      document.querySelector('#helpbtn').removeEventListener('click', arguments.callee);
-    }, false);
-
-    var marketData;
-    var tradeCountData;
-    var $table = $('#fresh-table');
-
-    function recipecalc(){
-      tabledata = [];
-      temp = [];
-      Object.keys(recipedata).forEach(function(item){
-        itemname = item;
-        itemMarketName = item
-        if(itemname.lastIndexOf('(') != -1){
-          temp.push(itemname.substr(0, itemname.lastIndexOf('(')));
-          itemMarketName = itemname.substr(0, itemname.lastIndexOf('('));
-        }else{
-          temp.push(itemname);
+      if (thisitemname == '실링' || thisitemname == '현자의 돌') {
+        calcprice = 0;
+      } else if (thisitemname == "골드") {
+        thissale = isEmptyValue(parseFloat($('#cc_' + type).val())) + isEmptyValue(parseFloat($('#cc_all').val()));
+        if (thissale == 0) {
+          calcprice = thisitmeqty;
+        } else {
+          calcprice = Math.floor(thisitmeqty - (thisitmeqty * (thissale / 100)));
         }
-        recipe = recipedata[item];
-
-        type = recipe['분류'];
-        if(type == '배틀아이템'){
-          type = "b";
-        }else if(type == "요리"){
-          type = "c";
-        }else if(type == "특수"){
-          type = "s";
-        }else if(type == "생활도구"){
-          type = "lt";
-        }
-        qty = recipe['수량'];
-        requireEnerge = recipe['활동력'];
-        
-        craftprice = 0;
-        for (var i = 4; i < Object.keys(recipe).length; i++) {
-          thisitemname = Object.keys(recipe)[i];
-          if(thisitemname.lastIndexOf('(') != -1){
-            thisitemname = thisitemname.substr(0, thisitemname.lastIndexOf('('));
+      } else {
+        try {
+          thisunit = itemunit[Object.keys(recipe)[i]];
+          if (thisunit == undefined) {
+            thisunit = 1;
           }
-          thisitmeqty = recipe[Object.keys(recipe)[i]];
-
-          if(thisitemname == '실링' || thisitemname == '현자의 돌'){
-            calcprice = 0;
-          }else if(thisitemname == "골드"){
-            thissale = isEmptyValue(parseFloat($('#cc_' + type).val())) + isEmptyValue(parseFloat($('#cc_all').val()));
-            if(thissale == 0){
-              calcprice = thisitmeqty;
-            }else{
-              calcprice = Math.floor(thisitmeqty - (thisitmeqty * (thissale / 100)));
+        } catch { }
+        marketprice = marketData[thisitemname];
+        if (Object.keys(recipe)[i].lastIndexOf('제작)') != -1) {
+          for (var j = 0; j < tabledata.length; j++) {
+            if (tabledata[j]['item'] == thisitemname) {
+              marketprice = (tabledata[j]['craftprice'] / recipe[Object.keys(recipe)[i]]).toFixed(2);
+              break;
             }
-          }else{
-            try{
-              thisunit = itemunit[Object.keys(recipe)[i]];
-              if(thisunit == undefined){
-                thisunit = 1;
-              }
-            }catch{}
-            marketprice = marketData[thisitemname];
-            if(Object.keys(recipe)[i].lastIndexOf('제작)') != -1){
-              for (var j = 0; j < tabledata.length; j++) {
-                if(tabledata[j]['item'] == thisitemname){
-                  marketprice = (tabledata[j]['craftprice'] / recipe[Object.keys(recipe)[i]]).toFixed(2);
-                  break;
-                }
-              }
-            }
-            temp.push(thisitemname)
-            calcprice = marketprice * (thisitmeqty / thisunit);
-          }
-          craftprice += calcprice;
-        }
-
-        thisbuyprice = marketData[itemname]
-        if(itemname.lastIndexOf('(') != -1){
-          thisbuyprice = marketData[itemname.substr(0, itemname.lastIndexOf('('))];
-        }
-
-        thisgs = isEmptyValue(parseFloat($('#gs_' + type).val())) + isEmptyValue(parseFloat($('#gs_all').val())) + 5;
-        if(thisgs <= 5){
-          gsqty = qty;
-        }else{
-          gsqty = ((((((isEmptyValue(parseFloat($('#gs_' + type).val())) + isEmptyValue(parseFloat($('#gs_all').val()))) / 10) / 2) + 5) * qty) / 100) + qty;
-        }
-        thisprofit = ((thisbuyprice - Math.ceil(thisbuyprice * 0.05)) * gsqty - craftprice);
-
-        this_e = isEmptyValue(parseFloat($('#e_' + type).val())) + isEmptyValue(parseFloat($('#e_all').val()));
-        
-        // 빛나는 아이템 재료 아이템을 제작해서 만들 때 활동력 추가 계산
-        if(itemname.indexOf('빛나는 ') != -1 && itemname.indexOf('제작)') != -1){
-          baseItemName = itemname.replace("빛나는 ", "");
-          baseItemName = baseItemName.substr(0, baseItemName.indexOf("("));
-          baseItemReqireEnerge = recipedata[baseItemName]["활동력"];
-          requireEnerge = requireEnerge + baseItemReqireEnerge;
-        }
-        let discountedItemEnergy = requireEnerge;
-        if(this_e != 0){
-          discountedItemEnergy = parseInt(requireEnerge - (requireEnerge * (this_e / 100)));
-          if(discountedItemEnergy == 0){
-            discountedItemEnergy = 1;
           }
         }
-
-        if(thisbuyprice > (craftprice / qty)){
-          thisrecommend =  "제작";
-        }else{
-          thisrecommend =  "구매";
-        }
-        
-        let profitperenergyGold = parseInt((Math.floor(10000 / discountedItemEnergy)) * thisprofit);
-        // 하루 최대 제한 있는 아이템 예외 목록
-        // 0628일 패치로 제한 사라짐 if(itemname == '현자의 가루') profitperenergyGold = parseInt((Math.floor(10000 / 1000)) * thisprofit);
-
-        // console.log(thisitemname)
-        tabledata.push({item: itemname,
-                recommend: thisrecommend,
-                buyprice: thisbuyprice,
-                craftprice: craftprice.toFixed(2),
-                profit: thisprofit.toFixed(2),
-                profitperenergy: profitperenergyGold,
-                dict: recipe,
-                requireEnerge: requireEnerge,
-                discountedItemEnergy: discountedItemEnergy,
-                gsqty: gsqty,
-                trade_count: tradeCountData[itemMarketName]
-        });
-      });
-
-      $table.bootstrapTable('load', tabledata);
+        temp.push(thisitemname)
+        calcprice = marketprice * (thisitmeqty / thisunit);
+      }
+      craftprice += calcprice;
     }
-    
-    $('#accordionitemprice').on('click', function(){
-      $accord = $('#accordionitemprice').find('.row');
 
-      ([...new Set(temp)].sort()).forEach(function(e){
-        originE = e;
-        let showName = e;
-        if(showName.lastIndexOf('[') != -1){
-          showName = showName.substr(0, showName.lastIndexOf('['));
-        }
+    thisbuyprice = marketData[itemname]
+    if (itemname.lastIndexOf('(') != -1) {
+      thisbuyprice = marketData[itemname.substring(0, itemname.lastIndexOf('('))];
+    }
 
-        try{
-          grade = iteminfo[e][1];
-          image = iteminfo[e][0];
-        }catch{
-          if(e.indexOf('빛나는 ') != -1){
-            behindE = e.substr(4);
-            try{behindE = behindE.replace("정령의 회복약", "정가");}catch{}
-            grade = recipedata[e + '('+behindE+' 구매)'].key.Element_001.value.slotData.iconGrade;
-            image = recipedata[e + '('+behindE+' 구매)'].key.Element_001.value.slotData.iconPath;
-          }else{
-            try{e = e.replace("융화 재료", "융화 재료(고고학)");}catch{}
-            grade = recipedata[e].key.Element_001.value.slotData.iconGrade;
-            image = recipedata[e].key.Element_001.value.slotData.iconPath;
-          }
-        }
-        $accord.append(`<div class="col-3 px-0"><div class="float-start"><img class="item-image" data-grade="${grade}" style="width:32px; height:32px;" src="https://cdn-lostark.game.onstove.com/${image}" alt=""> <span id='itemname' origin="${originE}">${showName}</span> : <span class="pricehide"></span><input class="pricetxt" type="text" value="${marketData[originE]}"></div>`);
-      });
+    thisgs = isEmptyValue(parseFloat($('#gs_' + type).val())) + isEmptyValue(parseFloat($('#gs_all').val())) + 5;
+    if (thisgs <= 5) {
+      gsqty = qty;
+    } else {
+      gsqty = ((((((isEmptyValue(parseFloat($('#gs_' + type).val())) + isEmptyValue(parseFloat($('#gs_all').val()))) / 10) / 2) + 5) * qty) / 100) + qty;
+    }
+    thisprofit = ((thisbuyprice - Math.ceil(thisbuyprice * 0.05)) * gsqty - craftprice);
 
-      $(this).off('click');
-      $(this).find($('.pricetxt')).filter(function(){
-        $(this).parent().find('.pricehide').text($(this).val());
-        $(this).width($(this).parent().find('.pricehide').width() + 16);
+    this_e = isEmptyValue(parseFloat($('#e_' + type).val())) + isEmptyValue(parseFloat($('#e_all').val()));
 
-        $(this).on("mousewheel",function(event,delta){
-          event.preventDefault();
-          event.stopPropagation();
-          if(delta>0){
-            $(this).val(parseInt($(this).val()) + 1);
-            $(this).parent().find('.pricehide').text($(this).val());
-          }else if(delta<0){
-            if($(this).val() == 0){return;}
-            $(this).val(parseInt($(this).val()) - 1);
-            $(this).parent().find('.pricehide').text($(this).val());
-          } 
-          
-          marketData[$(this).parent().find('#itemname').attr('origin')] = parseInt($(this).val());
-          recipecalc();
-        });
+    // 빛나는 아이템 재료 아이템을 제작해서 만들 때 활동력 추가 계산
+    if (itemname.indexOf('빛나는 ') != -1 && itemname.indexOf('제작)') != -1) {
+      baseItemName = itemname.replace("빛나는 ", "");
+      baseItemName = baseItemName.substring(0, baseItemName.indexOf("("));
+      baseItemReqireEnerge = recipedata[baseItemName]["활동력"];
+      requireEnerge = requireEnerge + baseItemReqireEnerge;
+    }
+    let discountedItemEnergy = requireEnerge;
+    if (this_e != 0) {
+      discountedItemEnergy = parseInt(requireEnerge - (requireEnerge * (this_e / 100)));
+      if (discountedItemEnergy == 0) {
+        discountedItemEnergy = 1;
+      }
+    }
 
-        $(this).on('input', function(){
-          $(this).parent().find('.pricehide').text($(this).val());
-          $(this).width($(this).parent().find('.pricehide').width() + 16);
+    if (thisbuyprice > (craftprice / qty)) {
+      thisrecommend = "제작";
+    } else {
+      thisrecommend = "구매";
+    }
 
-          if($(this).val() == ''){
-            $(this).val(0);
-            $(this).parent().find('.pricehide').text(0);
-          }
-          if($(this).val().indexOf('0') == 0 && $(this).val().length >= 2){
-            $(this).val($(this).val().substr(1));
-          }
-          marketData[$(this).parent().find('#itemname').attr('origin')] = parseInt($(this).val());
-          recipecalc();
-        })
+    let profitperenergyGold = parseInt((Math.floor(10000 / discountedItemEnergy)) * thisprofit);
+    // 하루 최대 제한 있는 아이템 예외 목록
+    // 0628일 패치로 제한 사라짐 if(itemname == '현자의 가루') profitperenergyGold = parseInt((Math.floor(10000 / 1000)) * thisprofit);
 
-      });
+    // console.log(thisitemname)
+    tabledata.push({
+      item: itemname,
+      recommend: thisrecommend,
+      buyprice: thisbuyprice,
+      craftprice: craftprice.toFixed(2),
+      profit: thisprofit.toFixed(2),
+      profitperenergy: profitperenergyGold,
+      dict: recipe,
+      requireEnerge: requireEnerge,
+      discountedItemEnergy: discountedItemEnergy,
+      gsqty: gsqty,
+      trade_count: tradeCountData[itemMarketName]
     });
+  });
 
-    function detailFormatter(index, row) {
-      if(!row) return;
+  $table.bootstrapTable('load', tabledata);
+}
 
-      html = "";
-      html += `<table class="table" style="cursor:auto;">
+// $('#accordionitemprice').on('click', function(){
+//   $accord = $('#accordionitemprice').find('.row');
+
+//   ([...new Set(temp)].sort()).forEach(function(e){
+//     originE = e;
+//     let showName = e;
+//     if(showName.lastIndexOf('[') != -1){
+//       showName = showName.substring(0, showName.lastIndexOf('['));
+//     }
+
+//     try{
+//       grade = iteminfo[e]["grade"];
+//       image = iteminfo[e]["image"];
+//       material = iteminfo[e]["material"];
+//     }catch{
+//       if(e.indexOf('빛나는 ') != -1){
+//         behindE = e.substring(4);
+//         try{behindE = behindE.replace("정령의 회복약", "정가");}catch{}
+//         grade = recipedata[e + '('+behindE+' 구매)'].key.Element_001.value.slotData.iconGrade;
+//         image = recipedata[e + '('+behindE+' 구매)'].key.Element_001.value.slotData.iconPath;
+//       }else{
+//         try{e = e.replace("융화 재료", "융화 재료(고고학)");}catch{}
+//         grade = recipedata[e].key.Element_001.value.slotData.iconGrade;
+//         image = recipedata[e].key.Element_001.value.slotData.iconPath;
+//       }
+//     }
+//     $accord.append(`<div class="col-3 px-0"><div class="float-start"><img class="item-image" data-grade="${grade}" style="width:32px; height:32px;" src="https://cdn-lostark.game.onstove.com/${image}" alt=""> <span id='itemname' origin="${originE}">${showName}</span> : <span class="pricehide"></span><input class="pricetxt" type="text" value="${marketData[originE]}"></div>`);
+//   });
+
+//   $(this).off('click');
+//   $(this).find($('.pricetxt')).filter(function(){
+//     $(this).parent().find('.pricehide').text($(this).val());
+//     $(this).width($(this).parent().find('.pricehide').width() + 16);
+
+//     $(this).on("mousewheel",function(event,delta){
+//       event.preventDefault();
+//       event.stopPropagation();
+//       if(delta>0){
+//         $(this).val(parseInt($(this).val()) + 1);
+//         $(this).parent().find('.pricehide').text($(this).val());
+//       }else if(delta<0){
+//         if($(this).val() == 0){return;}
+//         $(this).val(parseInt($(this).val()) - 1);
+//         $(this).parent().find('.pricehide').text($(this).val());
+//       } 
+
+//       marketData[$(this).parent().find('#itemname').attr('origin')] = parseInt($(this).val());
+//       recipecalc();
+//     });
+
+//     $(this).on('input', function(){
+//       $(this).parent().find('.pricehide').text($(this).val());
+//       $(this).width($(this).parent().find('.pricehide').width() + 16);
+
+//       if($(this).val() == ''){
+//         $(this).val(0);
+//         $(this).parent().find('.pricehide').text(0);
+//       }
+//       if($(this).val().indexOf('0') == 0 && $(this).val().length >= 2){
+//         $(this).val($(this).val().substring(1));
+//       }
+//       marketData[$(this).parent().find('#itemname').attr('origin')] = parseInt($(this).val());
+//       recipecalc();
+//     })
+
+//   });
+// });
+
+function detailFormatter(index, row) {
+  if (!row) return;
+
+  html = "";
+  html += `<table class="table" style="cursor:auto;">
   <thead>
     <tr>
       <th scope="col">시세</th>
@@ -410,155 +387,155 @@
   </thead>
   <tbody>`;
 
-    rowitemname = row['item'];
-    if(rowitemname.lastIndexOf('(') != -1){
-      rowitemname = rowitemname.substr(0, rowitemname.lastIndexOf('('));
-    }
+  rowitemname = row['item'];
+  if (rowitemname.lastIndexOf('(') != -1) {
+    rowitemname = rowitemname.substring(0, rowitemname.lastIndexOf('('));
+  }
 
-    html += `
+  html += `
     <tr>
       <td><span class="pricehide"></span><input class="pricetxt ableEditPrice" item="${rowitemname}" type="text" value="${row['buyprice']}"></td>
       <td id="detail-tax">${Math.ceil(row['buyprice'] * 0.05)}</td>
       <td id="detail-craftprice">${(row['craftprice'] / row['dict']['수량']).toFixed(2)}</td>
       <td>`;
-      // 재료
-      for (var i = 4; i < Object.keys(row['dict']).length; i++) {
-        thisitemname = Object.keys(row['dict'])[i];
-        if(thisitemname.lastIndexOf('(') != -1){
-          thisitemname = thisitemname.substr(0, thisitemname.lastIndexOf('('));
-        }
-        try{
-          grade = iteminfo[thisitemname][1];
-          image = iteminfo[thisitemname][0];
-        }catch{
-          if(thisitemname.indexOf('빛나는 ') != -1){
-            behindE = thisitemname.substr(4);
-            try{behindE = behindE.replace("정령의 회복약", "정가");}catch{}
-            grade = recipedata[thisitemname + '('+behindE+' 구매)'].key.Element_001.value.slotData.iconGrade;
-            image = recipedata[thisitemname + '('+behindE+' 구매)'].key.Element_001.value.slotData.iconPath;
-          }else{
-            try{thisitemname = thisitemname.replace("융화 재료", "융화 재료(고고학)");}catch{}
-            grade = recipedata[thisitemname].key.Element_001.value.slotData.iconGrade;
-            image = recipedata[thisitemname].key.Element_001.value.slotData.iconPath;
-          }
-        }
-        html += `<p><img class="item-image" data-grade="${grade}" style="width:24px; height:24px;" src="https://cdn-lostark.game.onstove.com/${image}" alt=""> ${Object.keys(row['dict'])[i]}</p>`;
+  // 재료
+  for (var i = 4; i < Object.keys(row['dict']).length; i++) {
+    thisitemname = Object.keys(row['dict'])[i];
+    if (thisitemname.lastIndexOf('(') != -1) {
+      thisitemname = thisitemname.substring(0, thisitemname.lastIndexOf('('));
+    }
+    try {
+      grade = iteminfo[thisitemname]["grade"];
+      image = iteminfo[thisitemname]["image"];
+    } catch {
+      if (thisitemname.indexOf('빛나는 ') != -1) {
+        behindE = thisitemname.substring(4);
+        try { behindE = behindE.replace("정령의 회복약", "정가"); } catch { }
+        grade = recipedata[thisitemname + '(' + behindE + ' 구매)'].key.Element_001.value.slotData.iconGrade;
+        image = recipedata[thisitemname + '(' + behindE + ' 구매)'].key.Element_001.value.slotData.iconPath;
+      } else {
+        try { thisitemname = thisitemname.replace("융화 재료", "융화 재료(고고학)"); } catch { }
+        grade = recipedata[thisitemname].key.Element_001.value.slotData.iconGrade;
+        image = recipedata[thisitemname].key.Element_001.value.slotData.iconPath;
       }
+    }
+    html += `<p><img class="item-image" data-grade="${grade}" style="width:24px; height:24px;" src="https://cdn-lostark.game.onstove.com/${image}" alt=""> ${Object.keys(row['dict'])[i]}</p>`;
+  }
 
-      html += `</td>
+  html += `</td>
       <td>`;
 
-      // 재료시세
-      for (var i = 4; i < Object.keys(row['dict']).length; i++) {
-        thisitemname = Object.keys(row['dict'])[i];
-        if(thisitemname.lastIndexOf('(') != -1){
-          thisitemname = thisitemname.substr(0, thisitemname.lastIndexOf('('));
-        }
+  // 재료시세
+  for (var i = 4; i < Object.keys(row['dict']).length; i++) {
+    thisitemname = Object.keys(row['dict'])[i];
+    if (thisitemname.lastIndexOf('(') != -1) {
+      thisitemname = thisitemname.substring(0, thisitemname.lastIndexOf('('));
+    }
 
-        if(thisitemname == "실링" || thisitemname == "현자의 돌"){
-          html += `<p>0</p>`;
-        }else if(thisitemname == "골드"){
-          html += `<p>${row['dict'][Object.keys(row['dict'])[i]]}</p>`;
-        }else{
-          if(Object.keys(row['dict'])[i].lastIndexOf('제작)') != -1){
-            for (var j = 0; j < tabledata.length; j++) {
-              if(tabledata[j]['item'] == thisitemname){
-                price = ((tabledata[j]['craftprice'] * row['dict'][Object.keys(row['dict'])[i]]) / tabledata[j]['dict']['수량']) / row['dict'][Object.keys(row['dict'])[i]];
-                price = price.toFixed(2);
-                html += `<p>${price}</p>`;
-                break;
-              }
-            }
-          }else{
-            html += `<p><span class="pricehide"></span><input class="pricetxt ableEditPrice" type="text" item="${thisitemname}" value="${marketData[thisitemname]}"></p>`;
+    if (thisitemname == "실링" || thisitemname == "현자의 돌") {
+      html += `<p>0</p>`;
+    } else if (thisitemname == "골드") {
+      html += `<p>${row['dict'][Object.keys(row['dict'])[i]]}</p>`;
+    } else {
+      if (Object.keys(row['dict'])[i].lastIndexOf('제작)') != -1) {
+        for (var j = 0; j < tabledata.length; j++) {
+          if (tabledata[j]['item'] == thisitemname) {
+            price = ((tabledata[j]['craftprice'] * row['dict'][Object.keys(row['dict'])[i]]) / tabledata[j]['dict']['수량']) / row['dict'][Object.keys(row['dict'])[i]];
+            price = price.toFixed(2);
+            html += `<p>${price}</p>`;
+            break;
+          }
+        }
+      } else {
+        html += `<p><span class="pricehide"></span><input class="pricetxt ableEditPrice" type="text" item="${thisitemname}" value="${marketData[thisitemname]}"></p>`;
+      }
+    }
+  }
+
+  html += `</td>
+      <td>`;
+
+  // 구매 단위
+  for (var i = 4; i < Object.keys(row['dict']).length; i++) {
+    thisitemname = Object.keys(row['dict'])[i];
+    if (thisitemname.lastIndexOf('(') != -1) {
+      thisitemname = thisitemname.substring(0, thisitemname.lastIndexOf('('));
+    }
+    unit = itemunit[thisitemname];
+    if (unit == undefined) {
+      unit = 1;
+    }
+
+    html += `<p>${unit}</p>`;
+  }
+
+  html += `</td>
+      <td>`;
+
+  // 재료 개수
+  for (var i = 4; i < Object.keys(row['dict']).length; i++) {
+    thisitemname = Object.keys(row['dict'])[i];
+    if (thisitemname.lastIndexOf('(') != -1) {
+      thisitemname = thisitemname.substring(0, thisitemname.lastIndexOf('('));
+    }
+    if (thisitemname == "실링" || thisitemname == "골드" || thisitemname == "현자의 돌") {
+      qty = 1;
+    } else {
+      qty = row['dict'][Object.keys(row['dict'])[i]];
+    }
+
+    html += `<p class="dynamic-calc" origin-value="${qty}">${qty}</p>`;
+  }
+
+  html += `</td>
+      <td>`;
+
+  // 재료 총 가격
+  type = row['dict']['분류'];
+  if (type == '배틀아이템') {
+    type = "b";
+  } else if (type == "요리") {
+    type = "c";
+  } else if (type == "특수") {
+    type = "s";
+  } else if (type == "생활도구") {
+    type = "lt";
+  }
+  for (var i = 4; i < Object.keys(row['dict']).length; i++) {
+    thisitemname = Object.keys(row['dict'])[i];
+    if (thisitemname.lastIndexOf('(') != -1) {
+      thisitemname = thisitemname.substring(0, thisitemname.lastIndexOf('('));
+    }
+    if (thisitemname == "실링" || thisitemname == "현자의 돌") {
+      calcprice = 0;
+    } else if (thisitemname == "골드") {
+      thissale = isEmptyValue(parseFloat($('#cc_' + type).val())) + isEmptyValue(parseFloat($('#cc_all').val()));
+      if (thissale == 0) {
+        calcprice = row['dict'][Object.keys(row['dict'])[i]];
+      } else {
+        calcprice = Math.floor(row['dict'][Object.keys(row['dict'])[i]] - (row['dict'][Object.keys(row['dict'])[i]] * (thissale / 100)));
+      }
+    } else {
+      try {
+        thisunit = itemunit[Object.keys(row['dict'])[i]];
+        if (thisunit == undefined) {
+          thisunit = 1;
+        }
+      } catch { }
+      marketprice = marketData[thisitemname];
+      calcprice = ((marketprice / thisunit) * row['dict'][Object.keys(row['dict'])[i]]).toFixed(2)
+      if (Object.keys(row['dict'])[i].lastIndexOf('제작)') != -1) {
+        for (var j = 0; j < tabledata.length; j++) {
+          if (tabledata[j]['item'] == thisitemname) {
+            calcprice = ((tabledata[j]['craftprice'] / tabledata[j]['dict']['수량']).toFixed(2) * row['dict'][Object.keys(row['dict'])[i]]).toFixed(2);
+            break;
           }
         }
       }
-
-      html += `</td>
-      <td>`;
-
-      // 구매 단위
-      for (var i = 4; i < Object.keys(row['dict']).length; i++) {
-        thisitemname = Object.keys(row['dict'])[i];
-        if(thisitemname.lastIndexOf('(') != -1){
-          thisitemname = thisitemname.substr(0, thisitemname.lastIndexOf('('));
-        }
-        unit = itemunit[thisitemname];
-        if(unit == undefined){
-          unit = 1;
-        }
-
-        html += `<p>${unit}</p>`;
-      }
-
-      html += `</td>
-      <td>`;
-
-      // 재료 개수
-      for (var i = 4; i < Object.keys(row['dict']).length; i++) {
-        thisitemname = Object.keys(row['dict'])[i];
-        if(thisitemname.lastIndexOf('(') != -1){
-          thisitemname = thisitemname.substr(0, thisitemname.lastIndexOf('('));
-        }
-        if(thisitemname == "실링" || thisitemname == "골드" || thisitemname == "현자의 돌"){
-          qty = 1;
-        }else{
-         qty = row['dict'][Object.keys(row['dict'])[i]]; 
-        }
-
-        html += `<p class="dynamic-calc" origin-value="${qty}">${qty}</p>`;
-      }
-
-      html += `</td>
-      <td>`;
-
-      // 재료 총 가격
-      type = row['dict']['분류'];
-      if(type == '배틀아이템'){
-        type = "b";
-      }else if(type == "요리"){
-        type = "c";
-      }else if(type == "특수"){
-        type = "s";
-      }else if(type == "생활도구"){
-        type = "lt";
-      }
-      for (var i = 4; i < Object.keys(row['dict']).length; i++) {
-        thisitemname = Object.keys(row['dict'])[i];
-        if(thisitemname.lastIndexOf('(') != -1){
-          thisitemname = thisitemname.substr(0, thisitemname.lastIndexOf('('));
-        }
-        if(thisitemname == "실링" || thisitemname == "현자의 돌"){
-          calcprice = 0;
-        }else if(thisitemname == "골드"){
-          thissale = isEmptyValue(parseFloat($('#cc_' + type).val())) + isEmptyValue(parseFloat($('#cc_all').val()));
-          if(thissale == 0){
-            calcprice = row['dict'][Object.keys(row['dict'])[i]];
-          }else{
-            calcprice = Math.floor(row['dict'][Object.keys(row['dict'])[i]] - (row['dict'][Object.keys(row['dict'])[i]] * (thissale / 100)));
-          }
-        }else{
-          try{
-            thisunit = itemunit[Object.keys(row['dict'])[i]];
-            if(thisunit == undefined){
-              thisunit = 1;
-            }
-          }catch{}
-          marketprice = marketData[thisitemname];
-          calcprice = ((marketprice / thisunit) * row['dict'][Object.keys(row['dict'])[i]]).toFixed(2)
-          if(Object.keys(row['dict'])[i].lastIndexOf('제작)') != -1){
-            for (var j = 0; j < tabledata.length; j++) {
-              if(tabledata[j]['item'] == thisitemname){
-                calcprice = ((tabledata[j]['craftprice'] / tabledata[j]['dict']['수량']).toFixed(2) * row['dict'][Object.keys(row['dict'])[i]]).toFixed(2);
-                break;
-              }
-            }
-          }
-        }
-        html += `<p class="dynamic-calc" origin-value="${calcprice}">${calcprice}</p>`;
-      }
-      html +=`<td class="dynamic-calc" origin-value="${row['craftprice']}">${row['craftprice']}</td>
+    }
+    html += `<p class="dynamic-calc" origin-value="${calcprice}">${calcprice}</p>`;
+  }
+  html += `<td class="dynamic-calc" origin-value="${row['craftprice']}">${row['craftprice']}</td>
       <td>
         <span class="dynamic-calc" origin-value="${row['requireEnerge']}">${row['requireEnerge']}</span>
         <br>[<span class="dynamic-calc" origin-value="${row['discountedItemEnergy']}">${row['discountedItemEnergy']}</span>]
@@ -573,176 +550,324 @@
     </tr>
   </tbody>
 </table>`;
-      return html;
-    }
+  return html;
+}
 
-    function imageFormatter(index, row) {
-      if(row['item'].lastIndexOf('(') != -1){
-        thisname = row['item'].substr(0, row['item'].lastIndexOf('('));
-      }else{
-        thisname = row['item'];
-      }
+function imageFormatter(index, row) {
+  if (row['item'].lastIndexOf('(') != -1) {
+    thisname = row['item'].substring(0, row['item'].lastIndexOf('('));
+  } else {
+    thisname = row['item'];
+  }
 
-      image = row.dict.key.Element_001.value.slotData.iconPath;
-      grade = row.dict.key.Element_001.value.slotData.iconGrade;
+  image = row.dict.key.Element_001.value.slotData.iconPath;
+  grade = row.dict.key.Element_001.value.slotData.iconGrade;
 
-      return '<img data-key="' + JSON.stringify(row.dict.key).replace(/"/gi, "&quot;") + '" class="item-image mt-1 mb-1" data-grade="' + grade + '" src="https://cdn-lostark.game.onstove.com/' + image + '" onmouseover="tooltip_item_show(this);" onmouseout="tooltip_item_hide(this);" style="width: 64px;">'
-    }
+  return '<img data-key="' + JSON.stringify(row.dict.key).replace(/"/gi, "&quot;") + '" class="item-image mt-1 mb-1" data-grade="' + grade + '" src="https://cdn-lostark.game.onstove.com/' + image + '" onmouseover="tooltip_item_show(this);" onmouseout="tooltip_item_hide(this);" style="width: 64px;">'
+}
 
-    function buypriceFormatter(value, row) {
-      return `<span class="pricehide"></span><input class="pricetxt" type="text" value="${value}">`;
-    }
+function buypriceFormatter(value, row) {
+  return `<span class="pricehide"></span><input class="pricetxt" type="text" value="${value}">`;
+}
 
-    function tooltip_item_show(e){
-      offtop = $(e).offset().top;
-      offleft = $(e).offset().left + 75;
-      keydata = JSON.parse($(e).attr('data-key'));
+function tooltip_item_show(e) {
+  offtop = $(e).offset().top;
+  offleft = $(e).offset().left + 75;
+  keydata = JSON.parse($(e).attr('data-key'));
 
-      tooltiphtml = `<div class="itemdic-item game-tooltip game-tooltip-item" style="position: absolute; left: ${offleft}px; top: ${offtop}px;">`;
+  tooltiphtml = `<div class="itemdic-item game-tooltip game-tooltip-item" style="position: absolute; left: ${offleft}px; top: ${offtop}px;">`;
 
-      Object.keys(keydata).forEach(function(e){
-        tooltiphtml += `<div class="${keydata[e]['type']}">`;
-        if(keydata[e]['type'] == "ItemTitle"){
-          tooltiphtml += `<span class="slotData" data-grade="${keydata[e]['value']['slotData']['iconGrade']}"><img src="https://cdn-lostark.game.onstove.com/${keydata[e]['value']['slotData']['iconPath']}" alt="" data-grade="${keydata[e]['value']['slotData']['iconGrade']}" class="item-image"}></span>`;
-          try{
-            delete keydata[e]['value']['slotData'];
-          }catch{}
-          Object.keys(keydata[e]['value']).forEach(function(f){
-            tooltiphtml += `<span class="${f}">${keydata[e]['value'][f]}</span>`;
-          });
-        }else if(keydata[e]['type'] == "MultiTextBox"){
-          keyvaluearr = keydata[e]['value'].split('|');
-          keyvaluearr.forEach(function(g){
-            tooltiphtml += `<span>${g}</span>`;
-          });
-        }else{
-          tooltiphtml += `${keydata[e]['value']}`;
-        }
-        tooltiphtml += `</div>`;
+  Object.keys(keydata).forEach(function (e) {
+    tooltiphtml += `<div class="${keydata[e]['type']}">`;
+    if (keydata[e]['type'] == "ItemTitle") {
+      tooltiphtml += `<span class="slotData" data-grade="${keydata[e]['value']['slotData']['iconGrade']}"><img src="https://cdn-lostark.game.onstove.com/${keydata[e]['value']['slotData']['iconPath']}" alt="" data-grade="${keydata[e]['value']['slotData']['iconGrade']}" class="item-image"}></span>`;
+      try {
+        delete keydata[e]['value']['slotData'];
+      } catch { }
+      Object.keys(keydata[e]['value']).forEach(function (f) {
+        tooltiphtml += `<span class="${f}">${keydata[e]['value'][f]}</span>`;
       });
-
-      $('body').append(tooltiphtml);
+    } else if (keydata[e]['type'] == "MultiTextBox") {
+      keyvaluearr = keydata[e]['value'].split('|');
+      keyvaluearr.forEach(function (g) {
+        tooltiphtml += `<span>${g}</span>`;
+      });
+    } else {
+      tooltiphtml += `${keydata[e]['value']}`;
     }
-    function tooltip_item_hide(e){
-      $('body').find('.game-tooltip-item').remove()
-    }
+    tooltiphtml += `</div>`;
+  });
 
-    waringitemarr = ['신호탄','회복약'];
-    function profitperenergyFormatter(value, row){
-      if(waringitemarr.indexOf(row['item']) != -1){
-        return value + ` <i class="bi bi-exclamation-circle-fill" style="color:red;" onmouseover="tippy($(this)[0], { content: '제작 활동력이 1이라서 비상식적인 이득이 나온 것입니다. 실제론 활동력 1만 못 녹입니다.',theme: 'light', placement: 'bottom', });"></i>`;
-      }else{
-        return value;
+  $('body').append(tooltiphtml);
+}
+function tooltip_item_hide(e) {
+  $('body').find('.game-tooltip-item').remove()
+}
+
+waringitemarr = ['신호탄', '회복약'];
+function profitperenergyFormatter(value, row) {
+  if (waringitemarr.indexOf(row['item']) != -1) {
+    return value + ` <i class="bi bi-exclamation-circle-fill" style="color:red;" onmouseover="tippy($(this)[0], { content: '제작 활동력이 1이라서 비상식적인 이득이 나온 것입니다. 실제론 활동력 1만 못 녹입니다.',theme: 'light', placement: 'bottom', });"></i>`;
+  } else {
+    return value;
+  }
+}
+
+function tradeCountFormatter(value, row) {
+  return value.toLocaleString()
+}
+
+function recomcellStyle(value, row, index) {
+  if (row['recommend'] == '구매') {
+    return {
+      css: {
+        color: 'red'
       }
     }
-
-    function tradeCountFormatter(value, row){
-      return value.toLocaleString()
-    }
-
-    function recomcellStyle(value, row, index) {
-      if (row['recommend'] == '구매') {
-        return {
-          css: {
-            color: 'red'
-          }
-        }
-      }else{
-        return {
-          css: {
-            color: '#00ff00'
-          }
-        }
+  } else {
+    return {
+      css: {
+        color: '#00ff00'
       }
     }
+  }
+}
 
-    function profcellStyle(value, row, index) {
-      if (row['profit'] <= 0) {
-        return {
-          css: {
-            color: 'red'
-          }
-        }
-      }else{
-        return {
-          css: {
-            color: '#00ff00'
-          }
-        }
+function profcellStyle(value, row, index) {
+  if (row['profit'] <= 0) {
+    return {
+      css: {
+        color: 'red'
       }
     }
+  } else {
+    return {
+      css: {
+        color: '#00ff00'
+      }
+    }
+  }
+}
 
-    $(function(){
-      $table.bootstrapTable({
-        classes: 'table table-hover table-striped',
-        toolbar: '.toolbar',
-        search: true,
-        pagination: true,
-        striped: true,
-        pageSize: 10,
-        pageList: [10, 25, 50, 100],
-        onExpandRow: newRow,
-        onPostBody: reloadPriceTXT,
+function itemPriceEdit(name, price) {
+  document.querySelectorAll(".gold").forEach((e)=>{
+    if(e.getAttribute("data-itemname") === name) e.value = price;
+  })
+  marketData[name] = parseInt(price);
+  recipecalc();
+}
 
-        formatShowingRows: function(pageFrom, pageTo, totalRows){
-          return ''
-        },
-        formatRecordsPerPage: function (pageNumber) {
-          return pageNumber + ' rows visible'
-        },
+function updateAllItemPrice() {
+  Object.keys(iteminfo).forEach((e) => {
+    try {
+
+      originE = e;
+      let showName = e;
+      if (showName.lastIndexOf('[') != -1) showName = showName.substring(0, showName.lastIndexOf('['));
+
+      try {
+        grade = iteminfo[e]["grade"];
+        image = iteminfo[e]["image"];
+        material = iteminfo[e]["material"];
+      } catch {
+        if (e.indexOf('빛나는 ') != -1) {
+          behindE = e.substring(4);
+          try { behindE = behindE.replace("정령의 회복약", "정가"); } catch { }
+          grade = recipedata[e + '(' + behindE + ' 구매)'].key.Element_001.value.slotData.iconGrade;
+          image = recipedata[e + '(' + behindE + ' 구매)'].key.Element_001.value.slotData.iconPath;
+        } else {
+          try { e = e.replace("융화 재료", "융화 재료(고고학)"); } catch { }
+          grade = recipedata[e].key.Element_001.value.slotData.iconGrade;
+          image = recipedata[e].key.Element_001.value.slotData.iconPath;
+        }
+      }
+
+      let animationSecond = showName.length >= 5 ? 50 / showName.length : 0;
+      let tElement = document.getElementById(`flush-${material}`).getElementsByClassName('accordion-body')[0];
+      let functionStr = `itemPriceEdit(this.getAttribute('data-itemName'), this.value)`;
+      tElement.innerHTML += `<div class="col-2 col-sm-1point2 d-flex ps-1 pe-0" style="flex-direction: column;">
+                                <div class="d-flex position-relative">
+                                  <img class="mx-auto item-image" data-grade="${grade}" src="https://cdn-lostark.game.onstove.com/${image}" alt="" style="width: 100%">
+                                  <div class="bookmarkIcon bottom-0 end-0" data-itemName="${originE}" onclick="addBookmarkItem(this)"></div>
+                                </div>
+                                <div class="scroll-container"><div class="text-white scroll-text text-center" id="itemname" origin="${originE}"style="--second: ${animationSecond}s; --length: -400%; text-overflow: ellipsis; white-space: nowrap;">${showName}</div></div>
+                                <input class="gold text-start" type="number" min="0" data-itemName="${originE}" value="${marketData[originE]}" oninput="${functionStr}">
+                            </div>`;
+
+    } catch { }
+  });
+}
+
+function addBookmarkItem(element) {
+  let name = element.getAttribute('data-itemName');
+  let bookmark = localStorage.getItem("craftcalc_bookmark").split(",");
+  
+  element.classList.add('active');
+  element.setAttribute('onclick', 'removeBookmarkItem(this)');
+  // document.querySelectorAll(".bookmarkIcon").forEach((e)=>{
+  //   if(e.getAttribute("data-itemname") === name){
+  //     e.setAttribute('onclick', 'removeBookmarkItem(this)');
+  //   }
+  // })
+
+  if(!bookmark.includes(name)) bookmark.push(name);
+  
+  localStorage.setItem("craftcalc_bookmark", bookmark);
+  loadBookmarkItem();
+}
+
+function removeBookmarkItem(element) {
+  let name = element.getAttribute('data-itemName');
+  let bookmark = localStorage.getItem("craftcalc_bookmark").split(",");
+
+  let isFind = false;
+  document.querySelectorAll(".bookmarkIcon").forEach((e)=>{
+    if(isFind) return;
+
+    if(e.getAttribute("data-itemname") === name){
+      e.classList.remove('active');
+      e.setAttribute('onclick', 'addBookmarkItem(this)');
+      isFind = true;
+    }
+  })
+
+  const findIndex = bookmark.indexOf(name);
+  if(findIndex > -1) bookmark.splice(findIndex, 1);
+
+  localStorage.setItem("craftcalc_bookmark", bookmark);
+  loadBookmarkItem();
+}
+
+function loadBookmarkItem() {
+  if(!localStorage.getItem("craftcalc_bookmark")) localStorage.setItem("craftcalc_bookmark", "");
+
+  const bookmark = localStorage.getItem("craftcalc_bookmark").split(",");
+  if(bookmark == null) return;
+  
+  let tElement = document.getElementById('bookmark');
+  while (tElement.hasChildNodes()) {
+    tElement.removeChild(tElement.firstChild);
+  }
+
+  bookmark.forEach((e) => {
+    try {
+      // console.log(e);
+      originE = e;
+      let showName = e;
+      if (showName.lastIndexOf('[') != -1) showName = showName.substring(0, showName.lastIndexOf('['));
+
+      try {
+        grade = iteminfo[e]["grade"];
+        image = iteminfo[e]["image"];
+        material = iteminfo[e]["material"];
+      } catch {
+        if (e.indexOf('빛나는 ') != -1) {
+          behindE = e.substring(4);
+          try { behindE = behindE.replace("정령의 회복약", "정가"); } catch { }
+          grade = recipedata[e + '(' + behindE + ' 구매)'].key.Element_001.value.slotData.iconGrade;
+          image = recipedata[e + '(' + behindE + ' 구매)'].key.Element_001.value.slotData.iconPath;
+        } else {
+          try { e = e.replace("융화 재료", "융화 재료(고고학)"); } catch { }
+          grade = recipedata[e].key.Element_001.value.slotData.iconGrade;
+          image = recipedata[e].key.Element_001.value.slotData.iconPath;
+        }
+      }
+
+      let animationSecond = showName.length >= 5 ? 50 / showName.length : 0;
+      let functionStr = `itemPriceEdit(this.getAttribute('data-itemName'), this.value)`;
+      tElement.innerHTML += `<div class="col-2 col-sm-1point2 d-flex ps-1 pe-0" style="flex-direction: column;">
+                                <div class="d-flex position-relative">
+                                  <img class="mx-auto item-image" data-grade="${grade}" src="https://cdn-lostark.game.onstove.com/${image}" alt="" style="width: 100%">
+                                  <div class="bookmarkIcon bottom-0 end-0" data-itemName="${originE}" onclick="removeBookmarkItem(this)"></div>
+                                </div>
+                                <div class="scroll-container"><div class="text-white scroll-text text-center" id="itemname" origin="${originE}"style="--second: ${animationSecond}s; --length: -400%; text-overflow: ellipsis; white-space: nowrap;">${showName}</div></div>
+                                <input class="gold text-start" type="number" min="0" data-itemName="${originE}" value="${marketData[originE]}" oninput="${functionStr}">
+                            </div>`;
+      
+      document.querySelectorAll(".bookmarkIcon").forEach((e)=>{
+        if(e.getAttribute("data-itemname") === originE){
+          e.classList.add('active');
+          return;
+        }
       })
 
-      $('#wisdomeffectclear').on('click', function(){
-        $('#wisdomeffect').find('input').filter(function(){
-          $(this).val('');
-          setCookie($(this).attr('id'), '', 365);
-          recipecalc();
-        });
-      });
+    } catch { }
+  });
+}
 
-      $('#wisdomeffect').find('input').filter(function(){
-        givemeid = $(this).attr('id');
-        if(getCookie(givemeid) == undefined || getCookie(givemeid) == ''){
-          $(this).val('');
-        }else {
-          $(this).val(getCookie(givemeid));
-        }
+$(function () {
+  $table.bootstrapTable({
+    classes: 'table table-hover table-striped',
+    toolbar: '.toolbar',
+    search: true,
+    pagination: true,
+    striped: true,
+    pageSize: 10,
+    pageList: [10, 25, 50, 100],
+    onExpandRow: newRow,
+    onPostBody: reloadPriceTXT,
 
-        $(this).hover(()=>{
-          $(this).focus();
-        })
+    formatShowingRows: function (pageFrom, pageTo, totalRows) {
+      return ''
+    },
+    formatRecordsPerPage: function (pageNumber) {
+      return pageNumber + ' rows visible'
+    },
+  })
 
-        $(this).on('input', function(){
-          thiseffectname = $(this).attr('id');
-          thiseffectval = $(this).val();
-
-          if(parseFloat(thiseffectval) <= 0){
-            $(this).val('');
-            thiseffectval = '';
-          }
-
-          setCookie(thiseffectname, thiseffectval, 365);
-          recipecalc();
-        });
-      });
-
-      $.ajax({
-        type: 'POST',
-        url: url + '/craftcalc',
-        success: function(json) {
-          marketData = json[0];
-          tradeCountData = json[1]
-
-          jsondate = String(marketData['date']);
-          db_year = jsondate.slice(0,4);
-          db_mon = jsondate.slice(4,6);
-          db_day = jsondate.slice(6,8);
-          db_hour = jsondate.slice(8,10);
-          db_min = jsondate.slice(10,12);
-
-          $('#markettime').text('[' + db_year + "-" + db_mon + "-" + db_day + " " + db_hour + ":" + db_min + " 기준]");
-
-          recipecalc();
-        }
-      });
+  $('#wisdomeffectclear').on('click', function () {
+    $('#wisdomeffect').find('input').filter(function () {
+      $(this).val('');
+      setCookie($(this).attr('id'), '', 365);
+      recipecalc();
     });
+  });
+
+  $('#wisdomeffect').find('input').filter(function () {
+    givemeid = $(this).attr('id');
+    if (getCookie(givemeid) == undefined || getCookie(givemeid) == '') {
+      $(this).val('');
+    } else {
+      $(this).val(getCookie(givemeid));
+    }
+
+    $(this).hover(() => {
+      $(this).focus();
+    })
+
+    $(this).on('input', function () {
+      thiseffectname = $(this).attr('id');
+      thiseffectval = $(this).val();
+
+      if (parseFloat(thiseffectval) <= 0) {
+        $(this).val('');
+        thiseffectval = '';
+      }
+
+      setCookie(thiseffectname, thiseffectval, 365);
+      recipecalc();
+    });
+  });
+
+  $.ajax({
+    type: 'POST',
+    url: url + '/craftcalc',
+    success: function (json) {
+      marketData = json[0];
+      tradeCountData = json[1]
+
+      jsondate = String(marketData['date']);
+      db_year = jsondate.slice(0, 4);
+      db_mon = jsondate.slice(4, 6);
+      db_day = jsondate.slice(6, 8);
+      db_hour = jsondate.slice(8, 10);
+      db_min = jsondate.slice(10, 12);
+
+      $('#markettime').text('' + db_year + "-" + db_mon + "-" + db_day + " " + db_hour + ":" + db_min + " 기준");
+
+      updateAllItemPrice();
+      loadBookmarkItem();
+      recipecalc();
+    }
+  });
+});

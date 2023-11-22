@@ -54,6 +54,146 @@
         max-width: 970px !important;
       }
     }
+    .accordion-button{
+      background-color: #1F2224;
+      
+    }
+    .accordion-button:not(.collapsed) {
+      color: #ffffff;
+      background-color: #1F2224;
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
+    }
+    .accordion-button:not(.collapsed) {
+      background-image: linear-gradient(to bottom, #202022, #2D4A6E)
+    }
+    .accordion-item {
+      color: var(--bs-accordion-color);
+      background-color: unset;
+      border: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
+    }
+    .carousel-indicators {
+      position: unset;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      justify-content: center;
+      padding: 0;
+      margin-right: unset;
+      margin-bottom: unset;
+      margin-left: unset;
+      list-style: unset;
+    }
+    .carousel-indicators [data-bs-target] {
+      width: 50%;
+      height: unset;
+      text-indent: unset;
+      background-clip: unset;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      opacity: unset;
+      transition: unset;
+      position: relative;
+      z-index: 1;
+      flex-grow: 1;
+      flex-basis: 0;
+      display: inline-block;
+      margin: 4px;
+      padding: 6px;
+      background-color: #181c21;
+      text-align: center;
+      color: #fff;
+      text-shadow: 1px 1px #000;
+      border: 1px solid #13181b;
+      border-top-color: #283338;
+      cursor: pointer;
+      box-shadow: 1px 1px 2px 1px rgba(0,0,0,.5);
+      transition-property: background-color,border-color,box-shadow;
+      transition-timing-function: ease-in-out;
+      transition-duration: .15s;
+    }
+    .carousel-indicators button:hover {
+      transition: none;
+      background: radial-gradient(ellipse farthest-corner at 50% 150%,#495b71,transparent 60%),#182031;
+      text-shadow: 0 0 4px #9bc1de,0 0 4px #9bc1de;
+    }
+    .carousel-indicators button:hover {
+      transition: none;
+      background: radial-gradient(ellipse farthest-corner at 50% 150%,#495b71,transparent 60%),#182031;
+      text-shadow: 0 0 4px #9bc1de,0 0 4px #9bc1de;
+    }
+    .carousel-indicators .active {
+      transition: none;
+      background: radial-gradient(ellipse farthest-corner at 50% 150%,#495b71,transparent 60%),#182031;
+      text-shadow: 0 0 4px #9bc1de,0 0 4px #9bc1de;
+      border-color: #495b71;
+      box-shadow: inset 0 0 4px #495b71,0 0 2px #495b71;
+    }
+    @media (min-width: 576px){
+      .col-sm-1point2 {
+        flex: 0 0 auto;
+        width: 10%;
+      }
+    }
+    .gold {
+      background-color: #0F1114;
+      color: white;
+      box-shadow: inset 6px 6px 4px -5px #000000;
+      background-image: url('./img/gold.png');
+      background-repeat: no-repeat;
+      background-position-x: right;
+      background-position-y: center;
+    }
+    .bookmarkIcon {
+      background: url("./img/bookmark.png") no-repeat;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      filter:grayscale(1);
+    }
+    .bookmarkIcon.active {
+      filter:unset;
+    }
+    .scroll-container {
+      overflow: hidden;
+    }
+    
+    .scroll-text:hover {
+      /* animation properties */
+      -moz-transform: translateX(0%);
+      -webkit-transform: translateX(0%);
+      transform: translateX(0%);
+      
+      -moz-animation: my-animation var(--second) linear infinite;
+      -webkit-animation: my-animation var(--second) linear infinite;
+      animation: my-animation var(--second) linear infinite;
+    }
+    
+    /* for Firefox */
+    @-moz-keyframes my-animation {
+      from { -moz-transform: translateX(0%); }
+      to { -moz-transform: translateX(-400%); }
+    }
+    
+    /* for Chrome */
+    @-webkit-keyframes my-animation {
+      from { -webkit-transform: translateX(0%); }
+      to { -webkit-transform: translateX(-400%); }
+    }
+    
+    @keyframes my-animation {
+      from {
+        -moz-transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+      }
+      to {
+        -moz-transform: translateX(-400%);
+        -webkit-transform: translateX(-400%);
+        transform: translateX(-400%);
+      }
+    }
   </style>
 </head>
 
@@ -66,23 +206,207 @@
 
     <main>      
       <div class="mx-auto w-100">
-        <div class="accordion" id="accordionitemprice">
-          <div class="accordion-item mb-3">
-            <h2 class="accordion-header" id="heading1" style="margin-top:0px;">
-              <button style="background-color: #000 important;" class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                [클릭] 재료 시세 탭(수정 가능) <span id="markettime"></span>
-              </button>
-            </h2>
-            <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#accordionitemprice" style="">
-              <div class="accordion-body p-0" style="background-color: #212529;">
-                <div class="container">
-                  <div class="row" >
+        <div class="row mx-0">
+          <div class="col px-0 border border-white mb-3">
+            <div id="itemPrice" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#itemPrice" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">즐겨찾기</button>
+                <button type="button" data-bs-target="#itemPrice" data-bs-slide-to="1" aria-label="Slide 2">생활 재료</button>
+                <button type="button" data-bs-target="#itemPrice" data-bs-slide-to="2" aria-label="Slide 3">배틀 아이템</button>
+                <button type="button" data-bs-target="#itemPrice" data-bs-slide-to="3" aria-label="Slide 4">요리, 특수, ...</button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="1000000">
+                  <div class="accordion-body row mx-0 py-1 px-0" id="bookmark">
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="1000000">
+                  <div class="accordion accordion-flush" id="material">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-gathering" aria-expanded="false" aria-controls="flush-gathering">
+                          식물
+                        </button>
+                      </h2>
+                      <div id="flush-gathering" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-logging" aria-expanded="false" aria-controls="flush-logging">
+                          벌목
+                        </button>
+                      </h2>
+                      <div id="flush-logging" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-mining" aria-expanded="false" aria-controls="flush-mining">
+                          채광
+                        </button>
+                      </h2>
+                      <div id="flush-mining" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-hunting" aria-expanded="false" aria-controls="flush-hunting">
+                          수렵
+                        </button>
+                      </h2>
+                      <div id="flush-hunting" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-fishing" aria-expanded="false" aria-controls="flush-fishing">
+                          낚시
+                        </button>
+                      </h2>
+                      <div id="flush-fishing" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-excavating" aria-expanded="false" aria-controls="flush-excavating">
+                          고고학
+                        </button>
+                      </h2>
+                      <div id="flush-excavating" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="1000000">
+                  <div class="accordion accordion-flush" id="material">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-potion" aria-expanded="false" aria-controls="flush-potion">
+                          회복형 물약
+                        </button>
+                      </h2>
+                      <div id="flush-potion" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-grenade" aria-expanded="false" aria-controls="flush-grenade">
+                          수류탄
+                        </button>
+                      </h2>
+                      <div id="flush-grenade" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-bomb" aria-expanded="false" aria-controls="flush-bomb">
+                          폭탄
+                        </button>
+                      </h2>
+                      <div id="flush-bomb" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-function" aria-expanded="false" aria-controls="flush-function">
+                          기능성 물약
+                        </button>
+                      </h2>
+                      <div id="flush-function" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-buff" aria-expanded="false" aria-controls="flush-buff">
+                          버프형 물약
+                        </button>
+                      </h2>
+                      <div id="flush-buff" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-etc" aria-expanded="false" aria-controls="flush-etc">
+                          기타
+                        </button>
+                      </h2>
+                      <div id="flush-etc" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="1000000">
+                  <div class="accordion accordion-flush" id="material">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-cook" aria-expanded="false" aria-controls="flush-cook">
+                          요리
+                        </button>
+                      </h2>
+                      <div id="flush-cook" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-oreha" aria-expanded="false" aria-controls="flush-oreha">
+                          오레하
+                        </button>
+                      </h2>
+                      <div id="flush-oreha" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header mt-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-special" aria-expanded="false" aria-controls="flush-special">
+                          특수
+                        </button>
+                      </h2>
+                      <div id="flush-special" class="accordion-collapse collapse">
+                        <div class="accordion-body row mx-0 py-1 px-0"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="col-lg-auto float-md-end px-0 ms-lg-3 mt-auto mb-3">
+            <div class="mx-auto " style="width: 410px; height: 230px;">
+              <div class="vm-placement" id="vm-av" data-format="isvideo"></div>
+            </div>
+          </div>
         </div>
+
         <div class="fresh-table full-color-custom">
           <div class="toolbar text-start">
             <button class="btn btn-default" data-bs-toggle="collapse" data-bs-target="#collapse">영지 효과</button>
@@ -383,8 +707,8 @@
 
   <!-- custom -->
   <script src="js/custom.js?v=02021500"></script>
-  <script src="js/craft_recipe.js?v=07031045"></script>
-  <script src="js/craftcalc.js?v=09081314"></script>
+  <script src="js/craft_recipe.js?v=11221359"></script>
+  <script src="js/craftcalc.js?v=11221359"></script>
 
   <!-- google ADSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4936470262963011"

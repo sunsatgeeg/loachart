@@ -1,53 +1,449 @@
-var iteminfo = {
-  "투박한 버섯":["EFUI_IconAtlas/Use/Use_8_56.png",0], 
-  "들꽃":["EFUI_IconAtlas/Use/Use_8_46.png",0],
-  "수줍은 들꽃":["EFUI_IconAtlas/Use/Use_4_14.png",1], 
-  "싱싱한 버섯":["EFUI_IconAtlas/All_Quest/All_Quest_02_101.png",1], 
-  "화려한 버섯":["EFUI_IconAtlas/Use/Use_8_57.png",2], 
-  "화사한 들꽃":["EFUI_IconAtlas/Use/Use_8_47.png",2], 
-  "목재":["EFUI_IconAtlas/Use/Use_3_252.png",0], 
-  "부드러운 목재":["EFUI_IconAtlas/Use/Use_3_253.png",1], 
-  "튼튼한 목재":["EFUI_IconAtlas/Use/Use_4_4.png",2], 
-  "철광석":["EFUI_IconAtlas/Use/Use_3_243.png",0], 
-  "묵직한 철광석":["EFUI_IconAtlas/Use/Use_3_239.png",1], 
-  "단단한 철광석":["EFUI_IconAtlas/Use/Use_5_76.png",2], 
-  "두툼한 생고기":["EFUI_IconAtlas/Use/Use_2_192.png",0],
-  "다듬은 생고기":["EFUI_IconAtlas/Use/Use_2_196.png",1], 
-  "질긴 가죽":["EFUI_IconAtlas/Use/Use_2_204.png",1], 
-  "오레하 두툼한 생고기":["EFUI_IconAtlas/Use/Use_8_67.png",2], 
-  "생선":["EFUI_IconAtlas/Use/Use_1_142.png",0], 
-  "붉은 살 생선":["EFUI_IconAtlas/Use/Use_4_49.png",1], 
-  "자연산 진주":["EFUI_IconAtlas/Use/Use_8_72.png",1], 
-  "오레하 태양 잉어":["EFUI_IconAtlas/Use/Use_8_74.png",2], 
-  "고대 유물":["EFUI_IconAtlas/Use/Use_9_3.png",0], 
-  "희귀한 유물":["EFUI_IconAtlas/Use/Use_9_4.png",1], 
-  "오레하 유물":["EFUI_IconAtlas/Use/Use_9_11.png",2], 
-  "정령의 회복약":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_8.png",3], 
-  "섬광 수류탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_0.png",2], 
-  "화염 수류탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_1.png",2], 
-  "냉기 수류탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_2.png",2], 
-  "전기 수류탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_3.png",2], 
-  "점토 수류탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_54.png",2], 
-  "회오리 수류탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_53.png",2], 
-  "암흑 수류탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_47.png",2], 
-  "수면 폭탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_69.png",2], 
-  "파괴 폭탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_21.png",2], 
-  "부식 폭탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_49.png",2], 
-  "성스러운 폭탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_70.png",2], 
-  "만능 물약":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_17.png",2], 
-  "보호 물약":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_50.png",2], 
-  "천둥 물약":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_63.png",2], 
-  "위장 로브":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_19.png",2], 
-  "은신 로브":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_44.png",3], 
-  "신속 로브":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_52.png",2], 
-  "신호탄":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_4.png",1], 
-  "모닥불":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_12.png",2], 
-  "도발 허수아비":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_45.png",2], 
-  "성스러운 부적":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_51.png",2], 
-  "진군의 깃발":["EFUI_IconAtlas/Battle_Item/Battle_Item_01_14.png",2],
-  "골드":["EFUI_IconAtlas/money/money_4.png",0],
-  "실링":["EFUI_IconAtlas/etc/etc_14.png",0],
-  "현자의 돌":["EFUI_IconAtlas/Use/Use_9_81.png",2]
+let iteminfo = {
+  "들꽃":{
+    "image":"EFUI_IconAtlas/Use/Use_8_46.png",
+    "grade":0,
+    "material":"gathering"
+  },
+  "투박한 버섯":{
+    "image":"EFUI_IconAtlas/Use/Use_8_56.png",
+    "grade":0,
+    "material":"gathering"
+  }, 
+  "수줍은 들꽃":{
+    "image":"EFUI_IconAtlas/Use/Use_4_14.png",
+    "grade":1,
+    "material":"gathering"
+  }, 
+  "싱싱한 버섯":{
+    "image":"EFUI_IconAtlas/All_Quest/All_Quest_02_101.png",
+    "grade":1,
+    "material":"gathering"
+  }, 
+  "화사한 들꽃":{
+    "image":"EFUI_IconAtlas/Use/Use_8_47.png",
+    "grade":2,
+    "material":"gathering"
+  }, 
+  "화려한 버섯":{
+    "image":"EFUI_IconAtlas/Use/Use_8_57.png",
+    "grade":2,
+    "material":"gathering"
+  }, 
+  "목재":{
+    "image":"EFUI_IconAtlas/Use/Use_3_252.png",
+    "grade":0,
+    "material":"logging"
+  }, 
+  "부드러운 목재":{
+    "image":"EFUI_IconAtlas/Use/Use_3_253.png",
+    "grade":1,
+    "material":"logging"
+  }, 
+  "튼튼한 목재":{
+    "image":"EFUI_IconAtlas/Use/Use_4_4.png",
+    "grade":2,
+    "material":"logging"
+  }, 
+  "철광석":{
+    "image":"EFUI_IconAtlas/Use/Use_3_243.png",
+    "grade":0,
+    "material":"mining"
+  }, 
+  "묵직한 철광석":{
+    "image":"EFUI_IconAtlas/Use/Use_3_239.png",
+    "grade":1,
+    "material":"mining"
+  }, 
+  "단단한 철광석":{
+    "image":"EFUI_IconAtlas/Use/Use_5_76.png",
+    "grade":2,
+    "material":"mining"
+  }, 
+  "두툼한 생고기":{
+    "image":"EFUI_IconAtlas/Use/Use_2_192.png",
+    "grade":0,
+    "material":"hunting"
+  },
+  "다듬은 생고기":{
+    "image":"EFUI_IconAtlas/Use/Use_2_196.png",
+    "grade":1,
+    "material":"hunting"
+  }, 
+  "질긴 가죽":{
+    "image":"EFUI_IconAtlas/Use/Use_2_204.png",
+    "grade":1,
+    "material":"hunting"
+  }, 
+  "오레하 두툼한 생고기":{
+    "image":"EFUI_IconAtlas/Use/Use_8_67.png",
+    "grade":2,
+    "material":"hunting"
+  }, 
+  "생선":{
+    "image":"EFUI_IconAtlas/Use/Use_1_142.png",
+    "grade":0,
+    "material":"fishing"
+  }, 
+  "붉은 살 생선":{
+    "image":"EFUI_IconAtlas/Use/Use_4_49.png",
+    "grade":1,
+    "material":"fishing"
+  }, 
+  "자연산 진주":{
+    "image":"EFUI_IconAtlas/Use/Use_8_72.png",
+    "grade":1,
+    "material":"fishing"
+  }, 
+  "오레하 태양 잉어":{
+    "image":"EFUI_IconAtlas/Use/Use_8_74.png",
+    "grade":2,
+    "material":"fishing"
+  }, 
+  "고대 유물":{
+    "image":"EFUI_IconAtlas/Use/Use_9_3.png",
+    "grade":0,
+    "material":"excavating"
+  }, 
+  "희귀한 유물":{
+    "image":"EFUI_IconAtlas/Use/Use_9_4.png",
+    "grade":1,
+    "material":"excavating"
+  }, 
+  "오레하 유물":{
+    "image":"EFUI_IconAtlas/Use/Use_9_11.png",
+    "grade":2,
+    "material":"excavating"
+  }, 
+  "회복약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_6.png",
+    "grade":1,
+    "material":"potion"
+  }, 
+  "고급 회복약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_7.png",
+    "grade":2,
+    "material":"potion"
+  }, 
+  "정령의 회복약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_8.png",
+    "grade":3,
+    "material":"potion"
+  }, 
+  "빛나는 정령의 회복약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_80.png",
+    "grade":3,
+    "material":"potion"
+  }, 
+  "회오리 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_53.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "점토 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_54.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "암흑 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_47.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "화염 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_1.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "섬광 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_0.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "냉기 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_2.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "전기 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_3.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "빛나는 회오리 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_86.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "빛나는 점토 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_85.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "빛나는 암흑 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_87.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "빛나는 화염 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_82.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "빛나는 섬광 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_81.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "빛나는 냉기 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_83.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "빛나는 전기 수류탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_84.png",
+    "grade":2,
+    "material":"grenade"
+  }, 
+  "파괴 폭탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_21.png",
+    "grade":2,
+    "material":"bomb"
+  }, 
+  "부식 폭탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_49.png",
+    "grade":2,
+    "material":"bomb"
+  }, 
+  "수면 폭탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_69.png",
+    "grade":2,
+    "material":"bomb"
+  }, 
+  "성스러운 폭탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_70.png",
+    "grade":2,
+    "material":"bomb"
+  }, 
+  "빛나는 파괴 폭탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_89.png",
+    "grade":2,
+    "material":"bomb"
+  }, 
+  "빛나는 부식 폭탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_90.png",
+    "grade":2,
+    "material":"bomb"
+  }, 
+  "빛나는 수면 폭탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_88.png",
+    "grade":2,
+    "material":"bomb"
+  }, 
+  "빛나는 성스러운 폭탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_91.png",
+    "grade":2,
+    "material":"bomb"
+  }, 
+  "시간 정지 물약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_76.png",
+    "grade":3,
+    "material":"function"
+  }, 
+  "만능 물약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_17.png",
+    "grade":2,
+    "material":"function"
+  }, 
+  "빛나는 만능 물약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_92.png",
+    "grade":2,
+    "material":"function"
+  }, 
+  "각성 물약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_10.png",
+    "grade":3,
+    "material":"buff"
+  }, 
+  "아드로핀 물약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_72.png",
+    "grade":3,
+    "material":"buff"
+  }, 
+  "보호 물약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_50.png",
+    "grade":2,
+    "material":"buff"
+  }, 
+  "빛나는 보호 물약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_93.png",
+    "grade":2,
+    "material":"buff"
+  }, 
+  "천둥 물약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_63.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "신호탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_4.png",
+    "grade":1,
+    "material":"etc"
+  }, 
+  "페로몬 폭탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_78.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "성스러운 부적":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_51.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "도발 허수아비":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_45.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "모닥불":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_12.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "루테란의 나팔":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_73.png",
+    "grade":3,
+    "material":"etc"
+  }, 
+  "정비소 이동 포탈 주문서":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_77.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "위장 로브":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_19.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "은신 로브":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_44.png",
+    "grade":3,
+    "material":"etc"
+  },
+  "신속 로브":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_52.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "진군의 깃발":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_14.png",
+    "grade":2,
+    "material":"etc"
+  },
+  "빛나는 천둥 물약":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_94.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "빛나는 신호탄":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_98.png",
+    "grade":1,
+    "material":"etc"
+  }, 
+  "빛나는 성스러운 부적":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_101.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "빛나는 도발 허수아비":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_100.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "빛나는 모닥불":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_99.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "빛나는 위장 로브":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_95.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "빛나는 은신 로브":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_96.png",
+    "grade":3,
+    "material":"etc"
+  }, 
+  "빛나는 신속 로브":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_97.png",
+    "grade":2,
+    "material":"etc"
+  }, 
+  "빛나는 진군의 깃발":{
+    "image":"EFUI_IconAtlas/Battle_Item/Battle_Item_01_102.png",
+    "grade":2,
+    "material":"etc"
+  },
+  "명인의 쫄깃한 꼬치구이 [10개 단위 판매]":{
+    "image":"EFUI_IconAtlas/Use/Use_8_171.png",
+    "grade":1,
+    "material":"cook"
+  },
+  "대가의 양념 꼬치구이 [10개 단위 판매]":{
+    "image":"EFUI_IconAtlas/Use/Use_8_178.png",
+    "grade":1,
+    "material":"cook"
+  },
+  "명인의 허브 스테이크 정식 [10개 단위 판매]":{
+    "image":"EFUI_IconAtlas/Use/Use_8_215.png",
+    "grade":2,
+    "material":"cook"
+  },
+  "대가의 안심 스테이크 정식 [10개 단위 판매]":{
+    "image":"EFUI_IconAtlas/Use/Use_8_208.png",
+    "grade":2,
+    "material":"cook"
+  },
+  "오레하 융화 재료":{
+    "image":"EFUI_IconAtlas/Use/Use_9_71.png",
+    "grade":2,
+    "material":"oreha"
+  },
+  "상급 오레하 융화 재료":{
+    "image":"EFUI_IconAtlas/Use/Use_8_109.png",
+    "grade":3,
+    "material":"oreha"
+  },
+  "최상급 오레하 융화 재료":{
+    "image":"EFUI_IconAtlas/Use/Use_11_29.png",
+    "grade":3,
+    "material":"oreha"
+  },
+  "도구 제작 부품":{
+    "image":"EFUI_IconAtlas/All_Quest/All_Quest_03_31.png",
+    "grade":1,
+    "material":"special"
+  },
+  "현자의 가루":{
+    "image":"EFUI_IconAtlas/Use/Use_7_181.png",
+    "grade":3,
+    "material":"special"
+  },
+  "골드":{
+    "image":"EFUI_IconAtlas/money/money_4.png",
+    "grade":0,
+    "material":"none"
+  },
+  "실링":{
+    "image":"EFUI_IconAtlas/etc/etc_14.png",
+    "grade":0,
+    "material":"none"
+  },
+  "현자의 돌":{
+    "image":"EFUI_IconAtlas/Use/Use_9_81.png",
+    "grade":2,
+    "material":"none"
+  }
 };
 var itemunit = {
   "수줍은 들꽃":10,
