@@ -687,7 +687,7 @@ function updateAllItemPrice() {
       let functionStr = `itemPriceEdit(this.getAttribute('data-itemName'), this.value)`;
       tElement.innerHTML += `<div class="col-2 col-sm-1point2 d-flex ps-1 pe-0" style="flex-direction: column;">
                                 <div class="d-flex position-relative">
-                                  <img class="mx-auto item-image" data-grade="${grade}" src="https://cdn-lostark.game.onstove.com/${image}" alt="" style="width: 100%">
+                                  <img class="mx-auto item-image" data-grade="${grade}" data-itemName="${originE}" src="https://cdn-lostark.game.onstove.com/${image}" alt="" style="width: 100%; cursor: pointer;" onclick="$table.bootstrapTable('refreshOptions', { searchText: '${originE}' });">
                                   <div class="bookmarkIcon bottom-0 end-0" data-itemName="${originE}" onclick="addBookmarkItem(this)"></div>
                                 </div>
                                 <div class="scroll-container"><div class="text-white scroll-text text-center" id="itemname" origin="${originE}"style="--second: ${animationSecond}s; --length: -400%; text-overflow: ellipsis; white-space: nowrap;">${showName}</div></div>
@@ -777,7 +777,7 @@ function loadBookmarkItem() {
       let functionStr = `itemPriceEdit(this.getAttribute('data-itemName'), this.value)`;
       tElement.innerHTML += `<div class="col-2 col-sm-1point2 d-flex ps-1 pe-0" style="flex-direction: column;">
                                 <div class="d-flex position-relative">
-                                  <img class="mx-auto item-image" data-grade="${grade}" src="https://cdn-lostark.game.onstove.com/${image}" alt="" style="width: 100%">
+                                  <img class="mx-auto item-image" data-grade="${grade}" src="https://cdn-lostark.game.onstove.com/${image}" alt="" style="width: 100%; cursor: pointer;" onclick="$table.bootstrapTable('refreshOptions', { searchText: '${originE}' });">
                                   <div class="bookmarkIcon bottom-0 end-0" data-itemName="${originE}" onclick="removeBookmarkItem(this)"></div>
                                 </div>
                                 <div class="scroll-container"><div class="text-white scroll-text text-center" id="itemname" origin="${originE}"style="--second: ${animationSecond}s; --length: -400%; text-overflow: ellipsis; white-space: nowrap;">${showName}</div></div>
