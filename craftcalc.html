@@ -409,7 +409,7 @@
 
         <div class="fresh-table full-color-custom">
           <div class="toolbar text-start">
-            <button class="btn btn-default" data-bs-toggle="collapse" data-bs-target="#collapse">영지 효과</button>
+            <button id="wisdomEffectEditOpenBtn" class="btn btn-default" data-bs-toggle="collapse" data-bs-target="#collapse">영지 효과</button>
             <span class="text-white ms-3" id="markettime"></span>
             <div class="accordion" style="width: 610px;">
               <div id="collapse" class="accor dion-collapse collapse" aria-labelledby="heading" data-bs-parent="#accordion">
@@ -549,18 +549,16 @@
                  data-detail-view="true"
                  data-detail-view-icon="false"
                  data-detail-view-by-click="true"
-                 data-detail-formatter="detailFormatter"
-                 data-sort-name="profitperenergy"
-                 data-sort-order="desc">
+                 data-detail-formatter="detailFormatter">
             <thead>
-              <th data-field="image" data-formatter="imageFormatter"></th>
-              <th class="text-start" data-field="item" data-sortable="true">아이템</th>
-              <th data-field="recommend" data-sortable="true" data-cell-style="recomcellStyle">추천방식<br>(사용 기준)</th>
-              <th data-field="buyprice" data-sortable="true" data-formatter="buypriceFormatter">시세</th>
-              <th data-field="craftprice" data-sortable="true">제작비용</th>
-              <th data-field="profit" data-sortable="true" data-cell-style="profcellStyle">판매이익<br>(판매 기준)</th>
-              <th data-field="profitperenergy" data-sortable="true" data-formatter="profitperenergyFormatter">이익/활동력  <i class="bi bi-question-circle-fill" onmouseover="tippy($(this)[0], { allowHTML: true, content: '(최대 활동력 10,000 ÷ 해당 아이템 활동력) X<br>해당 아이템 판매이익<br>-------------------------------------------------------<br>단, 일일 구매 제한이 걸려있는 아이템이 재료일 경우 그 수에 맞게 계산됨',theme: 'light', placement: 'bottom', });"></i></th>
-              <th data-field="trade_count" data-sortable="true" data-formatter="tradeCountFormatter">금일 판매량</th>
+              <th data-order="desc" data-field="image" data-formatter="imageFormatter"></th>
+              <th data-order="desc" class="text-start" data-field="item" data-sortable="true">아이템</th>
+              <th data-order="desc" data-field="recommend" data-sortable="true" data-cell-style="recomcellStyle">추천방식<br>(사용 기준)</th>
+              <th data-order="desc" data-field="buyprice" data-sortable="true" data-formatter="buypriceFormatter">시세</th>
+              <th data-order="desc" data-field="craftprice" data-sortable="true">제작비용</th>
+              <th data-order="desc" data-field="profit" data-sortable="true" data-cell-style="profcellStyle">판매이익<br>(판매 기준)</th>
+              <th data-order="desc" data-field="profitperenergy" data-sortable="true" data-formatter="profitperenergyFormatter">이익/활동력  <i class="bi bi-question-circle-fill" onmouseover="tippy($(this)[0], { allowHTML: true, content: '(최대 활동력 10,000 ÷ 해당 아이템 활동력) X<br>해당 아이템 판매이익<br>-------------------------------------------------------<br>단, 일일 구매 제한이 걸려있는 아이템이 재료일 경우 그 수에 맞게 계산됨',theme: 'light', placement: 'bottom', });"></i></th>
+              <th data-order="desc" data-field="trade_count" data-sortable="true" data-formatter="tradeCountFormatter">금일 판매량</th>
             </thead>
             <tbody style="cursor:pointer"></tbody>
           </table>
@@ -709,7 +707,7 @@
   <!-- custom -->
   <script src="js/custom.js?v=02021500"></script>
   <script src="js/craft_recipe.js?v=11221359"></script>
-  <script src="js/craftcalc.js?v=11221359"></script>
+  <script src="js/craftcalc.js?v=11231800"></script>
 
   <!-- google ADSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4936470262963011"

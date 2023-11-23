@@ -805,9 +805,19 @@ $(function () {
     striped: true,
     pageSize: 10,
     pageList: [10, 25, 50, 100],
+    pageSize: localStorage.getItem("craftcalc_pageSize") ? localStorage.getItem("craftcalc_pageSize") : 10,
     onExpandRow: newRow,
     onPostBody: reloadPriceTXT,
+    sortName: localStorage.getItem("craftcalc_sortName") ? localStorage.getItem("craftcalc_sortName") : "profitperenergy",
+    sortOrder: localStorage.getItem("craftcalc_sortOrder") ? localStorage.getItem("craftcalc_sortOrder") : "desc",
 
+    onSort:(name, order)=>{
+      localStorage.setItem("craftcalc_sortName", name);
+      localStorage.setItem("craftcalc_sortOrder", order);
+    },
+    onPageChange: (number, size)=>{
+      localStorage.setItem("craftcalc_pageSize", size);
+    },
     formatShowingRows: function (pageFrom, pageTo, totalRows) {
       return ''
     },
@@ -820,6 +830,8 @@ $(function () {
     $('#wisdomeffect').find('input').filter(function () {
       $(this).val('');
       localStorage.removeItem("craftcalc_"+$(this).attr('id'), '');
+      $("#wisdomEffectEditOpenBtn").css("border-color", "");
+      $("#wisdomEffectEditOpenBtn").css("color", "");
       recipecalc();
     });
   });
@@ -830,6 +842,8 @@ $(function () {
       $(this).val('');
     } else {
       $(this).val(localStorage.getItem("craftcalc_"+givemeid));
+      $("#wisdomEffectEditOpenBtn").css("border-color", "rgb(0, 255, 0)");
+      $("#wisdomEffectEditOpenBtn").css("color", "rgb(0, 255, 0)");
     }
 
     $(this).hover(() => {
@@ -844,6 +858,9 @@ $(function () {
         $(this).val('');
         thiseffectval = '';
       }
+
+      $("#wisdomEffectEditOpenBtn").css("border-color", "rgb(0, 255, 0)");
+      $("#wisdomEffectEditOpenBtn").css("color", "rgb(0, 255, 0)");
 
       localStorage.setItem("craftcalc_"+thiseffectname, thiseffectval);
       recipecalc();
