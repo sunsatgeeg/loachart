@@ -167,13 +167,34 @@ document.querySelector('#helpbtn').addEventListener('click', function () {
   document.querySelector('#helpbtn').removeEventListener('click', arguments.callee);
 }, false);
 
+let isonlyTableBookmarkVisible = (()=>{
+  if(localStorage.getItem("craftcalc_onlyTableBookmarkVisible") && localStorage.getItem("craftcalc_onlyTableBookmarkVisible") == "true") {
+    document.querySelector("#onlyTableBookmarkBtn").style.color ="rgb(0,255,0)";
+    document.querySelector("#onlyTableBookmarkBtn").style.borderColor ="rgb(0,255,0)";
+    return true;
+  }else{
+    return false;
+  }
+})();
+function onlyTableBookmarkVisible() {
+  isonlyTableBookmarkVisible = !isonlyTableBookmarkVisible;
+  document.querySelector("#onlyTableBookmarkBtn").style.color = isonlyTableBookmarkVisible ? "rgb(0,255,0)" : "";
+  document.querySelector("#onlyTableBookmarkBtn").style.borderColor = isonlyTableBookmarkVisible ? "rgb(0,255,0)" : "";
+  localStorage.setItem("craftcalc_onlyTableBookmarkVisible", isonlyTableBookmarkVisible);
+  recipecalc();
+}
+
 var marketData;
 var tradeCountData;
 var $table = $('#fresh-table');
-
 function recipecalc() {
   tabledata = [];
+  tableDisplayData = [];
   temp = [];
+  
+  let tableBookmark;
+  if(isonlyTableBookmarkVisible) tableBookmark = localStorage.getItem("craftcalc_tableBookmark").split(",");
+
   Object.keys(recipedata).forEach(function (item) {
     itemname = item;
     itemMarketName = item
@@ -278,7 +299,24 @@ function recipecalc() {
     // 0628일 패치로 제한 사라짐 if(itemname == '현자의 가루') profitperenergyGold = parseInt((Math.floor(10000 / 1000)) * thisprofit);
 
     // console.log(thisitemname)
+
     tabledata.push({
+      item: itemname,
+      recommend: thisrecommend,
+      buyprice: thisbuyprice,
+      craftprice: craftprice.toFixed(2),
+      profit: thisprofit.toFixed(2),
+      profitperenergy: profitperenergyGold,
+      dict: recipe,
+      requireEnerge: requireEnerge,
+      discountedItemEnergy: discountedItemEnergy,
+      gsqty: gsqty,
+      trade_count: tradeCountData[itemMarketName]
+    });
+
+    if(isonlyTableBookmarkVisible && !tableBookmark.includes(item)) return;
+    
+    tableDisplayData.push({
       item: itemname,
       recommend: thisrecommend,
       buyprice: thisbuyprice,
@@ -293,7 +331,7 @@ function recipecalc() {
     });
   });
 
-  $table.bootstrapTable('load', tabledata);
+  $table.bootstrapTable('load', tableDisplayData);
 }
 
 // $('#accordionitemprice').on('click', function(){
@@ -554,16 +592,21 @@ function detailFormatter(index, row) {
 }
 
 function imageFormatter(index, row) {
-  if (row['item'].lastIndexOf('(') != -1) {
-    thisname = row['item'].substring(0, row['item'].lastIndexOf('('));
-  } else {
-    thisname = row['item'];
-  }
-
   image = row.dict.key.Element_001.value.slotData.iconPath;
   grade = row.dict.key.Element_001.value.slotData.iconGrade;
 
-  return '<img data-key="' + JSON.stringify(row.dict.key).replace(/"/gi, "&quot;") + '" class="item-image mt-1 mb-1" data-grade="' + grade + '" src="https://cdn-lostark.game.onstove.com/' + image + '" onmouseover="tooltip_item_show(this);" onmouseout="tooltip_item_hide(this);" style="width: 64px;">'
+  if(!localStorage.getItem("craftcalc_tableBookmark")) localStorage.setItem("craftcalc_tableBookmark", "");
+  const tableBookmark = localStorage.getItem("craftcalc_tableBookmark").split(",");
+  let isBookmark = tableBookmark.includes(row.item);
+  
+  if(bookmark == null) return;
+
+  return `
+    <div class="d-flex position-relative my-1" style="width: max-content">
+      <img data-key="${JSON.stringify(row.dict.key).replace(/"/gi, "&quot;")}" class="item-image" data-grade="${grade}" src="https://cdn-lostark.game.onstove.com/${image}" onmouseover="tooltip_item_show(this);" onmouseout="tooltip_item_hide(this);" style="width: 64px;">
+      <div class="bookmarkIcon bottom-0 end-0 ${isBookmark ? "active" : ""}" data-itemName="${row.item}" onclick="${isBookmark ? "removeTableBookmarkItem" : "addTableBookmarkItem"}(event, this)"></div>
+    </div>
+  `
 }
 
 function buypriceFormatter(value, row) {
@@ -716,6 +759,19 @@ function addBookmarkItem(element) {
   loadBookmarkItem();
 }
 
+function addTableBookmarkItem(event, element) {
+  let name = element.getAttribute('data-itemName');
+  let tableBookmark = localStorage.getItem("craftcalc_tableBookmark").split(",");
+  
+  element.classList.add('active');
+  element.setAttribute('onclick', 'removeTableBookmarkItem(event, this)');
+
+  if(!tableBookmark.includes(name)) tableBookmark.push(name);
+  
+  localStorage.setItem("craftcalc_tableBookmark", tableBookmark);
+  event.stopPropagation();
+}
+
 function removeBookmarkItem(element) {
   let name = element.getAttribute('data-itemName');
   let bookmark = localStorage.getItem("craftcalc_bookmark").split(",");
@@ -736,6 +792,21 @@ function removeBookmarkItem(element) {
 
   localStorage.setItem("craftcalc_bookmark", bookmark);
   loadBookmarkItem();
+}
+
+function removeTableBookmarkItem(event, element) {
+  let name = element.getAttribute('data-itemName');
+  let tableBookmark = localStorage.getItem("craftcalc_tableBookmark").split(",");
+
+  element.classList.remove('active');
+  element.setAttribute('onclick', 'addTableBookmarkItem(event, this)');
+
+  const findIndex = tableBookmark.indexOf(name);
+  if(findIndex > -1) tableBookmark.splice(findIndex, 1);
+
+  localStorage.setItem("craftcalc_tableBookmark", tableBookmark);
+  recipecalc();
+  event.stopPropagation();
 }
 
 function loadBookmarkItem() {
@@ -822,7 +893,7 @@ $(function () {
       return ''
     },
     formatRecordsPerPage: function (pageNumber) {
-      return pageNumber + ' rows visible'
+      return pageNumber + ' 줄 표시'
     },
   })
 
