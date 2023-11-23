@@ -819,17 +819,17 @@ $(function () {
   $('#wisdomeffectclear').on('click', function () {
     $('#wisdomeffect').find('input').filter(function () {
       $(this).val('');
-      setCookie($(this).attr('id'), '', 365);
+      localStorage.removeItem("craftcalc_"+$(this).attr('id'), '');
       recipecalc();
     });
   });
 
   $('#wisdomeffect').find('input').filter(function () {
     givemeid = $(this).attr('id');
-    if (getCookie(givemeid) == undefined || getCookie(givemeid) == '') {
+    if (localStorage.getItem("craftcalc_"+givemeid) == undefined || localStorage.getItem("craftcalc_"+givemeid) == '') {
       $(this).val('');
     } else {
-      $(this).val(getCookie(givemeid));
+      $(this).val(localStorage.getItem("craftcalc_"+givemeid));
     }
 
     $(this).hover(() => {
@@ -845,7 +845,7 @@ $(function () {
         thiseffectval = '';
       }
 
-      setCookie(thiseffectname, thiseffectval, 365);
+      localStorage.setItem("craftcalc_"+thiseffectname, thiseffectval);
       recipecalc();
     });
   });
