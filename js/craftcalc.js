@@ -411,14 +411,14 @@ function detailFormatter(index, row) {
     <tr>
       <th scope="col">시세</th>
       <th scope="col">수수료</th>
-      <th scope="col">제작비용<br>(개당)</th>
+      <th class="d-none d-lg-table-cell" scope="col">제작비용<br>(개당)</th>
       <th scope="col">재료</th>
       <th scope="col">시세</th>
       <th scope="col">구매<br>단위</th>
       <th scope="col">필요<br>개수</th>
       <th scope="col">합계</th>
       <th scope="col">제작비용</th>
-      <th scope="col">활동력<br>[영지효과]</th>
+      <th class="d-none d-lg-table-cell" scope="col">활동력<br>[영지효과]</th>
       <th scope="col">제작 수량<br>[영지효과]</th>
       <th scope="col">이익<br>(세트당)</th>
     </tr>
@@ -434,7 +434,7 @@ function detailFormatter(index, row) {
     <tr>
       <td><span class="pricehide"></span><input class="pricetxt ableEditPrice" item="${rowitemname}" type="text" value="${row['buyprice']}"></td>
       <td id="detail-tax">${Math.ceil(row['buyprice'] * 0.05)}</td>
-      <td id="detail-craftprice">${(row['craftprice'] / row['dict']['수량']).toFixed(2)}</td>
+      <td class="d-none d-lg-table-cell" id="detail-craftprice">${(row['craftprice'] / row['dict']['수량']).toFixed(2)}</td>
       <td>`;
   // 재료
   for (var i = 4; i < Object.keys(row['dict']).length; i++) {
@@ -574,7 +574,7 @@ function detailFormatter(index, row) {
     html += `<p class="dynamic-calc" origin-value="${calcprice}">${calcprice}</p>`;
   }
   html += `<td class="dynamic-calc" origin-value="${row['craftprice']}">${row['craftprice']}</td>
-      <td>
+      <td class="d-none d-lg-table-cell">
         <span class="dynamic-calc" origin-value="${row['requireEnerge']}">${row['requireEnerge']}</span>
         <br>[<span class="dynamic-calc" origin-value="${row['discountedItemEnergy']}">${row['discountedItemEnergy']}</span>]
       </td>
@@ -589,24 +589,6 @@ function detailFormatter(index, row) {
   </tbody>
 </table>`;
   return html;
-}
-
-function imageFormatter(index, row) {
-  image = row.dict.key.Element_001.value.slotData.iconPath;
-  grade = row.dict.key.Element_001.value.slotData.iconGrade;
-
-  if(!localStorage.getItem("craftcalc_tableBookmark")) localStorage.setItem("craftcalc_tableBookmark", "");
-  const tableBookmark = localStorage.getItem("craftcalc_tableBookmark").split(",");
-  let isBookmark = tableBookmark.includes(row.item);
-  
-  if(bookmark == null) return;
-
-  return `
-    <div class="d-flex position-relative my-1" style="width: max-content">
-      <img data-key="${JSON.stringify(row.dict.key).replace(/"/gi, "&quot;")}" class="item-image" data-grade="${grade}" src="https://cdn-lostark.game.onstove.com/${image}" onmouseover="tooltip_item_show(this);" onmouseout="tooltip_item_hide(this);" style="width: 64px;">
-      <div class="bookmarkIcon bottom-0 end-0 ${isBookmark ? "active" : ""}" data-itemName="${row.item}" onclick="${isBookmark ? "removeTableBookmarkItem" : "addTableBookmarkItem"}(event, this)"></div>
-    </div>
-  `
 }
 
 function buypriceFormatter(value, row) {
@@ -658,6 +640,39 @@ function profitperenergyFormatter(value, row) {
 
 function tradeCountFormatter(value, row) {
   return value.toLocaleString()
+}
+
+function item(value, row, index) {
+  let formatter = '<div class="d-flex" style="width: max-content;">';
+  let itemName = row.item;
+  let itemImagePath = row.dict.key.Element_001.value.slotData.iconPath;
+  let itemGrade = row.dict.key.Element_001.value.slotData.iconGrade;
+
+  if(!localStorage.getItem("craftcalc_tableBookmark")) localStorage.setItem("craftcalc_tableBookmark", "");
+  const tableBookmark = localStorage.getItem("craftcalc_tableBookmark").split(",");
+  let isBookmark = tableBookmark.includes(row.item);
+  
+  formatter += `<div class="d-flex position-relative my-1 me-2" style="width: max-content">
+                  <img data-key="${JSON.stringify(row.dict.key).replace(/"/gi, "&quot;")}" class="item-image" data-grade="${itemGrade}" src="https://cdn-lostark.game.onstove.com/${itemImagePath}" onmouseover="tooltip_item_show(this);" onmouseout="tooltip_item_hide(this);" style="width: 64px;">
+                  <div class="bookmarkIcon bottom-0 end-0 ${isBookmark ? "active" : ""}" data-itemName="${row.item}" onclick="${isBookmark ? "removeTableBookmarkItem" : "addTableBookmarkItem"}(event, this)"></div>
+                </div>`
+
+  formatter += '<div class="align-self-center">';
+  if (itemName.includes("구매)")) {
+    formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
+                  <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>
+                  <span class="d-md-block d-lg-none">일부<br>구매</span>`
+  } else if (itemName.includes("제작)")) {
+    formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
+                  <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>
+                  <span class="d-md-block d-lg-none">일부<br>제작</span>`
+  } else {
+    formatter += `<span class="d-none d-lg-inline">${itemName}</span>`;
+  }
+  formatter += "</div>";
+
+  formatter += "</div>";
+  return formatter;
 }
 
 function recomcellStyle(value, row, index) {

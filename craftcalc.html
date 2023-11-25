@@ -2,7 +2,7 @@
 <html lang="ko">
 <head class="h-100">
   <title>제작 :: LoaChart|로아차트</title>
-  <meta name="viewport" content="width=1200">
+  <meta name="viewport" content="width=device-width,user-scalable=0">
   <meta name="description" content="로스트아크 실시간 제작 이득 계산기">
   <meta name="keywords" content="로아차트,loachart,로차트,로스트,아크,로아,차트,마리샵,비밀,지도,카게,경매,분배금,제작,영지,더보기,도감작,악추피,인추피,야추피,계산기,전설,각인,각인서,베른,파푸,오레하,쌀산기"/>
   <meta property="og:title" content="로아 실시간 제작 이득 계산기 :: LoaChart|로아차트"/>
@@ -552,11 +552,10 @@
                  data-detail-view-by-click="true"
                  data-detail-formatter="detailFormatter">
             <thead>
-              <th data-order="desc" data-field="image" data-formatter="imageFormatter"></th>
-              <th data-order="desc" class="text-start" data-field="item" data-sortable="true">아이템</th>
+              <th data-order="desc" class="text-start" data-field="item" data-sortable="true" data-formatter="item">아이템</th>
               <th data-order="desc" data-field="recommend" data-sortable="true" data-cell-style="recomcellStyle">추천방식<br>(사용 기준)</th>
-              <th data-order="desc" data-field="buyprice" data-sortable="true" data-formatter="buypriceFormatter">시세</th>
-              <th data-order="desc" data-field="craftprice" data-sortable="true">제작비용</th>
+              <th class="d-none d-lg-table-cell" data-order="desc" data-field="buyprice" data-sortable="true" data-formatter="buypriceFormatter">시세</th>
+              <th class="d-none d-lg-table-cell" data-order="desc" data-field="craftprice" data-sortable="true">제작비용</th>
               <th data-order="desc" data-field="profit" data-sortable="true" data-cell-style="profcellStyle">판매이익<br>(판매 기준)</th>
               <th data-order="desc" data-field="profitperenergy" data-sortable="true" data-formatter="profitperenergyFormatter">이익/활동력  <i class="bi bi-question-circle-fill" onmouseover="tippy($(this)[0], { allowHTML: true, content: '(최대 활동력 10,000 ÷ 해당 아이템 활동력) X<br>해당 아이템 판매이익<br>-------------------------------------------------------<br>단, 일일 구매 제한이 걸려있는 아이템이 재료일 경우 그 수에 맞게 계산됨',theme: 'light', placement: 'bottom', });"></i></th>
               <th data-order="desc" data-field="trade_count" data-sortable="true" data-formatter="tradeCountFormatter">금일 판매량</th>
@@ -708,7 +707,7 @@
   <!-- custom -->
   <script src="js/custom.js?v=02021500"></script>
   <script src="js/craft_recipe.js?v=11221359"></script>
-  <script src="js/craftcalc.js?v=11232012"></script>
+  <script src="js/craftcalc.js?v=11251610"></script>
 
   <!-- google ADSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4936470262963011"
