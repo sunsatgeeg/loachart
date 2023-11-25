@@ -411,15 +411,15 @@
           <div class="toolbar text-start">
             <button id="wisdomEffectEditOpenBtn" class="btn btn-default" data-bs-toggle="collapse" data-bs-target="#collapse">영지 효과</button>
             <button id="onlyTableBookmarkBtn" class="btn btn-default" onclick="onlyTableBookmarkVisible()">즐겨찾기만 표시</button>
-            <span class="text-white ms-3" id="markettime"></span>
-            <div class="accordion" style="width: 610px;">
+            <span class="text-white d-inline-block ms-3 my-2" id="markettime"></span>
+            <div class="accordion" style="max-width: 600px;">
               <div id="collapse" class="accor dion-collapse collapse" aria-labelledby="heading" data-bs-parent="#accordion">
                 <div class="accordion-body p-0">
                   <table class="table mt-3 table-hover mb-3 text-center">
                     <thead>
                       <tr>
                         <th scope="col">전체</th>
-                        <th scope="col">배틀아이템</th>
+                        <th scope="col">배틀<br>아이템</th>
                         <th scope="col">요리</th>
                         <th scope="col">특수</th>
                         <th scope="col">생활도구</th>
@@ -428,109 +428,94 @@
                     <tbody class="align-middle" id="wisdomeffect">
                       <tr>
                         <td colspan="5">
-                          대성공 확률
+                          대성공 확률(%)
                           <i class="bi bi-question-circle-fill" tooltipcontent="기본 대성공 <FONT COLOR=`#bd0000`>5%</FONT>에서 <FONT COLOR=`#0000ff`>영지효과</FONT> 곱연산<br><br>Ex) 추가 대성공 확률 <FONT COLOR=`#0000ff`>6%</FONT>일 경우 <FONT COLOR=`#bd0000`>5</FONT> + (<FONT COLOR=`#bd0000`>5</FONT> X <FONT COLOR=`#0000ff`>0.06</FONT>) = 5.3%"></i>
                         </td>
                       </tr>
                       <tr>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="gs_all" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="gs_all" placeholder="0" step=0.5>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="gs_b" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="gs_b" placeholder="0" step=0.5>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="gs_c" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="gs_c" placeholder="0" step=0.5>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="gs_s" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="gs_s" placeholder="0" step=0.5>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="gs_lt" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="gs_lt" placeholder="0" step=0.5>
                           </div>
                         </th>
                       </tr>
                       <tr>
-                        <td colspan="5">제작 수수료 감소율</td>
+                        <td colspan="5">제작 수수료 감소율(%)</td>
                       </tr>
                       <tr>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="cc_all" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="cc_all" placeholder="0" step=0.5>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="cc_b" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="cc_b" placeholder="0" step=0.5>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="cc_c" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="cc_c" placeholder="0" step=0.5>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="cc_s" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="cc_s" placeholder="0" step=0.5>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="cc_lt" placeholder="0" step=0.5>
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="cc_lt" placeholder="0" step=0.5>
                           </div>
                         </th>
                       </tr>
                       <tr>
-                        <td colspan="5">활동력 감소율</td>
+                        <td colspan="5">활동력 감소율(%)</td>
                       </tr>
                       <tr>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="e_all" placeholder="0" step=0.5 max="100">
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="e_all" placeholder="0" step=0.5 max="100">
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="e_b" placeholder="0" step=0.5 max="100">
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="e_b" placeholder="0" step=0.5 max="100">
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="e_c" placeholder="0" step=0.5 max="100">
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="e_c" placeholder="0" step=0.5 max="100">
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="e_s" placeholder="0" step=0.5 max="100">
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="e_s" placeholder="0" step=0.5 max="100">
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <input type="number" class="input_box" id="e_lt" placeholder="0" step=0.5 max="100">
-                            <span class="input-group-text">%</span>
+                            <input type="number" class="input_box percent" id="e_lt" placeholder="0" step=0.5 max="100">
                           </div>
                         </th>
                       </tr>
@@ -633,7 +618,6 @@
     }
     .input_box{
       display: block;
-      width: 100px;
       padding: .375rem .75rem;
       font-size: 1rem;
       font-weight: 400;
@@ -645,6 +629,15 @@
       appearance: none;
       border-radius: .25rem;
       transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    
+    @media (min-width: 600px) {
+      .percent {
+        background-image: url("data:image/svg+xml,%3Csvg fill='%23000000' height='64px' width='64px' version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 490.00 490.00' xml:space='preserve' stroke='%23000000' stroke-width='0.0049' transform='rotate(0)matrix(1, 0, 0, 1, 0, 0)'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round' stroke='%23CCCCCC' stroke-width='1.9600000000000002'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cg%3E%3Cpath d='M96.383,245.798c27.77,0,51.146-10.631,70.106-31.879c18.97-21.247,28.45-51.538,28.45-90.865 c0-40.38-9.374-70.981-28.133-91.811C148.046,10.422,124.365,0,95.761,0C64.667,0,40.926,11.635,24.563,34.889 C8.188,58.15,0,86.377,0,119.568c0,42.293,9.163,73.898,27.511,94.827C45.86,235.326,68.814,245.798,96.383,245.798z M62.646,57.724c9.222-12.262,20.781-18.397,34.665-18.397c13.885,0,25.502,6.084,34.83,18.238 c9.327,12.161,13.991,33.25,13.991,63.273c0,32.564-4.617,54.974-13.839,67.236c-9.233,12.262-20.885,18.397-34.982,18.397 c-13.673,0-25.186-6.077-34.512-18.238c-9.327-12.154-13.991-33.142-13.991-62.956C48.809,92.51,53.425,69.993,62.646,57.724z'%3E%3C/path%3E%3Cpolygon points='143.947,490 392.372,0 346.981,0 97.628,490 '%3E%3C/polygon%3E%3Cpath d='M390.82,244.21c-31.305,0-55.14,11.576-71.515,34.729c-16.375,23.153-24.563,51.43-24.563,84.832 c0,42.083,9.174,73.637,27.523,94.676C340.602,479.477,363.556,490,391.126,490c27.993,0,51.464-10.624,70.423-31.871 C480.52,436.875,490,406.591,490,367.264c0-40.381-9.374-70.99-28.134-91.818C443.106,254.624,419.425,244.21,390.82,244.21z M427.354,432.277c-9.222,12.269-20.992,18.397-35.288,18.397c-13.685,0-25.186-6.127-34.513-18.397 c-9.326-12.255-13.99-33.192-13.99-62.798c0-32.766,4.605-55.283,13.838-67.546c9.221-12.263,20.874-18.398,34.971-18.398 c13.884,0,25.503,6.078,34.829,18.239c9.327,12.161,13.991,33.249,13.991,63.266C441.191,397.605,436.574,420.022,427.354,432.277z '%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right calc(.375em + .1875rem) center;
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+      }
     }
     .input_box_text{
       display: flex;

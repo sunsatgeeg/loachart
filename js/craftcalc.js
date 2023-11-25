@@ -667,11 +667,11 @@ function item(value, row, index) {
   if (itemName.includes("구매)")) {
     formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
                   <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>
-                  <span class="d-md-block d-lg-none">일부<br>구매</span>`
+                  <span class="d-md-block d-lg-none">하위<br>구매</span>`
   } else if (itemName.includes("제작)")) {
     formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
                   <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>
-                  <span class="d-md-block d-lg-none">일부<br>제작</span>`
+                  <span class="d-md-block d-lg-none">하위<br>제작</span>`
   } else {
     formatter += `<span class="d-none d-lg-inline">${itemName}</span>`;
   }
