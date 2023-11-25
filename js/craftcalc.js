@@ -74,7 +74,7 @@ function reloadPriceTXT() {
         e.value = e.value.substring(1);
       }
 
-      temprowitemname = e.parentElement.parentElement.childNodes[1].textContent;
+      temprowitemname = e.parentElement.parentElement.getAttribute("data-itemname");
       if (temprowitemname.indexOf('(') != -1) {
         temprowitemname = temprowitemname.substring(0, temprowitemname.indexOf('('))
       }
@@ -136,15 +136,15 @@ function newRow(index, row, $detail) {
         if (detailElement.className == "detail-view") break;
         detailElement = detailElement.parentElement;
       }
-      var targetitemname = detailElement.previousSibling.childNodes[1].textContent;
+      var targetitemname = detailElement.previousSibling.getAttribute('data-itemname');
 
       itemPriceEdit(e.getAttribute('item'), e.value);
       $table.bootstrapTable('selectPage', 1)
       var pagewhilestopsign = false;
       while (true) {
-        document.querySelectorAll("#fresh-table > tbody > tr > td.text-start").forEach((e) => {
-          if (e.textContent == targetitemname) {
-            $table.bootstrapTable('toggleDetailView', parseInt(e.parentElement.getAttribute('data-index')));
+        document.querySelectorAll("#fresh-table > tbody > tr").forEach((e) => {
+          if (e.getAttribute('data-itemname') == targetitemname) {
+            $table.bootstrapTable('toggleDetailView', parseInt(e.getAttribute('data-index')));
             pagewhilestopsign = true;
           }
         })
@@ -640,6 +640,12 @@ function profitperenergyFormatter(value, row) {
 
 function tradeCountFormatter(value, row) {
   return value.toLocaleString()
+}
+
+function rowAttributes(row, index) {
+  return {
+    'data-itemname': row.item,
+  }
 }
 
 function item(value, row, index) {
