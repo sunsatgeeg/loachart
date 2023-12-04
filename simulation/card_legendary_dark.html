@@ -2,7 +2,7 @@
 <html lang="ko">
 <head class="h-100">
   <title>카드 시뮬레이션 :: LoaChart|로아차트</title>
-  <meta name="viewport" content="width=1200">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="로스트아크 카드 시뮬레이션">
   <meta name="keywords" content="로아차트,loachart,로차트,로스트,아크,로아,차트,마리샵,비밀,지도,카게,경매,분배금,제작,영지,더보기,도감작,악추피,인추피,야추피,계산기,전설,각인,각인서,베른,파푸,오레하,시뮬레이션,보석,카드,갓차,갓챠,뽑기,랜덤,10렙,멸화,홍염" />
   <meta property="og:title" content="로아 카드 시뮬레이션 :: LoaChart|로아차트"/>
@@ -29,15 +29,14 @@
   <script>var url='https://api.loachart.com';if(location.hostname==='127.0.0.1'){url='http://127.0.0.1:5000';}</script>
   <script>var here = "simulation_card_legendary_dark";</script>
   <script src="/js/includeHTML.js?v=09231422"></script>
+  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false" data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
   
   <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
   <!-- custom -->
-  <link rel="stylesheet" type="text/css" href="/css/custom.css">
-  <script async src="/js/custom.js?v=02021500"></script>
-  <link href="/css/cover.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/custom.css?v=12041400">
+  
   <style>
     .dynamic, map:hover{
       cursor: url('/img/simulation/cursor_hover.png'), auto !important;
@@ -56,40 +55,39 @@
   </style>
 </head>
 
-<body class="d-flex h-100 text-center text-white bg-dark">
-  <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body>
+  <div id="root">
+    <header><script>includeHTML('header');</script></header>
+    <div id="ad-container-1" class="mt-3" style="min-height: 250px;"></div>
+    <div id="rich-media-placement"></div>
 
-    <header class="mb-5"><script>includeHTML('header');</script></header>
-
-    <top class="mb-5"><script>includeHTML('top');</script></top>
-
-    <main>      
-      <div>
+    <main class="container py-3 mt-3 box-dark rounded-4 text-center">
+      <div>     
         <div style="cursor: url('/img/simulation/cursor.png'), auto;">
           <div id="simulation_zone">
-            <div class="row mb-3">
+            <div class="row mb-3 text-white">
               <div class="col text-start"><span class="dynamic" style="font-size: 1.75rem;" id="back"><< 뒤로가기</span></div>
               <div class="col text-end"><span style="font-size: 1.75rem;"><span id="challenge_count">0</span>번</span></div>
             </div>
             
             <div id="card">
-              <div class="allresults container justify-content-center mb-3 row" style="height: auto;">
+              <div class="allresults mx-auto pb-3 row" style="height: auto;">
               </div>
 
-              <div class="mb-3">
+              <div class="mt-3">
                 <button type="button" class="mx-auto btn btn-lg btn-outline-light dynamic card_open" value="10">10개 열기</button>
                 <button type="button" class="mx-auto btn btn-lg btn-outline-light dynamic card_open" value="1">1개 열기</button>
               </div>
   
-              <div class="results container justify-content-center text-start" style="height: 300px;"></div>
+              <div class="results container justify-content-center text-start mt-3" style="height: 300px;"></div>
             </div>
           </div>
         </div>
       </div>
     </main>
 
-    <footer class="mt-5 text-white-50"><script>includeHTML('footer');</script></footer>
-
+    <div id="ad-container-2" class="mt-3" style="min-height: 250px;"></div>
+    <footer><script>includeHTML('footer');</script></footer>
   </div>
 
   <script async>
@@ -107,7 +105,6 @@
     
     for (var i = 0; i < cardnamelist.length; i++) {
       tempdiv = document.createElement('div');
-      tempdiv.className = 'my-2';
       if(cardnamelist[i] != '광기잃은 쿠크'){
         tempdiv.style.backgroundImage = `url('https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Card_Legend/Card_Legend_0${cardimglist[i]}.png')`
       }else{
@@ -118,37 +115,42 @@
       tempdiv.style.height = '64px';
 
       temptempdiv = document.createElement('div');
-      temptempdiv.style.position = 'absolute';
       temptempdiv.style.width = '64px';
       temptempdiv.style.height = '64px';
       temptempdiv.append(tempdiv);
 
       childdiv1 = document.createElement('div');
-      childdiv1.className = 'col-auto';
-      childdiv1.style.width = '86px';
+      childdiv1.className = 'col-auto mx-auto';
       childdiv1.append(temptempdiv);
 
       tempspan = document.createElement('span');
-      tempspan.style.fontSize = '1.75rem';
+      tempspan.style.fontSize = '1.25rem';
       tempspan.id = cardengnamelist[i];
-      tempspan.textContent = '0';
+      tempspan.setAttribute("value", 0);
+      tempspan.className = "mx-auto";
+      tempspan.textContent = ' X 0';
 
       temptempspan = document.createElement('span');
-      temptempspan.style.fontSize = '1.75rem';
-      temptempspan.textContent = `${cardnamelist[i]} X `;
-      temptempspan.append(tempspan);
+      temptempspan.style.fontSize = '1.25rem';
+      temptempspan.textContent = `${cardnamelist[i]}`;
+      temptempspan.className = "d-none d-sm-inline"
 
       childdiv2 = document.createElement('div');
       childdiv2.className = 'col text-start my-auto';
       childdiv2.append(temptempspan);
+      childdiv2.append(tempspan);
 
       parentdiv = document.createElement('div');
-      parentdiv.className = 'col-4 row';
+      parentdiv.className = 'col-3 mt-3';
       parentdiv.style.color = 'orange';
-      parentdiv.style.height = '79px';
+
+      coldiv = document.createElement('div');
+      coldiv.className = 'row';
       
-      parentdiv.append(childdiv1);
-      parentdiv.append(childdiv2);
+      coldiv.append(childdiv1);
+      coldiv.append(childdiv2);
+
+      parentdiv.append(coldiv);
 
       document.querySelector('.allresults').append(parentdiv);
     }
@@ -178,7 +180,8 @@
           for (var n = 100 * Math.random(), r = 0, o = cardratelist[0], s = 0; s < cardnamelist.length; s++) {
             if (n >= r && n < o) {
               resultselement.append(createresultitem(cardnamelist[s], 'orange'));
-              document.querySelector(`#${cardengnamelist[s]}`).textContent = parseInt(document.querySelector(`#${cardengnamelist[s]}`).textContent) + 1;
+              document.querySelector(`#${cardengnamelist[s]}`).setAttribute("value", parseInt(document.querySelector(`#${cardengnamelist[s]}`).getAttribute("value")) + 1);
+              document.querySelector(`#${cardengnamelist[s]}`).textContent = `X ${parseInt(document.querySelector(`#${cardengnamelist[s]}`).getAttribute("value")) + 1}`;
               document.querySelector(`#${cardengnamelist[s]}`).parentElement.parentElement.className += ' animate__animated animate__flash';
               break;
             }
@@ -197,11 +200,12 @@
       });
     })
   </script>
-
-  <!-- google ADSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4936470262963011"
-    crossorigin="anonymous"></script>
     
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+  <!-- custom -->
+  <script src="/js/custom.js?v=12041400"></script>
+  
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script src="https://www.googletagmanager.com/gtag/js?id=G-XD44D79GLY"></script>
   <script>
@@ -233,5 +237,6 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css?display=swap" type="text/css">
+  </div>
 </body>
 </html>

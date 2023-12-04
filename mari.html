@@ -2,7 +2,7 @@
 <html lang="ko">
 <head class="h-100">
   <title>마리샵 :: LoaChart|로아차트</title>
-  <meta name="viewport" content="width=1200">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="로스트아크 실시간 마리 이득 계산기">
   <meta name="keywords" content="로아차트,loachart,로차트,로스트,아크,로아,차트,마리샵,비밀,지도,카게,경매,분배금,제작,영지,더보기,도감작,악추피,인추피,야추피,계산기,전설,각인,각인서,베른,파푸,오레하,쌀산기"/>
   <meta property="og:title" content="로아 마리샵 효율 계산기 :: LoaChart|로아차트"/>
@@ -29,11 +29,11 @@
   <script>var url='https://api.loachart.com';if(location.hostname==='127.0.0.1'){url='http://127.0.0.1:5000';}</script>
   <script>var here = "mari";</script>
   <script src="/js/includeHTML.js?v=09231422"></script>
+  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false" data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="css/custom.css">
-  <link href="css/cover.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/custom.css?v=12041400">
   
   <style>
     @media (max-width: 1400px) {
@@ -50,26 +50,83 @@
         max-width: 978px;
       }
     }
+    .card {
+      margin: 0 0.5em;
+      box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+      border: none;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+      background-color: #e1e1e1;
+      width: 6vh;
+      height: 6vh;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    @media (min-width: 854px) {
+      .carousel-item {
+        margin-right: 0;
+        flex: 0 0 33.333333%;
+        display: block;
+      }
+      .carousel-inner {
+        display: flex;
+      }
+      .carousel-control-prev,
+      .carousel-control-next{
+        display: none;
+      }
+    }
+    .card .img-wrapper {
+        max-width: 100%;
+        height: 13em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card img {
+        max-height: 100%;
+    }
+    @media (max-width: 767px) {
+      .card .img-wrapper {
+        height: 17em;
+      }
+    }
   </style>
 </head>
 
-<body class="d-flex h-100 text-center text-white bg-dark">    
-  <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body>
+  <div id="root">
+    <header><script>includeHTML('header');</script></header>
+    <div id="ad-container-1" class="mt-3" style="min-height: 250px;"></div>
+    <div id="rich-media-placement"></div>
 
-    <header class="mb-5"><script>includeHTML('header');</script></header>
-
-    <top class="mb-5"><script>includeHTML('top');</script></top>
-
-    <main>
-      <div class="mx-auto w-100">
-        <div class="input-group w-50 mx-auto input-group-lg">
+    <main class="container py-3 mt-3 box-dark rounded-4 text-center">
+      <div>
+        <div class="input-group mx-auto input-group-lg" style="max-width: 555px;">
           <span class="input-group-text">환전소 크리스탈 구매가</span>
-          <input type="number" class="form-control text-center" id="crystalprice" value="2800">
+          <input type="number" class="form-control text-center" id="crystalprice" value="2400">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 text-white">
           <small>마우스 휠로도 수정 가능합니다.</small>
         </div>
-        <table class="table table-dark table-striped maritable">
+
+        <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel" data-bs-theme="dark">
+          <div class="carousel-inner px-0 justify-content-center" id="mari_carousel">
+
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- <table class="table table-dark table-striped maritable">
           <thead> 
             <tr class="fs-3">
             </tr>
@@ -78,24 +135,20 @@
             <tr>
             </tr>
           </tbody>
-        </table>
+        </table> -->
       </div>
     </main>
 
-    <footer class="mt-5 text-white-50"><script>includeHTML('footer');</script></footer>
-
+    <div id="ad-container-2" class="mt-3" style="min-height: 250px;"></div>
+    <footer><script>includeHTML('footer');</script></footer>
   </div>
   
   <!-- bootstrap -->
-  <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
   <!-- custom -->
-  <script src="js/custom.js?v=02021500"></script>
-  <script src="js/mari.js?v=09281614"></script>
-
-  <!-- google ADSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4936470262963011"
-    crossorigin="anonymous"></script>
+  <script src="/js/custom.js?v=12041400"></script>
+  <script src="/js/mari.js?v=12041400"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD44D79GLY"></script>
@@ -127,5 +180,6 @@
   </script>
 
   <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css?display=swap" type="text/css">
+  </div>
 </body>
 </html>

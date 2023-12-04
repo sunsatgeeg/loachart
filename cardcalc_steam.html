@@ -2,7 +2,7 @@
 <html lang="en">
 <head class="h-100">
   <title>Lostark Card Books Calculator :: Loachart</title>
-  <meta name="viewport" content="width=1200">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Lostark Card Books Calculator">
   <meta name="keywords" content="loachart,lost,ark,loa,card,book,calculator,bonuses,helper,calc,damage,humanoids,insects,metallic,machines,demons,beasts,undead,plants,elementals,awake,collect,steam,recommand"/>
   <meta property="og:title" content="Lostark Card Books Calculator :: Loachart"/>
@@ -29,12 +29,13 @@
   <script>var url='https://api.loachart.com';if(location.hostname==='127.0.0.1'){url='http://127.0.0.1:5000';}</script>
   <script>var here = "cardcalc_steam";</script>
   <script src="/js/includeHTML.js?v=09231422"></script>
+  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false" data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
 
   <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="css/custom.css?v=10021505">
+  <link rel="stylesheet" type="text/css" href="css/custom.css?v=12041400">
+  
   <style>
     @media (max-width: 992px) {
       .w-50 {
@@ -129,24 +130,35 @@
       background-color: #e9e9e9 !important; 
       color: #ffffff;
     }
+    .table-dark {
+      --bs-table-color: #fff;
+      --bs-table-bg: #222324;
+      --bs-table-border-color: #373b3e;
+      --bs-table-striped-bg: #2c3034;
+      --bs-table-striped-color: #fff;
+      --bs-table-active-bg: #373b3e;
+      --bs-table-active-color: #fff;
+      --bs-table-hover-bg: #323539;
+      --bs-table-hover-color: #fff;
+      color: var(--bs-table-color);
+      border-color: #fff;
+    }
   </style>
-  <link href="css/cover.css" rel="stylesheet">
 </head>
 
-<body class="d-flex h-100 text-center text-white bg-dark">
-  <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body>
+  <div id="root">
+    <header><script>includeHTML('header');</script></header>
+    <div id="ad-container-1" class="mt-3" style="min-height: 250px;"></div>
+    <div id="rich-media-placement" data-instream="true"></div>
 
-    <header class="mb-5"><script>includeHTML('header');</script></header>
-
-    <top class="mb-5"><script>includeHTML('top');</script></top>
-
-    <main>      
-      <div>
+    <main class="container py-3 mt-3 box-dark rounded-4 text-center">
+      <div>     
         <div id="matchzone">
           <div>
             <button type="button" class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#help" id="helpbtn">Guide</button>
           </div>
-          <div id="notice" class="mt-2">
+          <div id="notice" class="mt-2 text-white">
             <small>
               <div>
                 <br><font color="orange">Pleccia Cards Update</font>
@@ -159,7 +171,7 @@
               </div>
             </small>
           </div>
-          <div id="drop-area">
+          <div id="drop-area" class="text-white">
             <form class="my-form">
               <p>Image drag & drop</p>
               <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
@@ -168,13 +180,14 @@
             <div id="gallery"></div>
           </div>
           <button type="button" class="btn btn-outline-light btn-lg" id="matchstart">Match Start</button>
-          <p id="searchingcardlist"></p>
+          <button type="button" class="btn btn-outline-light btn-lg" onclick="javascript:console.log(1);cookieStore.set('savecarddeck_steam','0:[0,7],1:[0,1],2:[0,13],3:[0,8],4:[0,15],5:[0,15],6:[0,15],7:[0,15],8:[0,15],9:[2,7],10:[0,15],11:[0,7],12:[2,12],13:[0,15],14:[4,5],15:[5,0],16:[0,0],17:[0,0],18:[0,0],19:[0,0],20:[0,0],21:[5,0],22:[5,0],23:[5,0],24:[5,0],25:[5,0],26:[3,3],27:[5,0],28:[5,0],29:[5,0],30:[5,0],31:[5,0],32:[5,0],33:[5,0],34:[3,2],35:[5,0],36:[0,15],37:[5,0],38:[4,5],39:[1,1],40:[5,0],41:[4,1],42:[5,0],43:[5,0],44:[5,0],45:[0,15],46:[2,12],47:[5,0],48:[5,0],49:[0,15],50:[5,0],51:[1,14],52:[0,15],53:[0,13],54:[2,12],55:[0,0],56:[4,5],57:[5,0],58:[5,0],59:[0,15],60:[5,0],61:[0,15],62:[0,15],63:[0,15],64:[0,0],65:[0,0],66:[1,6],67:[0,15],68:[2,12],69:[5,0],70:[1,14],71:[0,15],72:[1,14],73:[0,15],74:[1,14],75:[0,15],76:[0,15],77:[0,0],78:[1,14],79:[0,0],80:[0,0],81:[3,9],82:[0,15],83:[0,15],84:[0,15],85:[0,15],86:[5,0],87:[1,12],88:[3,9],89:[2,12],90:[0,15],91:[1,14],92:[5,0],93:[3,9],94:[5,0],95:[0,15],96:[0,15],97:[0,15],98:[0,0],99:[3,9],100:[0,15],101:[5,0],102:[5,0],103:[5,0],104:[5,0],105:[3,8],106:[0,14],107:[3,9],108:[1,14],109:[5,0],110:[0,15],111:[5,0],112:[2,1],113:[1,14],114:[1,0],115:[1,14],116:[2,12],117:[5,0],118:[3,8],119:[5,0],120:[0,0],121:[1,12],122:[2,12],123:[5,0],124:[0,15],125:[0,0],126:[0,15],127:[1,14],128:[0,0],129:[0,15],130:[1,14],131:[0,13],132:[0,15],133:[0,0],134:[4,5],135:[4,5],136:[4,5],137:[5,0],138:[4,5],139:[2,9],140:[0,15],141:[1,14],142:[2,5],143:[3,5],144:[1,8],145:[5,0],146:[1,14],147:[0,15],148:[0,15],149:[5,0],150:[2,12],151:[2,12],152:[5,0],153:[0,15],154:[5,0],155:[4,5],156:[5,0],157:[5,0],158:[5,0],159:[0,15],160:[5,0],161:[0,15],162:[2,12],163:[5,0],164:[0,15],165:[5,0],166:[2,12],167:[4,5],168:[0,15],169:[5,0],170:[2,12],171:[1,14],172:[5,0],173:[5,0],174:[5,0],175:[4,5],176:[5,0],177:[1,14],178:[0,0],179:[1,14],180:[3,9],181:[4,5],182:[5,0],183:[4,5],184:[0,15],185:[5,0],186:[0,15],187:[0,15],188:[2,12],189:[0,15],190:[0,11],191:[2,12],192:[5,0],193:[5,0],194:[5,0],195:[2,12],196:[5,0],197:[5,0],198:[2,12],199:[5,0],200:[0,15],201:[0,15],202:[0,15],203:[2,10],204:[5,0],205:[5,0],206:[0,15],207:[0,15],208:[0,15],209:[4,5],210:[4,5],211:[0,15],212:[1,14],213:[5,0],214:[4,5],215:[3,9],216:[0,15],217:[5,0],218:[5,0],219:[3,9],220:[5,0],221:[5,0],222:[5,0],223:[5,0],224:[0,15],225:[0,15],226:[2,10],227:[5,0],228:[2,12],229:[5,0],230:[5,0],231:[5,0],232:[5,0],233:[5,0],234:[5,0],235:[5,0],236:[5,0],237:[0,15],238:[4,5],239:[5,0],240:[0,15],241:[2,9],242:[0,15],243:[5,0],244:[5,0],245:[3,9],246:[5,0],247:[5,0],248:[5,0],249:[4,5],250:[0,15],251:[5,0],252:[5,0],253:[5,0],254:[5,0],255:[5,0],256:[5,0],257:[5,0],258:[5,0],259:[5,0],260:[5,0],261:[5,0],262:[2,12],263:[2,12],264:[5,0],265:[5,0],266:[4,5],267:[0,15],268:[0,15],269:[4,5],270:[5,0],271:[5,0],272:[5,0],273:[0,15],274:[5,0],275:[5,0],276:[5,0],277:[4,5],278:[5,0],279:[5,0],280:[5,0],281:[5,0],282:[0,15],283:[5,0],284:[0,15],285:[2,12],286:[0,15],287:[5,0],288:[4,5],289:[2,12],290:[5,0],291:[5,0],292:[4,5],293:[0,15],294:[5,0],295:[5,0],296:[4,5],297:[4,5],298:[5,0],299:[4,5],300:[5,0],301:[5,0],302:[5,0],303:[5,0],304:[0,15],305:[5,0],306:[0,15],307:[0,15],308:[5,0],309:[0,15],310:[4,5],311:[5,0],312:[5,0],313:[5,0],314:[5,0],315:[5,0],316:[5,0],317:[4,5],318:[5,0],319:[5,0],320:[0,15],321:[5,0],322:[5,0],323:[0,15],324:[5,0],325:[5,0],326:[0,15],327:[5,0],328:[5,0],329:[5,0],330:[0,15],331:[5,0],');location.reload();">테스트용 인식 완료</button>
+          <p class="text-white" id="searchingcardlist"></p>
 
-          <br><span id="matchstatus" style="display: none;">Status : </span><span id="matchwhich"></span><span id="matchingment"></span>
-          <br><span id="matchtime"></span></span>
+          <br><span class="text-white" id="matchstatus" style="display: none;">Status : </span><span class="text-white" id="matchwhich"></span><span class="text-white" id="matchingment"></span>
+          <br><span class="text-white" id="matchtime"></span></span>
 
           <div id="matchfinish" style="display: none;">
-            <span>Is the number of cards the same as the in-game card locker?</span>
+            <span class="text-white">Is the number of cards the same as the in-game card locker?</span>
             <br>
             
             <div class="w-50 mx-auto" id="cardpushzone">
@@ -190,8 +203,8 @@
 
         <div id="mycard" style="display: none;">
           <div class="clearfix container">
-            <div class="row">
-              <div id="bookeffect" class="col-5">
+            <div class="row flex-column-reverse flex-md-row">
+              <div id="bookeffect" class="col-12 col-md-5">
                 <button class="btn btn-outline-light btn-lg" id="reconBtn">ReMatch</button>
                 <button class="btn btn-outline-light btn-lg" id="undoBtn" disabled>Undo</button>
                 <table class="table table-dark float-start table-hover">
@@ -289,12 +302,12 @@
                   </tbody>
                 </table>
                 <div class="autocomplete input-group">
-                  <input id="manualEditNameInput" class="form-control w-50" type="text" placeholder="Manual Edit">
+                  <input id="manualEditNameInput" class="form-control w-50" type="text" placeholder="Card Name">
                   <select id="manualEditAwakeInput" class="form-select"><option value="5">5Awake</option><option value="4">4Awake</option><option value="3">3Awake</option><option value="2">2Awake</option><option value="1">1Awake</option><option value="0">0Awake</option><option value="-1" selected>No Have</option></select>
                   <select id="manualEditQtyInput" class="form-select"><option value="15">15Pcs</option><option value="14">14Pcs</option><option value="13">13Pcs</option><option value="12">12Pcs</option><option value="11">11Pcs</option><option value="10">10Pcs</option><option value="9">9Pcs</option><option value="8">8Pcs</option><option value="7">7Pcs</option><option value="6">6Pcs</option><option value="5">5Pcs</option><option value="4">4Pcs</option><option value="3">3Pcs</option><option value="2">2Pcs</option><option value="1">1Pcs</option><option value="0" selected>0Pcs</option></select>
                 </div>
                 <br>
-                <small>
+                <small class="text-white">
                   <div>※ If you delete a card in the past,<br>the collection effect may differ from the game effect that is <br>(Even if you delete a card, the effect will increase with collection or not in the book.)</div>
                   <br><div class="mt-2">※ Hover your cursor over each line to show how to strengthen to the next awakening step.</div>
                   <br><div class="mt-2">※ After awakening, left-click to reflect it on the calculator.</div>
@@ -303,17 +316,20 @@
               </div>
               
 
-              <div class="col-7">
+              <div class="col-12 col-md-7 px-0 mb-5">
+                <div class="mb-3 mx-auto" style="max-width: 410px; max-height: 230px;">
+                  <div class="vm-placement" id="vm-av" data-format="isvideo"></div>
+                </div>
                 <button type="button" class="btn btn-outline-light btn-lg mb-1" id="allBonusDmg"><pre class="mb-0">        <span>All</span>        </pre></button>
                 <div id="bonusdamageBtns" class="mx-auto w-75">
-                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4">Demons</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4">Beasts</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4">Humanoids</button>
+                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Demons</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Beasts</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Humanoids</button>
                   <br>
-                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4">Undead</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4">Metallic</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4">Elementals</button>
+                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Undead</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Metallic</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Elementals</button>
                   <br>
-                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4">Plants</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4">Machines</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4">Insects</button>
+                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Plants</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Machines</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Insects</button>
                 </div>
                 
-                <div id="allBonusDmgDiv" style="display: none;">
+                <div class="text-white" id="allBonusDmgDiv" style="display: none;">
                   <br><p>※ Card full Awakening Criteria</p>
                   <p>※ Cards that are not on the list below<br>don't have any bonus damage even if you wake up</p>
                   <table class="table table-dark float-end table-hover col align-middle">
@@ -331,17 +347,13 @@
                 </div>
 
                 <div id="unitBonusDmgDiv">
-                  <div class="row mx-0 my-3">
-                    <div class="col-4">
-                      <span>All Awakening Rate</span>
-                    </div>
+                  <div class="row mx-0 my-3 text-white">
+                    <div class="col-4 px-0">All Awakening Rate</div>
                     <div class="progress col-8 my-auto px-0 position-relative">
                       <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
                       <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;" id="all-exp-progress-bar">0 / 0 [0%]</div>
                     </div>
-                    <div class="col-4">
-                      <span id="this-progress">Awakening Rate</span>
-                    </div>
+                    <div class="col-4" id="this-progress">Awakening Rate</div>
                     <div class="progress col-8 my-auto px-0 position-relative">
                       <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
                       <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;" id="this-exp-progress-bar">0 / 0 [0%]</div>
@@ -408,13 +420,11 @@
     <canvas id="test2" width="500" height="500"></canvas>
     <div id="tempdiv"></div>
     -->
-
-    <footer class="mt-5 text-white-50"><script>includeHTML('footer');</script></footer>
-
+    <div id="ad-container-2" class="mt-3" style="min-height: 250px;"></div>
+    <footer><script>includeHTML('footer');</script></footer>
   </div>
-
   
-  <div class="modal fade bd-example-modal-lg" id="help" tabindex="-1" aria-labelledby="helpLabel" aria-hidden="true">
+  <div class="modal fade bd-example-modal-lg text-center" id="help" tabindex="-1" aria-labelledby="helpLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -422,7 +432,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-black">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/54T_TeLBnoo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div style="position:relative;height:0;padding-bottom:56.25%;">
+            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/54T_TeLBnoo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
           <p>If you follow the required settings and methods, the recognition will be completed in one minute.</p>
           <h3>※ <font COLOR='#0000FF'>Set in-game required options</font> ※</h3>
           <p>1. Resolution : 1920x1080 <b>Or</b> 2560x1440 <b>Or</b> 2560x1080 <b>Or</b> 3440x1440</p>
@@ -461,13 +473,11 @@
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   
-  <!-- custom -->
-  <script src="js/custom.js?v=02021500"></script>
-  <script src="js/cardcalc_steam/cardcalc.js?v=11200153"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-  <!-- google ADSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4936470262963011"
-    crossorigin="anonymous"></script>
+  <!-- custom -->
+  <script src="/js/custom.js?v=12041400"></script>
+  <script src="/js/cardcalc_steam/cardcalc.js?v=12041400"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD44D79GLY"></script>

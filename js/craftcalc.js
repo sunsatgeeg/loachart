@@ -158,10 +158,14 @@ function newRow(index, row, $detail) {
 document.querySelector('#helpbtn').addEventListener('click', function () {
   var helpimage = document.createElement('img');
   helpimage.src = "img/wisdom.png";
+  helpimage.style.width = "100%";
+  helpimage.style.maxWidth = "525px";
   document.querySelector('#modalimg1').appendChild(helpimage);
 
   helpimage = document.createElement('img');
   helpimage.src = "img/wisdomeffect.png";
+  helpimage.style.width = "100%";
+  helpimage.style.maxWidth = "525px";
   document.querySelector('#modalimg2').appendChild(helpimage);
 
   document.querySelector('#helpbtn').removeEventListener('click', arguments.callee);
@@ -414,13 +418,12 @@ function detailFormatter(index, row) {
       <th class="d-none d-lg-table-cell" scope="col">제작비용<br>(개당)</th>
       <th scope="col">재료</th>
       <th scope="col">시세</th>
-      <th scope="col">구매<br>단위</th>
+      <th class="d-none d-lg-table-cell" scope="col">구매<br>단위</th>
       <th scope="col">필요<br>개수</th>
       <th scope="col">합계</th>
       <th scope="col">제작비용</th>
-      <th class="d-none d-lg-table-cell" scope="col">활동력<br>[영지효과]</th>
       <th scope="col">제작 수량<br>[영지효과]</th>
-      <th scope="col">이익<br>(세트당)</th>
+      <th class="d-none d-sm-table-cell" scope="col">이익<br>(세트당)</th>
     </tr>
   </thead>
   <tbody>`;
@@ -457,9 +460,13 @@ function detailFormatter(index, row) {
         image = recipedata[thisitemname].key.Element_001.value.slotData.iconPath;
       }
     }
-    html += `<p><img class="item-image" data-grade="${grade}" style="width:24px; height:24px;" src="https://cdn-lostark.game.onstove.com/${image}" alt=""> ${Object.keys(row['dict'])[i]}</p>`;
+    html += `<p><img class="item-image" data-grade="${grade}" style="width:24px; height:24px;" src="https://cdn-lostark.game.onstove.com/${image}" alt=""> <span class="d-none d-lg-inline">${Object.keys(row['dict'])[i]}</span></p>`;
   }
-
+  // 재료 - 활동력
+  html += `<p>
+            <img class="item-image" data-grade="4" style="width:24px; height:24px;" src="img/town_energy.png" alt="">
+            <span class="d-none d-lg-inline">활동력</span>
+          </p>`;
   html += `</td>
       <td>`;
 
@@ -489,9 +496,10 @@ function detailFormatter(index, row) {
       }
     }
   }
-
+  // 재료시세 - 활동력
+  html += `<p>${row['requireEnerge']}</p>`;
   html += `</td>
-      <td>`;
+      <td class="d-none d-lg-table-cell">`;
 
   // 구매 단위
   for (var i = 4; i < Object.keys(row['dict']).length; i++) {
@@ -506,7 +514,8 @@ function detailFormatter(index, row) {
 
     html += `<p>${unit}</p>`;
   }
-
+  // 구매 단위 - 활동력
+  html += `<p>1</p>`
   html += `</td>
       <td>`;
 
@@ -524,11 +533,12 @@ function detailFormatter(index, row) {
 
     html += `<p class="dynamic-calc" origin-value="${qty}">${qty}</p>`;
   }
-
+  // 재료 개수 - 활동력
+  html += `<p>1</p>`
   html += `</td>
       <td>`;
 
-  // 재료 총 가격
+  // 재료 수수료 감소, 총 가격
   type = row['dict']['분류'];
   if (type == '배틀아이템') {
     type = "b";
@@ -573,17 +583,16 @@ function detailFormatter(index, row) {
     }
     html += `<p class="dynamic-calc" origin-value="${calcprice}">${calcprice}</p>`;
   }
+  // 재료 수수료 감소, 총 가격 - 활동력
+  html += `<p>${row['discountedItemEnergy']}</p>`;
+
   html += `<td class="dynamic-calc" origin-value="${row['craftprice']}">${row['craftprice']}</td>
-      <td class="d-none d-lg-table-cell">
-        <span class="dynamic-calc" origin-value="${row['requireEnerge']}">${row['requireEnerge']}</span>
-        <br>[<span class="dynamic-calc" origin-value="${row['discountedItemEnergy']}">${row['discountedItemEnergy']}</span>]
-      </td>
       <td onmousewheel="createqtyperset(event,this.querySelector('.pricetxt'))">
         <span class="dynamic-calc" origin-value="${row['dict']['수량']}">${row['dict']['수량']}</span>
         <br>[<span class="dynamic-calc" origin-value="${row['gsqty']}">${row['gsqty']}</span> <i class="bi bi-question-circle-fill hasTooltip" tooltipcontent="기본 대성공 5%에서 영지효과 곱연산<br>-------------------------------------------------------<br>영지효과 대성공이 0이면 기본 대성공 확률 5% 반영 X"></i>]
         <br><span class="pricehide"></span><input class="pricetxt" style="width:31px;" onclick="javascript:if(this.value=='0') this.value='';" oninput="createqtyperset(event,this)" type="text" value="1">세트
       </td>
-      <td>
+      <td class="d-none d-sm-table-cell">
         <span class="dynamic-calc" origin-value="${row['profit']}">${row['profit']}</span> <i class="bi bi-question-circle-fill hasTooltip" tooltipcontent="((${row['buyprice']} - ${Math.ceil(row['buyprice'] * 0.05)}) X ${row['gsqty']}) - ${row['craftprice']}<br>((개당 시세 - 개당 수수료) X 제작 수량) - 제작 비용"></i></td>
     </tr>
   </tbody>
@@ -659,7 +668,7 @@ function item(value, row, index) {
   let isBookmark = tableBookmark.includes(row.item);
   
   formatter += `<div class="d-flex position-relative my-1 me-2" style="width: max-content">
-                  <img data-key="${JSON.stringify(row.dict.key).replace(/"/gi, "&quot;")}" class="item-image" data-grade="${itemGrade}" src="https://cdn-lostark.game.onstove.com/${itemImagePath}" onmouseover="tooltip_item_show(this);" onmouseout="tooltip_item_hide(this);" style="width: 64px;">
+                  <img data-key="${JSON.stringify(row.dict.key).replace(/"/gi, "&quot;")}" class="item-image" data-grade="${itemGrade}" src="https://cdn-lostark.game.onstove.com/${itemImagePath}" onmouseover="tooltip_item_show(this);" onmouseout="tooltip_item_hide(this);">
                   <div class="bookmarkIcon bottom-0 end-0 ${isBookmark ? "active" : ""}" data-itemName="${row.item}" onclick="${isBookmark ? "removeTableBookmarkItem" : "addTableBookmarkItem"}(event, this)"></div>
                 </div>`
 
@@ -668,6 +677,22 @@ function item(value, row, index) {
     formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
                   <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>
                   <span class="d-md-block d-lg-none">하위<br>구매</span>`
+  } else if (itemName.includes("제작)")) {
+    formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
+                  <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>
+                  <span class="d-md-block d-lg-none">하위<br>제작</span>`
+  } else if (itemName.includes("고고학)")) {
+    formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
+                  <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>
+                  <span class="d-md-block d-lg-none">고고학</span>`
+  } else if (itemName.includes("수렵)")) {
+    formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
+                  <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>
+                  <span class="d-md-block d-lg-none">수렵</span>`
+  } else if (itemName.includes("낚시)")) {
+    formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
+                  <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>
+                  <span class="d-md-block d-lg-none">낚시</span>`
   } else if (itemName.includes("제작)")) {
     formatter += `<span class="d-none d-lg-inline">${itemName.substring(0, itemName.indexOf("("))}</span>
                   <span class="d-none d-lg-inline">${itemName.substring(itemName.indexOf("("))}</span>

@@ -288,7 +288,7 @@ function allBonusDmg(){
             let tdDmg = document.createElement('td');
 
             if(cardQty == 0){
-                trElement.style.setProperty('color', 'orange', 'important');
+                trElement.style.setProperty('--bs-table-color', 'orange');
                 trElement.style.setProperty('--hover-color-var', 'orange');
             }
             trElement.style.cursor = 'pointer';
@@ -429,7 +429,7 @@ async function cardsetcalcstart(){
     document.querySelector('#matchstatus').style.display = '';
     document.querySelector('#matchingment').textContent = 'Required operation in progress... (up to 30 seconds depending on environment)';
     
-    await loadJavascript('js/cardcalc_steam/cardeffect.js?v=11200153');
+    await loadJavascript('/js/cardcalc_steam/cardeffect.js?v=11200153');
     autocomplete(document.getElementById("manualEditNameInput"), Object.keys(cardgrade));
 
     document.querySelector('#matchingment').textContent = 'Start books calculating';
@@ -658,7 +658,7 @@ function bonusdamagelistup(){
 
             simulTempDict[nextlevels[j][0]] = [star,needcard];
             if(myEffectStar >= targetEffectStar) {
-                tr.style.setProperty('color', 'orange', 'important');
+                tr.style.setProperty('--bs-table-color', 'orange');
                 tr.style.setProperty('--hover-color-var', 'orange');
                 tempdict = simulTempDict;
                 exp = simulNeedExp;
@@ -683,12 +683,13 @@ function bonusdamagelistup(){
             }
         } 
 
-        let tooltipcontent = "<FONT SIZE='5pt'>"
+        let tooltipcontent = '<div class="text-center"><FONT SIZE="5pt">'
         let clickcontent = "";
         for (let j = 0; j < Object.keys(tempdict).length; j++) {
             tooltipcontent += `${Object.keys(tempdict)[j]} +${tempdict[Object.keys(tempdict)[j]][0]} Awake (${tempdict[Object.keys(tempdict)[j]][1]} Pcs)<br>`;
             clickcontent += `${Object.keys(tempdict)[j]} +${tempdict[Object.keys(tempdict)[j]][0]} Awake, `
         }
+        tooltipcontent += "</FONT></div>"
         
         tdsetname.textContent = name;
         tdsetexp.textContent = `${(exp).toLocaleString()}`;
@@ -790,13 +791,13 @@ function bonusdamagelistup(){
     }
 
     document.querySelectorAll('#bookstbody > tr > td:nth-child(2)').forEach((e)=>{
-        newTippy(e, `${e.getAttribute('tooltipcontent')}<FONT SIZE='2pt'>[Right-click fixed, copy]</FONT>`, null, null, null)
+        newTippy(e, `${e.getAttribute('tooltipcontent')}<div class="text-center"><FONT SIZE='2pt'>[오른쪽 클릭시 고정, 복사]</FONT></div>`, null, null, null)
         e.addEventListener('contextmenu', (event)=>{
             if(tippyToggle){
                 tippyToggle.destroy();
                 tippyToggle = null;
             }else{
-                tippyToggle = newTippy(e, `${e.getAttribute('tooltipcontent')}<FONT SIZE='2pt'>[Right-click unfixed]</FONT>`, 'toggle', 'click', 9999);
+                tippyToggle = newTippy(e, `${e.getAttribute('tooltipcontent')}<div class="text-center"><FONT SIZE='2pt'>[오른쪽 클릭시 고정 해제]</FONT></div>`, 'toggle', 'click', 9999);
                 tippyToggle.show()
             }
             event.preventDefault();

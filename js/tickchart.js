@@ -160,9 +160,33 @@ document.addEventListener('DOMContentLoaded', function(){
                 // Add legend
                 // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
                 var legend = chart.rightAxesContainer.children.push(am5.Legend.new(root, {
-                    width: 335,
-                    paddingLeft: 15
+                    // width: 335,
+                    // paddingBottom: 30
                 }));
+
+                
+                chart.events.on('boundschanged', () => {
+                    if (window.innerWidth < 992) {
+                        chart.topAxesContainer.children.moveValue(legend, 0);
+                        legend.setAll({
+                            x: 0,
+                            y: 50,
+                            width: 0,
+                            centerX: 0,
+                            paddingBottom: 50
+                        });
+                    }else{
+                        chart.rightAxesContainer.children.moveValue(legend, 0);
+                        legend.setAll({
+                            x: 0,
+                            y: 0,
+                            width: 335,
+                            height: 0,
+                            paddingLeft: 15,
+                            paddingBottom: 50
+                        });
+                    }
+                });
         
                 var legendTool = chart.plotContainer.children.push(am5.Legend.new(root, {
                 }));

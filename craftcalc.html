@@ -2,7 +2,7 @@
 <html lang="ko">
 <head class="h-100">
   <title>제작 :: LoaChart|로아차트</title>
-  <meta name="viewport" content="width=device-width,user-scalable=0">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="로스트아크 실시간 제작 이득 계산기">
   <meta name="keywords" content="로아차트,loachart,로차트,로스트,아크,로아,차트,마리샵,비밀,지도,카게,경매,분배금,제작,영지,더보기,도감작,악추피,인추피,야추피,계산기,전설,각인,각인서,베른,파푸,오레하,쌀산기"/>
   <meta property="og:title" content="로아 실시간 제작 이득 계산기 :: LoaChart|로아차트"/>
@@ -29,19 +29,14 @@
   <script>var url='https://api.loachart.com';if(location.hostname==='127.0.0.1'){url='http://127.0.0.1:5000';}</script>
   <script>var here = "craftcalc";</script>
   <script src="/js/includeHTML.js?v=09231422"></script>
+  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false" data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
-  <link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
+  <link href="css/fresh-bootstrap-table.css" rel="stylesheet"/>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-
-  <link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
-
-  <link rel="stylesheet" type="text/css" href="css/custom.css?v=10011746">
-  <link href="css/cover.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/custom.css?v=12041400">
   
   <!-- tippyJS -->
   <script src="https://unpkg.com/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
@@ -197,23 +192,23 @@
   </style>
 </head>
 
-<body class="d-flex h-100 text-center text-white bg-dark">    
-  <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body>
+  <div id="root">
+    <header><script>includeHTML('header');</script></header>
+    <div id="ad-container-1" class="mt-3" style="min-height: 250px;"></div>
+    <div id="rich-media-placement" data-instream="true"></div>
 
-    <header class="mb-5"><script>includeHTML('header');</script></header>
-
-    <top class="mb-5"><script>includeHTML('top');</script></top>
-
-    <main>      
-      <div class="mx-auto w-100">
+    <main class="container py-3 mt-3 box-dark rounded-4 text-center mx-auto">
+      <div>    
+         
         <div class="row mx-0">
           <div class="col px-0 border border-white mb-3">
             <div id="itemPrice" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
-                <button type="button" data-bs-target="#itemPrice" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">즐겨찾기</button>
-                <button type="button" data-bs-target="#itemPrice" data-bs-slide-to="1" aria-label="Slide 2">생활 재료</button>
-                <button type="button" data-bs-target="#itemPrice" data-bs-slide-to="2" aria-label="Slide 3">배틀 아이템</button>
-                <button type="button" data-bs-target="#itemPrice" data-bs-slide-to="3" aria-label="Slide 4">요리, 특수, ...</button>
+                <button class="px-0 active" type="button" data-bs-target="#itemPrice" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1">즐겨찾기</button>
+                <button class="px-0" type="button" data-bs-target="#itemPrice" data-bs-slide-to="1" aria-label="Slide 2">생활 재료</button>
+                <button class="px-0" type="button" data-bs-target="#itemPrice" data-bs-slide-to="2" aria-label="Slide 3">배틀 아이템</button>
+                <button class="px-0" type="button" data-bs-target="#itemPrice" data-bs-slide-to="3" aria-label="Slide 4">요리, 특수, ...</button>
               </div>
               <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="1000000">
@@ -401,12 +396,11 @@
             </div>
           </div>
           <div class="col-lg-auto float-md-end px-0 ms-lg-3 mt-auto mb-3">
-            <div class="mx-auto " style="width: 410px; height: 230px;">
+            <div class="mx-auto" style="min-width: 350px; max-width: 410px; height: 230px;">
               <div class="vm-placement" id="vm-av" data-format="isvideo"></div>
             </div>
           </div>
         </div>
-
         <div class="fresh-table full-color-custom">
           <div class="toolbar text-start">
             <button id="wisdomEffectEditOpenBtn" class="btn btn-default" data-bs-toggle="collapse" data-bs-target="#collapse">영지 효과</button>
@@ -415,7 +409,7 @@
             <div class="accordion" style="max-width: 600px;">
               <div id="collapse" class="accor dion-collapse collapse" aria-labelledby="heading" data-bs-parent="#accordion">
                 <div class="accordion-body p-0">
-                  <table class="table mt-3 table-hover mb-3 text-center">
+                  <table class="table mt-3 table-hover mb-3 text-center" data-bs-theme="dark">
                     <thead>
                       <tr>
                         <th scope="col">전체</th>
@@ -536,21 +530,22 @@
                  data-detail-view-icon="false"
                  data-detail-view-by-click="true"
                  data-detail-formatter="detailFormatter"
-                 data-row-attributes="rowAttributes">
+                 data-row-attributes="rowAttributes"
+                 data-bs-theme="dark">
             <thead>
               <th data-order="desc" class="text-start" data-field="item" data-sortable="true" data-formatter="item">아이템</th>
               <th data-order="desc" data-field="recommend" data-sortable="true" data-cell-style="recomcellStyle">추천방식<br>(사용 기준)</th>
-              <th class="d-none d-lg-table-cell" data-order="desc" data-field="buyprice" data-sortable="true" data-formatter="buypriceFormatter">시세</th>
-              <th class="d-none d-lg-table-cell" data-order="desc" data-field="craftprice" data-sortable="true">제작비용</th>
+              <th class="d-none d-sm-table-cell" data-order="desc" data-field="buyprice" data-sortable="true" data-formatter="buypriceFormatter">시세</th>
+              <th class="d-none d-md-table-cell" data-order="desc" data-field="craftprice" data-sortable="true">제작비용</th>
               <th data-order="desc" data-field="profit" data-sortable="true" data-cell-style="profcellStyle">판매이익<br>(판매 기준)</th>
-              <th data-order="desc" data-field="profitperenergy" data-sortable="true" data-formatter="profitperenergyFormatter">이익/활동력  <i class="bi bi-question-circle-fill" onmouseover="tippy($(this)[0], { allowHTML: true, content: '(최대 활동력 10,000 ÷ 해당 아이템 활동력) X<br>해당 아이템 판매이익<br>-------------------------------------------------------<br>단, 일일 구매 제한이 걸려있는 아이템이 재료일 경우 그 수에 맞게 계산됨',theme: 'light', placement: 'bottom', });"></i></th>
+              <th class="d-none d-lg-table-cell" data-order="desc" data-field="profitperenergy" data-sortable="true" data-formatter="profitperenergyFormatter">이익/활동력  <i class="bi bi-question-circle-fill" onmouseover="tippy($(this)[0], { allowHTML: true, content: '(최대 활동력 10,000 ÷ 해당 아이템 활동력) X<br>해당 아이템 판매이익<br>-------------------------------------------------------<br>단, 일일 구매 제한이 걸려있는 아이템이 재료일 경우 그 수에 맞게 계산됨',theme: 'light', placement: 'bottom', });"></i></th>
               <th data-order="desc" data-field="trade_count" data-sortable="true" data-formatter="tradeCountFormatter">금일 판매량</th>
             </thead>
             <tbody style="cursor:pointer"></tbody>
           </table>
         </div>
         
-        <div class="text-end">
+        <div class="text-end text-white">
           <small>
             ※ 제작하고 싶은 아이템을 클릭하면 자세한 상세내역 탭이 출력됩니다.
             <br>※ <span class="pricehide"></span><input class="pricetxt" type="text" value="    ">으로 표시된 칸은 수정이 가능합니다.
@@ -559,7 +554,8 @@
       </div>
     </main>
 
-    <footer class="mt-5 text-white-50"><script>includeHTML('footer');</script></footer>
+    <div id="ad-container-2" class="mt-3" style="min-height: 250px;"></div>
+    <footer><script>includeHTML('footer');</script></footer>
 
   </div>
 
@@ -572,11 +568,11 @@
         </div>
         <div class="modal-body text-black">
           <div>
-            <p id="modalimg1"></p>
+            <div id="modalimg1" class="mx-auto"></div>
             <p>▲ 위와 같이 제작 대성공 확률 4% 증가니까 밑에 전체에 4입력</p>
             <p>[배틀 아이템 - 폭탄] 제작 대성공 확률 3% 증가니까 밑에 배틀아이템에 3입력</p>
             <p>[요리] 제작 대성공 확률 1% 증가니까 밑에 요리에 1입력</p>
-            <p id="modalimg2"></p>
+            <div id="modalimg2"class="mx-auto"></div>
           </div>
         </div>
         <div class="modal-footer">
@@ -595,7 +591,7 @@
     }
     .fresh-table .bootstrap-table .table > thead > tr > th{
       padding: 0px !important;
-      font-size: var(--bs-body-font-size) !important;
+      font-size: .94rem !important;
     }
     .fresh-table .bootstrap-table .table tbody > tr > td {
       padding-left: .75rem !important;
@@ -630,7 +626,6 @@
       border-radius: .25rem;
       transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     }
-    
     @media (min-width: 600px) {
       .percent {
         background-image: url("data:image/svg+xml,%3Csvg fill='%23000000' height='64px' width='64px' version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 490.00 490.00' xml:space='preserve' stroke='%23000000' stroke-width='0.0049' transform='rotate(0)matrix(1, 0, 0, 1, 0, 0)'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round' stroke='%23CCCCCC' stroke-width='1.9600000000000002'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cg%3E%3Cpath d='M96.383,245.798c27.77,0,51.146-10.631,70.106-31.879c18.97-21.247,28.45-51.538,28.45-90.865 c0-40.38-9.374-70.981-28.133-91.811C148.046,10.422,124.365,0,95.761,0C64.667,0,40.926,11.635,24.563,34.889 C8.188,58.15,0,86.377,0,119.568c0,42.293,9.163,73.898,27.511,94.827C45.86,235.326,68.814,245.798,96.383,245.798z M62.646,57.724c9.222-12.262,20.781-18.397,34.665-18.397c13.885,0,25.502,6.084,34.83,18.238 c9.327,12.161,13.991,33.25,13.991,63.273c0,32.564-4.617,54.974-13.839,67.236c-9.233,12.262-20.885,18.397-34.982,18.397 c-13.673,0-25.186-6.077-34.512-18.238c-9.327-12.154-13.991-33.142-13.991-62.956C48.809,92.51,53.425,69.993,62.646,57.724z'%3E%3C/path%3E%3Cpolygon points='143.947,490 392.372,0 346.981,0 97.628,490 '%3E%3C/polygon%3E%3Cpath d='M390.82,244.21c-31.305,0-55.14,11.576-71.515,34.729c-16.375,23.153-24.563,51.43-24.563,84.832 c0,42.083,9.174,73.637,27.523,94.676C340.602,479.477,363.556,490,391.126,490c27.993,0,51.464-10.624,70.423-31.871 C480.52,436.875,490,406.591,490,367.264c0-40.381-9.374-70.99-28.134-91.818C443.106,254.624,419.425,244.21,390.82,244.21z M427.354,432.277c-9.222,12.269-20.992,18.397-35.288,18.397c-13.685,0-25.186-6.127-34.513-18.397 c-9.326-12.255-13.99-33.192-13.99-62.798c0-32.766,4.605-55.283,13.838-67.546c9.221-12.263,20.874-18.398,34.971-18.398 c13.884,0,25.503,6.078,34.829,18.239c9.327,12.161,13.991,33.249,13.991,63.266C441.191,397.605,436.574,420.022,427.354,432.277z '%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -691,21 +686,17 @@
   
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="js/jquery.mousewheel.min.js"></script>
+  <script src="/js/jquery.mousewheel.min.js"></script>
 
   <!-- bootstrap -->
-  <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   <!-- bootstrap-table -->
   <script defer src="https://unpkg.com/bootstrap-table/dist/bootstrap-table.min.js"></script>
 
   <!-- custom -->
-  <script src="js/custom.js?v=02021500"></script>
-  <script src="js/craft_recipe.js?v=11221359"></script>
-  <script src="js/craftcalc.js?v=11251805"></script>
-
-  <!-- google ADSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4936470262963011"
-    crossorigin="anonymous"></script>
+  <script src="/js/custom.js?v=12041400"></script>
+  <script src="/js/craft_recipe.js?v=12041400"></script>
+  <script src="/js/craftcalc.js?v=12041400"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD44D79GLY"></script>

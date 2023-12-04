@@ -71,18 +71,27 @@ fetch(url + '/mari', {method: 'POST'}).then((response) => response.json()).then(
         }
     }
 
-    var parenttable = document.querySelector('.maritable');
+    var parenttable = document.querySelector('#mari_carousel');
     if(lasttime.length != 0){
-        findFirstChild(findFirstChild(parenttable)).innerHTML += '<th id="lasttime" width="33.33%"></th>';
-        findFirstChild(findLastChild(parenttable)).innerHTML += '<td id="lasttimelist"></td>';
+        parenttable.innerHTML += `<div class="carousel-item" data-bs-interval="1000000">
+                                    <div class="card">
+                                        <div class="card-body px-0">
+                                            <div class="card-title fs-3" id="lasttime"></div>
+                                                <div class="card-text" id="lasttimelist"></div>`;
     }
     if(prevtime.length != 0){
-        findFirstChild(findFirstChild(parenttable)).innerHTML += '<th id="prevtime" width="33.33%"></th>';
-        findFirstChild(findLastChild(parenttable)).innerHTML += '<td id="prevtimelist"></td>';
+        parenttable.innerHTML += `<div class="carousel-item" data-bs-interval="1000000">
+                                    <div class="card">
+                                        <div class="card-body px-0">
+                                            <div class="card-title fs-3" id="prevtime"></div>
+                                                <div class="card-text" id="prevtimelist"></div>`;
     }
     if(newtime.length != 0){
-        findFirstChild(findFirstChild(parenttable)).innerHTML += '<th id="newtime" width="33.33%"></th>';
-        findFirstChild(findLastChild(parenttable)).innerHTML += '<td id="newtimelist"></td>';
+        parenttable.innerHTML += `<div class="carousel-item active"  data-bs-interval="1000000">
+                                    <div class="card">
+                                        <div class="card-body px-0">
+                                            <div class="card-title fs-3" id="newtime"></div>
+                                                <div class="card-text" id="newtimelist"></div>`;
     }
 
     var untilwhen = "";
@@ -92,15 +101,15 @@ fetch(url + '/mari', {method: 'POST'}).then((response) => response.json()).then(
         untilwhen = String(newtime[0]['untilwhen']);
         untilwhenday = untilwhen.slice(0,2);
         untilwhenhour = untilwhen.slice(-2);
-        document.querySelector("#newtime").innerText = untilwhenday + "일 " + untilwhenhour + "시까지 판매";
+        document.querySelector("#newtime").innerText = untilwhenday + "일 " + untilwhenhour + "시 까지 (첫차)";
         untilwhen = String(prevtime[0]['untilwhen']);
         untilwhenday = untilwhen.slice(0,2);
         untilwhenhour = untilwhen.slice(-2);
-        document.querySelector("#prevtime").innerText = untilwhenday + "일 " + untilwhenhour + "시까지 판매";
+        document.querySelector("#prevtime").innerText = untilwhenday + "일 " + untilwhenhour + "시 까지";
         untilwhen = String(lasttime[0]['untilwhen']);
         untilwhenday = untilwhen.slice(0,2);
         untilwhenhour = untilwhen.slice(-2);
-        document.querySelector("#lasttime").innerText = untilwhenday + "일 " + untilwhenhour + "시까지 판매";
+        document.querySelector("#lasttime").innerText = untilwhenday + "일 " + untilwhenhour + "시 까지 (막차)";
     }catch{
     }
     
@@ -142,17 +151,17 @@ fetch(url + '/mari', {method: 'POST'}).then((response) => response.json()).then(
         }
 
         content = `
-            <div class="card bg-secondary mb-3">
+            <div class="card bg-secondary mx-0 mb-3">
                 <div class="row g-0">
                     <div class="col-md-3 my-auto">
-                        <img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/${itemimage}.png" data-grade="${itemgrade}" class="img-fluid rounded-start item-image" alt="이미지">
+                        <img src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/${itemimage}.png" data-grade="${itemgrade}" class="img-fluid rounded item-image" alt="이미지">
                     </div>
                     <div class="col-md-9">
-                        <div class="card-header ps-2 pe-0 py-1 item-name fs-5 text-start fw-bold">${itemtitle}</div>
+                        <div class="card-header ps-2 pe-0 py-1 item-name fs-5 text-start fw-bold text-white">${itemtitle}</div>
                             <div class="card-body px-1 py-1 text-white">
                                 <input id="itemqty" value="${itemqty}" hidden>
                                 <input id="itempackcount" value="${itempackcount}" hidden>
-                                <div class="container">
+                                <div>
                                     <div class="row g-0">
                                         <div class="col-auto me-auto px-0 text-nowrap text-start my-auto">
                                             <span class="my-auto">크리스탈(골드) :</span>
@@ -223,3 +232,33 @@ fetch(url + '/mari', {method: 'POST'}).then((response) => response.json()).then(
     }
 
 });
+
+let multipleCardCarousel = document.querySelector("#carouselExampleControls");
+if (window.matchMedia("(min-width: 854px)").matches) {
+    let carousel = new bootstrap.Carousel(multipleCardCarousel, {
+        interval: false,
+    });
+    let carouselWidth = document.querySelector(".carousel-inner").scrollWidth;
+    let cardWidth = document.querySelector(".carousel-item").clientWidth;
+    let scrollPosition = 0;
+    document.querySelector("#carouselExampleControls .carousel-control-next").addEventListener("click", () => {
+        if (scrollPosition < carouselWidth - cardWidth * 4) {
+            scrollPosition += cardWidth;
+            document.querySelector("#carouselExampleControls .carousel-inner").animate(
+                { scrollLeft: scrollPosition },
+                600
+            );
+        }
+    });
+    document.querySelector("#carouselExampleControls .carousel-control-prev").addEventListener("click", () => {
+        if (scrollPosition > 0) {
+            scrollPosition -= cardWidth;
+            document.querySelector("#carouselExampleControls .carousel-inner").animate(
+                { scrollLeft: scrollPosition },
+                600
+            );
+        }
+    });
+} else {
+    multipleCardCarousel.classList.add("slide");
+}
