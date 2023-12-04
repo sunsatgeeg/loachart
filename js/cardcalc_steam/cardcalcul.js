@@ -791,13 +791,13 @@ function bonusdamagelistup(){
     }
 
     document.querySelectorAll('#bookstbody > tr > td:nth-child(2)').forEach((e)=>{
-        newTippy(e, `${e.getAttribute('tooltipcontent')}<div class="text-center"><FONT SIZE='2pt'>[오른쪽 클릭시 고정, 복사]</FONT></div>`, null, null, null)
+        newTippy(e, `${e.getAttribute('tooltipcontent')}<div class="text-center"><FONT SIZE='2pt'>[Right-click fixed and copy]</FONT></div>`, null, null, null)
         e.addEventListener('contextmenu', (event)=>{
             if(tippyToggle){
                 tippyToggle.destroy();
                 tippyToggle = null;
             }else{
-                tippyToggle = newTippy(e, `${e.getAttribute('tooltipcontent')}<div class="text-center"><FONT SIZE='2pt'>[오른쪽 클릭시 고정 해제]</FONT></div>`, 'toggle', 'click', 9999);
+                tippyToggle = newTippy(e, `${e.getAttribute('tooltipcontent')}<div class="text-center"><FONT SIZE='2pt'>[Right-click unfixed]</FONT></div>`, 'toggle', 'click', 9999);
                 tippyToggle.show()
             }
             event.preventDefault();
