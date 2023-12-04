@@ -223,7 +223,7 @@ main {
 
 @media (min-width: 576px) {
     .item-image {
-        max-width: 64px;
+        max-width: 58px;
     }
 }
 
