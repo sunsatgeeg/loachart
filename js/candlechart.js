@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function(){
   $('#candlewideview').on("click", function(){
       if($(this).text() == '넓게보기'){
+          $('#candlechartdiv').parent().css('zIndex','998');
           $('#candlechartdiv').parent().css('width','100vw');
           $('#candlechartdiv').parent().css('margin-left','calc(-50vw + 50%)');
           $(this).text('되돌리기')
       }else{
+          $('#candlechartdiv').parent().css('zIndex','0');
           $('#candlechartdiv').parent().css('width','100%');
           $('#candlechartdiv').parent().css('margin-left','');
           $(this).text('넓게보기')
