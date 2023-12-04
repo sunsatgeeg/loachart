@@ -45,11 +45,13 @@ document.addEventListener('DOMContentLoaded', function(){
     
     $('#wideview').on("click", function(){
         if($(this).text() == '넓게보기'){
+            $('#chartdiv').parent().css('position','relative');
             $('#chartdiv').parent().css('zIndex','998');
             $('#chartdiv').parent().css('width','100vw');
             $('#chartdiv').parent().css('margin-left','calc(-50vw + 50%)');
             $(this).text('되돌리기')
         }else{
+            $('#chartdiv').parent().css('position','');
             $('#chartdiv').parent().css('zIndex','');
             $('#chartdiv').parent().css('width','100%');
             $('#chartdiv').parent().css('margin-left','');
