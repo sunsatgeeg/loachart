@@ -2,14 +2,6 @@
 var personcount = 8;
 var price = 0;
 
-function sliderevent(e){
-    if(e.value == 0){
-        return;
-    }
-    document.querySelector('#price').value = e.value;
-    calc();
-}
-
 function othercountevent(e){
     personcount = parseInt(e.value);
     if(e.value == "" || e.value < 0){
@@ -36,8 +28,6 @@ function priceeditevent(e){
 }
 
 function calc(){
-    document.querySelector('#slider').value = document.querySelector('#price').value;
-
     price = document.querySelector('#price').value;
     var tax = Math.ceil(price * 0.05);
     document.querySelector('#tax').innerText = "- " + tax;
@@ -67,68 +57,38 @@ document.addEventListener("DOMContentLoaded", function(){
     // target elements with the "draggable" class
     interact('#top')
         .draggable({
-        // enable inertial throwing
-        inertia: true,
         // keep the element within the area of it's parent
         modifiers: [
             interact.modifiers.restrictRect({
-            restriction: 'parent',
-            endOnly: true
+                restriction: 'parent',
+                endOnly: true
             })
         ],
-        // enable autoScroll
-        autoScroll: true,
 
         listeners: {
-            // call this function on every dragmove event
-            move: dragMoveListener
-        }
+                // call this function on every dragmove event
+                move: dragMoveListener
+            }
         })
 
     function dragMoveListener (event) {
-        var target = event.target.offsetParent
+        let target = event.target.offsetParent;
         
         // keep the dragged position in the data-x/data-y attributes
-        var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-        var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+        let x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+        let y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+        localStorage.setItem("screenKeypadPosition", `${x},${y}`);
 
         // translate the element
-        target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+        target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
 
         // update the posiion attributes
-        target.setAttribute('data-x', x)
-        target.setAttribute('data-y', y)
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
     }
 
     // this function is used later in the resizing and gesture demos
     window.dragMoveListener = dragMoveListener
-
-    if (getCookie("inputmethod") == "" || getCookie("inputmethod") == undefined){
-        document.querySelectorAll('.btninputmethod button').forEach(function(e){
-            e.classList.remove('active');
-        })
-        document.querySelector('#btnnone').classList.add('active');
-        document.querySelector('.inputmethod').childNodes.forEach(function(e){
-            if(e.nodeName == "#text"){
-                return
-            }
-            e.style.display = "none";
-        });
-    }else{
-        target = getCookie("inputmethod");
-
-        document.querySelectorAll('.btninputmethod button').forEach(function(e){
-            e.classList.remove('active');
-        })
-        document.querySelector("#btn" + target).classList.add('active');
-        document.querySelector('.inputmethod').childNodes.forEach(function(e){
-            if(e.nodeName == "#text"){
-                return
-            }
-            e.style.display = 'none';
-        });
-        document.querySelector("#" + target).style.display = '';
-    }
 
     document.querySelectorAll('.clickcount').forEach(function(e){
         e.addEventListener("click", function(){
@@ -140,33 +100,37 @@ document.addEventListener("DOMContentLoaded", function(){
             calc();
         });
     });
+    
+    let onScreenKeypad = localStorage.getItem("onScreenKeypad");
+    if (onScreenKeypad != undefined && onScreenKeypad == "true"){
+        document.querySelector("#screenKeypadBtn").textContent = "화상 키패드 창 위치 리셋";
+        document.querySelector("#screenKeypadBtn").classList.add("active");
+        document.querySelector("#keypad").style.display = "";
 
-    document.querySelector('#slider').addEventListener('change', function(){
-        sliderevent(this)
-    });
-    document.querySelector('#slider').addEventListener('mousemove', function(){
-        sliderevent(this)
-    });
+        let keypadPosition = localStorage.getItem("screenKeypadPosition") ? localStorage.getItem("screenKeypadPosition").split(",") : [0, 0];
+        document.querySelector("#keypad").style.transform = 'translate(' + keypadPosition[0] + 'px, ' + keypadPosition[1] + 'px)';
+        document.querySelector("#keypad").setAttribute('data-x', keypadPosition[0]);
+        document.querySelector("#keypad").setAttribute('data-y', keypadPosition[1]);
+    }
 
-    document.querySelectorAll('.btninputmethod button').forEach(function(e){
-        e.addEventListener('click', function(){
-            if(this.classList.contains("active")){
-                return;
-            }
-            document.querySelectorAll('.btninputmethod button').forEach(function(f){
-                f.classList.remove('active');
-            })
-            this.classList.add('active');
-            setCookie("inputmethod", this.value, 365);
+    document.querySelector("#screenKeypadBtn").addEventListener("click", (e)=>{
+        if(e.target.classList.contains("active")){
+            document.querySelector("#keypad").style.transform = 'translate(0px, 0px)';
+            document.querySelector("#keypad").setAttribute('data-x', 0);
+            document.querySelector("#keypad").setAttribute('data-y', 0);
+        }else{
+            document.querySelector("#screenKeypadBtn").textContent = "화상 키패드 창 위치 리셋";
+            document.querySelector("#screenKeypadBtn").classList.add("active");
+            document.querySelector("#keypad").style.display = "";
+            localStorage.setItem("onScreenKeypad", "true");
+        }
+    })
 
-            document.querySelector('.inputmethod').childNodes.forEach(function(f){
-                if(f.nodeName == "#text"){
-                    return;
-                }
-                f.style.display = 'none';
-            });
-            document.querySelector('#' + this.value).style.display = '';
-        });
+    document.querySelector("#keypadCloseBtn").addEventListener("click", ()=>{
+        document.querySelector("#screenKeypadBtn").textContent = "화상 키패드";
+        document.querySelector("#screenKeypadBtn").classList.remove("active");
+        localStorage.setItem("onScreenKeypad", "false");
+        document.querySelector("#keypad").style.display = "none";
     })
 
     var input_value = document.querySelector("#price");
@@ -184,19 +148,19 @@ document.addEventListener("DOMContentLoaded", function(){
         calc();
     }
     document.querySelector("#clear").addEventListener('click', function(){
-        input_value.value = 0;
+        input_value.value = "";
         calc();
     });
     document.querySelector("#backspace").addEventListener('click', function(){
         input_value.value = input_value.value.slice(0, -1);
         if(input_value.value == ""){
-            input_value.value = 0;
+            input_value.value = "";
         }
         calc();
     });
 
     document.querySelector('#priceclear').addEventListener('click',function(){
-        document.querySelector('#price').value = 0;
+        document.querySelector('#price').value = "";
         calc();
     });
 
@@ -236,9 +200,22 @@ document.addEventListener("DOMContentLoaded", function(){
     tippy('table td:nth-child(2)', {
         allowHTML: true, 
         onShow(instance) {
-        instance.setContent(instance.reference.getAttribute('tooltipcontent'));
+            instance.setContent(instance.reference.getAttribute('tooltipcontent'));
         },
         theme: 'light', 
         placement: 'right',
+    });
+    tippy("#top", {
+        allowHTML: true, 
+        triggerTarget: document.querySelector("#screenKeypadBtn"),
+        content: "여기를 누르면서 움직이면<br>원하는 위치로 창을 옮길 수 있습니다.",
+        trigger: "click",
+        theme: "light", 
+        placement: "top",
+        onShow(instance) {
+          setTimeout(() => {
+            instance.hide();
+          }, 10000);
+        }
     });
 });

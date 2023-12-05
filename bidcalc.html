@@ -44,13 +44,12 @@
       }
     }
     #keypad {
-      margin: 1rem 0 0 1rem;
       background-color: #29e;
       color: white;
       border-radius: 0.75em;
       touch-action: none;
       user-select: none;
-      transform: translate(0px, 112px);
+      transform: translate(0px, 0px);
       position: absolute;
 
       z-index: 99;
@@ -66,38 +65,29 @@
 
     <main class="container py-3 mt-3 box-dark rounded-4 text-center">
       <div>
+        <div id="keypad" class="draggable" style="display: none;" data-x="0" data-y="0">
+          <div class="d-flex" id="top">
+            <div class="ms-auto me-1" role="button" id="keypadCloseBtn">×</div>
+          </div>
+          <div id="pinpad"> 
+            <form>
+              <input type="button" value="7" id="7" class="pinButton calc"/>
+              <input type="button" value="8" id="8" class="pinButton calc"/>
+              <input type="button" value="9" id="9" class="pinButton calc"/><br>
+              <input type="button" value="4" id="4" class="pinButton calc"/>
+              <input type="button" value="5" id="5" class="pinButton calc"/>
+              <input type="button" value="6" id="6" class="pinButton calc"/><br>
+              <input type="button" value="1" id="1" class="pinButton calc"/>
+              <input type="button" value="2" id="2" class="pinButton calc"/>
+              <input type="button" value="3" id="3" class="pinButton calc"/><br>
+              <input type="button" value="clear" id="clear" class="pinButton clear"/>
+              <input type="button" value="0" id="0 " class="pinButton calc"/>
+              <input type="button" value="←" id="backspace" class="pinButton backspace"/>
+            </form>
+          </div>
+        </div>
         <div class="mx-auto w-50">
           <div class="flex-row mb-3">
-            <div class="inputmethod">
-              <div id="keypad" class="draggable" style="display: none; ">
-                <div id="top" style="padding-top:25px;"></div>
-                <div id="pinpad"> 
-                  <form class="mx-auto">
-                    <input type="button" value="7" id="7" class="pinButton calc"/>
-                    <input type="button" value="8" id="8" class="pinButton calc"/>
-                    <input type="button" value="9" id="9" class="pinButton calc"/><br>
-                    <input type="button" value="4" id="4" class="pinButton calc"/>
-                    <input type="button" value="5" id="5" class="pinButton calc"/>
-                    <input type="button" value="6" id="6" class="pinButton calc"/><br>
-                    <input type="button" value="1" id="1" class="pinButton calc"/>
-                    <input type="button" value="2" id="2" class="pinButton calc"/>
-                    <input type="button" value="3" id="3" class="pinButton calc"/><br>
-                    <input type="button" value="clear" id="clear" class="pinButton clear"/>
-                    <input type="button" value="0" id="0 " class="pinButton calc"/>
-                    <input type="button" value="←" id="backspace" class="pinButton backspace"/>
-                  </form>
-                </div>
-              </div>
-              <div id="slide" class="mb-3 row mx-0">
-                <div class="mb-2 px-0">
-                  <Input class="range" type="range" id="slider" value="0" min="0" max="20000"></Input>
-                </div>
-                <button type="button" class="btn btn-outline-light btn-lg col clickcount me-2"><span>+ </span><span id="countvalue">5000</span></button>
-                <button type="button" class="btn btn-outline-light btn-lg col clickcount me-2"><span>+ </span><span id="countvalue">1000</span></button>
-                <button type="button" class="btn btn-outline-light btn-lg col clickcount me-2"><span>+ </span><span id="countvalue">100</span></button>
-                <button type="button" class="btn btn-outline-light btn-lg col clickcount"><span>+ </span><span id="countvalue">10</span></button>
-              </div>
-            </div>
             <div class="input-group input-group-lg mb-3">
               <span class="input-group-text">가격</span>
               <input type="text" class="form-control" id="price">
@@ -161,10 +151,8 @@
               <small>숫자를 클릭하면 복사가 됩니다.<br>복붙하시면 누구보다 빠르게 입찰 할 수 있습니다.</small>
             </div>
           </div>
-          <div class="mb-3 row mx-0 btninputmethod">
-            <button type="button" id="btnkeypad" class="btn btn-outline-light btn-lg col me-2" value="keypad">키패드</button>
-            <button type="button" id="btnslide" class="btn btn-outline-light btn-lg col me-2" value="slide">슬라이드</button>
-            <button type="button" id="btnnone" class="btn btn-outline-light btn-lg col" value="none">없음</button>
+          <div class="mb-3 row mx-0">
+            <button type="button" id="screenKeypadBtn" class="btn btn-outline-light btn-lg col">화상 키패드</button>
           </div>
         </div>
       <div id="none"></div>
@@ -180,7 +168,7 @@
   
   <!-- custom -->
   <script src="/js/custom.js?v=12041400"></script>
-  <script src="/js/bidcalc.js?v=12272139"></script>
+  <script src="/js/bidcalc.js?v=12060027"></script>
 
   <!-- tippyJS -->
   <script src="https://unpkg.com/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
