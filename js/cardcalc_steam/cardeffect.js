@@ -3890,5 +3890,104 @@ const cardeffect = {
 			"20": 0.07,
 			"25": 0.07
 		}
+	],
+	"A Voice Calls": [
+		[
+			"Varkan",
+			"Lazaram",
+			"Rakathus",
+		],
+		"Domination",
+		2,
+		"Demons",
+		{
+			"6": 0.10,
+			"12": 0.10,
+			"15": 0.10
+		}
+	],
+	"Guardian Chief": [
+		[
+			"Vairgrys",
+			"Guardian Luen",
+			"Varkan",
+		],
+		"Endurance",
+		3,
+		"Beasts",
+		{
+			"6": 0.13,
+			"12": 0.13,
+			"15": 0.14
+		}
+	],
+	"Ivory Tower of Chaos": [
+		[
+			"Varkan",
+			"Behemoth",
+			"Kaishuter",
+			"Lazaram",
+			"Rakathus",
+			"Kaltaya",
+			"Firehorn",
+		],
+		"Swiftness",
+		3,
+		"Plants",
+		{
+			"14": 0.10,
+			"28": 0.10,
+			"35": 0.10
+		}
+	],
+	"Sages of Voldis": [
+		[
+			"Zeherade",
+			"Mariu",
+			"Isaac",
+			"Marega",
+			"Verad",
+			"Nilai",
+		],
+		"Domination",
+		2,
+		"Elemental",
+		{
+			"12": 0.06,
+			"24": 0.07,
+			"30": 0.07
+		}
+	],
+	"Inheritors": [
+		[
+			"Kalinar Neria",
+			"Rosaline Vediche",
+			"Cals Moronto",
+		],
+		"Endurance",
+		1,
+		"Machines",
+		{
+			"6": 0.06,
+			"12": 0.07,
+			"15": 0.07
+		}
+	],
+	"Greed Without End": [
+		[
+			"Gargadeth",
+			"Scherrit",
+			"Velcruze",
+			"Vrad",
+			"Tooki King",
+		],
+		"Expertise",
+		2,
+		"Humans",
+		{
+			"10": 0.10,
+			"20": 0.10,
+			"25": 0.10
+		}
 	]
 }

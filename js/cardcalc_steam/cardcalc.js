@@ -136,7 +136,7 @@ document.querySelector("#matchstart").addEventListener('click', async function()
     document.querySelector('#matchingment').textContent = 'Required operation in progress... (up to 30 seconds depending on environment)';
     document.querySelector('#notice').style.display = "none";
 
-    await loadJavascript('/js/cardcalc_steam/cardocr.js?v=11200153');
+    await loadJavascript('/js/cardcalc_steam/cardocr.js?v=12151617');
 });
 
 document.querySelector('#finishyes').addEventListener('click', async function(){
@@ -147,7 +147,7 @@ document.querySelector('#finishyes').addEventListener('click', async function(){
             hasCardDeck[document.querySelector(`#cardname${i}`).value] = [parseInt(document.querySelector(`#cardstar${i}`).value),parseInt(document.querySelector(`#cardqty${i}`).value)]
         }
     }
-    await loadJavascript('/js/cardcalc_steam/cardcalcul.js?v=12041400');
+    await loadJavascript('/js/cardcalc_steam/cardcalcul.js?v=12151617');
     await cardsetcalcstart();
     document.querySelector('#bonusdamageBtns > button:nth-child(1)').click();
 }, false)
@@ -166,14 +166,14 @@ if(getCookie('savecarddeck_steam') != ''){
 
         cObject = JSON.parse(getCVal);
 
-        await loadJavascript('/js/cardcalc_steam/cardeffect.js?v=11200153');
+        await loadJavascript('/js/cardcalc_steam/cardeffect.js?v=12151617');
 
         for (let i = 0; i < Object.keys(cObject).length; i++) {
             cNum = Object.keys(cObject)[i]
             hasCardDeck[Object.keys(cardgrade)[Object.keys(cObject)[i]]] = cObject[cNum];
         }
 
-        await loadJavascript('/js/cardcalc_steam/cardcalcul.js?v=11200153');
+        await loadJavascript('/js/cardcalc_steam/cardcalcul.js?v=12151617');
         cardsetcalcstart();
     })();
 }
