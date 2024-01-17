@@ -1,41 +1,41 @@
-function preventDefaults(e){
+function preventDefaults(e) {
     e.preventDefault()
     e.stopPropagation()
 }
 
-function highlight(e){
+function highlight(e) {
     dropArea.classList.add('highlight')
 }
 
-function unhighlight(e){
+function unhighlight(e) {
     dropArea.classList.remove('active')
 }
 
-function handleDrop(e){
+function handleDrop(e) {
     let dt = e.dataTransfer
     let files = dt.files
     handleFiles(files)
 }
 
-function handleFiles(files){
+function handleFiles(files) {
     files = [...files]
     files.forEach(previewFile)
 }
 
-function previewFile(file){
+function previewFile(file) {
     let reader = new FileReader()
     reader.readAsDataURL(file)
-    reader.onloadend = async function() {
+    reader.onloadend = async function () {
         let img = document.createElement('img');
         img.src = reader.result;
-        img.setAttribute('filename',file.name);
+        img.setAttribute('filename', file.name);
         document.getElementById('gallery').appendChild(img);
     }
 }
 
 let loadedScript = []
-async function loadJavascript(name){
-    if(!loadedScript.includes(name.split('?')[0])){
+async function loadJavascript(name) {
+    if (!loadedScript.includes(name.split('?')[0])) {
         let scriptElement = document.createElement('script');
         scriptElement.src = name;
         document.head.appendChild(scriptElement);
@@ -47,7 +47,7 @@ async function loadJavascript(name){
     }
 }
 
-function isWantSize(element, width, height){
+function isWantSize(element, width, height) {
     let targetScreen = element;
     let screenWidth = targetScreen.naturalWidth;
     let screenHeight = targetScreen.naturalHeight;
@@ -55,7 +55,7 @@ function isWantSize(element, width, height){
     return screenWidth == width && screenHeight == height ? true : false;
 }
 
-function isWide(){
+function isWide() {
     let firstImg = document.querySelectorAll('#gallery > img')[0];
 
     let canvas = document.createElement('canvas');
@@ -63,20 +63,20 @@ function isWide(){
     canvas.height = firstImg.naturalHeight;
     canvas.getContext('2d').drawImage(firstImg, 0, 0, firstImg.naturalWidth, firstImg.naturalHeight);
 
-    let topPixelData = canvas.getContext('2d').getImageData(firstImg.naturalWidth/2, 0,                         1, 10).data;
-    let botPixelData = canvas.getContext('2d').getImageData(firstImg.naturalWidth/2, firstImg.naturalHeight-10, 1, 10).data;
+    let topPixelData = canvas.getContext('2d').getImageData(firstImg.naturalWidth / 2, 0, 1, 10).data;
+    let botPixelData = canvas.getContext('2d').getImageData(firstImg.naturalWidth / 2, firstImg.naturalHeight - 10, 1, 10).data;
 
     let topPixel = 0;
     let botPixel = 0;
     for (let i = 0, n = topPixelData.length; i < n; i += 4) {
-        topPixel += topPixelData[i+0] + topPixelData[i+1] + topPixelData[i+2];
-        botPixel += botPixelData[i+0] + botPixelData[i+1] + botPixelData[i+2];
+        topPixel += topPixelData[i + 0] + topPixelData[i + 1] + topPixelData[i + 2];
+        botPixel += botPixelData[i + 0] + botPixelData[i + 1] + botPixelData[i + 2];
     }
 
     return topPixel + botPixel == 0 ? true : false;
 }
 
-function toastAlert(txt, dura){
+function toastAlert(txt, dura) {
     Toastify({
         text: txt,
         position: "center",
@@ -94,43 +94,43 @@ dropArea.addEventListener('drop', handleDrop, false);
 
 // Prevent default drag behaviors
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    dropArea.addEventListener(eventName, preventDefaults, false)   
+    dropArea.addEventListener(eventName, preventDefaults, false)
     document.body.addEventListener(eventName, preventDefaults, false)
 
-    if(eventName in ['dragenter','dragover']){
+    if (eventName in ['dragenter', 'dragover']) {
         dropArea.addEventListener(eventName, highlight, false)
-    }else{
+    } else {
         dropArea.addEventListener(eventName, unhighlight, false)
     }
 })
 
-document.querySelector("#matchstart").addEventListener('click', async function(){
+document.querySelector("#matchstart").addEventListener('click', async function () {
     let uploadFirstImg = document.querySelectorAll('#gallery > img')[0];
-    if(document.querySelectorAll('#gallery > img').length == 0){
+    if (document.querySelectorAll('#gallery > img').length == 0) {
         toastAlert("Please upload an image to match.", 3000);
         return;
     }
-    if([
-        1051,1076, //FHD
+    if ([
+        1051, 1076, //FHD
         1411, 1426 //QHD
-    ].includes(uploadFirstImg.naturalHeight)){
+    ].includes(uploadFirstImg.naturalHeight)) {
         toastAlert("Please [Bordeless] Or [Full Screen] change the setting to and try again.", 5000)
         return;
     }
-    if(!isWantSize(uploadFirstImg, 1920, 1080)      //FHD
-    && !isWantSize(uploadFirstImg, 2560, 1440)      //QHD
-    && !isWantSize(uploadFirstImg, 2560, 1080)      //WFHD
-    && !isWantSize(uploadFirstImg, 3440, 1440)){    //WQHD
-        toastAlert("Currently, only FHD (1920x1080) and QHD (2560x1440) are supported. I'm sorry.",5000)
+    if (!isWantSize(uploadFirstImg, 1920, 1080)      //FHD
+        && !isWantSize(uploadFirstImg, 2560, 1440)      //QHD
+        && !isWantSize(uploadFirstImg, 2560, 1080)      //WFHD
+        && !isWantSize(uploadFirstImg, 3440, 1440)) {    //WQHD
+        toastAlert("Currently, only FHD (1920x1080) and QHD (2560x1440) are supported. I'm sorry.", 5000)
         return;
     }
-    if(isWide()){
-        toastAlert("[Force 21:9 Aspect Ratio] Image with option set. Please turn off the option and try again.",5000)
+    if (isWide()) {
+        toastAlert("[Force 21:9 Aspect Ratio] Image with option set. Please turn off the option and try again.", 5000)
         return;
     }
 
-    this.style.display="none";
-    document.querySelector('#drop-area').style.display="none";
+    this.style.display = "none";
+    document.querySelector('#drop-area').style.display = "none";
     document.querySelector('#helpbtn').style.display = 'none';
     document.querySelector('#matchstatus').style.display = '';
     document.querySelector('#matchingment').textContent = 'Required operation in progress... (up to 30 seconds depending on environment)';
@@ -139,12 +139,12 @@ document.querySelector("#matchstart").addEventListener('click', async function()
     await loadJavascript('/js/cardcalc_steam/cardocr.js?v=12151617');
 });
 
-document.querySelector('#finishyes').addEventListener('click', async function(){
+document.querySelector('#finishyes').addEventListener('click', async function () {
     //카드 수동 추가
-    if(document.querySelector("#cardpushzone").childElementCount >= 1){
+    if (document.querySelector("#cardpushzone").childElementCount >= 1) {
         cardpushlength = document.querySelector("#cardpushzone").childElementCount;
         for (let i = 0; i < cardpushlength; i++) {
-            hasCardDeck[document.querySelector(`#cardname${i}`).value] = [parseInt(document.querySelector(`#cardstar${i}`).value),parseInt(document.querySelector(`#cardqty${i}`).value)]
+            hasCardDeck[document.querySelector(`#cardname${i}`).value] = [parseInt(document.querySelector(`#cardstar${i}`).value), parseInt(document.querySelector(`#cardqty${i}`).value)]
         }
     }
     await loadJavascript('/js/cardcalc_steam/cardcalcul.js?v=12151617');
@@ -152,17 +152,17 @@ document.querySelector('#finishyes').addEventListener('click', async function(){
     document.querySelector('#bonusdamageBtns > button:nth-child(1)').click();
 }, false)
 
-document.querySelector('#finishno').addEventListener('click', function(){
-    toastAlert('조건에 맞춰 다시 해주시거나 그래도 안되시면 sjssj7777@naver.com로 인식하기로 한 사진을 보내주세요')
+document.querySelector('#finishno').addEventListener('click', function () {
+    toastAlert("Please do it again according to the conditions or if you still can't, please send me a picture that I decided to recognize as sjssj7777@naver.com")
 });
 
 let hasCardDeck = {};
-if(getCookie('savecarddeck_steam') != ''){
-    (async ()=>{
+if (getCookie('savecarddeck_steam') != '') {
+    (async () => {
         getCVal = '{"' + getCookie('savecarddeck_steam') + '}';
-        getCVal = getCVal.replace(/:/gi,'":');
-        getCVal = getCVal.replace(/],/gi,'],"');
-        getCVal = getCVal.replace(/],"}/gi,']}');
+        getCVal = getCVal.replace(/:/gi, '":');
+        getCVal = getCVal.replace(/],/gi, '],"');
+        getCVal = getCVal.replace(/],"}/gi, ']}');
 
         cObject = JSON.parse(getCVal);
 
@@ -178,24 +178,24 @@ if(getCookie('savecarddeck_steam') != ''){
     })();
 }
 
-document.querySelector('#helpbtn').addEventListener('click', function(){
+document.querySelector('#helpbtn').addEventListener('click', function () {
     let helpimage = document.createElement('img');
     helpimage.src = "img/card1.jpg";
-    helpimage.addEventListener('click', function(){window.open("img/card1.jpg");})
+    helpimage.addEventListener('click', function () { window.open("img/card1.jpg"); })
     helpimage.style.cursor = "pointer"
     helpimage.style.width = "50%";
     document.querySelector('#modalimg').appendChild(helpimage);
 
     helpimage = document.createElement('img');
     helpimage.src = "img/card2.jpg";
-    helpimage.addEventListener('click', function(){window.open("img/card2.jpg");})
+    helpimage.addEventListener('click', function () { window.open("img/card2.jpg"); })
     helpimage.style.cursor = "pointer"
     helpimage.style.width = "50%";
     document.querySelector('#modalimg').appendChild(helpimage);
 
     helpimage = document.createElement('img');
     helpimage.src = "img/warning.jpg";
-    helpimage.addEventListener('click', function(){window.open("img/warning.jpg");})
+    helpimage.addEventListener('click', function () { window.open("img/warning.jpg"); })
     helpimage.style.cursor = "pointer"
     helpimage.style.width = "50%";
     document.querySelector('#modalimg2').appendChild(helpimage);

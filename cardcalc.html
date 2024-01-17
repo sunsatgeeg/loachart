@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head class="h-100">
   <title>도감작 계산기 :: LoaChart|로아차트</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="로스트아크 도감작 계산기">
-  <meta name="keywords" content="로아차트,loachart,로차트,로스트,아크,로아,차트,마리샵,비밀,지도,카게,경매,분배금,제작,영지,더보기,도감작,악추피,인추피,야추피,계산기,전설,각인,각인서,베른,파푸,오레하" />
-  <meta property="og:title" content="로아 도감작 계산기 :: LoaChart|로아차트"/>
-  <meta property="og:description" content="로스트아크 도감작 계산기"/>
-  <meta property="og:url" content="https://loachart.com/cardcalc"/>
-  <meta property="og:site_name" content="로아차트"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="https://loachart.com/img/ogimage.png"/>
+  <meta name="keywords"
+    content="로아차트,loachart,로차트,로스트,아크,로아,차트,마리샵,비밀,지도,카게,경매,분배금,제작,영지,더보기,도감작,악추피,인추피,야추피,계산기,전설,각인,각인서,베른,파푸,오레하" />
+  <meta property="og:title" content="로아 도감작 계산기 :: LoaChart|로아차트" />
+  <meta property="og:description" content="로스트아크 도감작 계산기" />
+  <meta property="og:url" content="https://loachart.com/cardcalc" />
+  <meta property="og:site_name" content="로아차트" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://loachart.com/img/ogimage.png" />
   <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png">
@@ -26,28 +28,33 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/img/favicon/manifest.json">
   <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
-  <script>var url='https://api.loachart.com';if(location.hostname==='127.0.0.1'){url='http://127.0.0.1:5000';}</script>
+  <script>var url = 'https://api.loachart.com'; if (location.hostname === '127.0.0.1') { url = 'http://127.0.0.1:5000'; }</script>
   <script>var here = "cardcalc";</script>
   <script src="/js/includeHTML.js?v=09231422"></script>
-  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false" data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
+  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false"
+    data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
 
   <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="css/custom.css?v=12041400">
-  
+
   <style>
     @media (max-width: 992px) {
       .w-50 {
-        width: 100%!important;
+        width: 100% !important;
       }
     }
+
     body {
       font-family: sans-serif;
     }
+
     a {
       color: #369;
     }
+
     .note {
       width: 500px;
       margin: 50px auto;
@@ -55,6 +62,7 @@
       color: #333;
       text-align: justify;
     }
+
     #drop-area {
       border: 2px dashed #ccc;
       border-radius: 20px;
@@ -62,47 +70,58 @@
       margin: 50px auto;
       padding: 20px;
     }
+
     #drop-area.highlight {
       border-color: purple;
     }
+
     p {
       margin-top: 0;
     }
+
     .my-form {
       margin-bottom: 10px;
     }
+
     #gallery {
       margin-top: 10px;
     }
+
     #gallery img {
       width: 48%;
       margin-bottom: 10px;
       margin-right: 10px;
       vertical-align: middle;
     }
+
     #fileElem {
       display: none;
     }
-    
-    #bookstbody tr:hover > *, #allBonusDmgTable tr:hover > *{
-      color:var(--hover-color-var);
+
+    #bookstbody tr:hover>*,
+    #allBonusDmgTable tr:hover>* {
+      color: var(--hover-color-var);
     }
 
     .autocomplete {
       /*the container must be positioned relative:*/
       position: relative;
     }
+
     .autocomplete input {
       padding: 10px;
     }
+
     .autocomplete input[type=text] {
       background-color: white;
       width: 100%;
     }
+
     .autocomplete input[type=submit] {
       background-color: rgb(105, 105, 105);
       color: #fff;
     }
+
     .autocomplete-items {
       position: absolute;
       border: 1px solid #d4d4d4;
@@ -114,6 +133,7 @@
       left: 0;
       right: 0;
     }
+
     .autocomplete-items div {
       padding: 10px;
       cursor: pointer;
@@ -121,15 +141,18 @@
       background-color: #fff;
       border-bottom: 1px solid #d4d4d4;
     }
+
     .autocomplete-items div:hover {
       /*when hovering an item:*/
       background-color: #e9e9e9;
     }
+
     .autocomplete-active {
       /*when navigating through the items using the arrow keys:*/
-      background-color: #e9e9e9 !important; 
+      background-color: #e9e9e9 !important;
       color: #ffffff;
     }
+
     .table-dark {
       --bs-table-color: #fff;
       --bs-table-bg: #222324;
@@ -148,21 +171,25 @@
 
 <body>
   <div id="root">
-    <header><script>includeHTML('header');</script></header>
+    <header>
+      <script>includeHTML('header');</script>
+    </header>
     <div id="ad-container-1" class="mt-3" style="min-height: 250px;"></div>
     <div id="rich-media-placement" data-instream="true"></div>
-    
+
     <main class="container py-3 mt-3 box-dark rounded-4 text-center">
-      <div>     
+      <div>
         <div id="matchzone">
           <div>
-            <button type="button" class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#help" id="helpbtn">설명서</button>
+            <button type="button" class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#help"
+              id="helpbtn">설명서</button>
           </div>
           <div id="notice" class="mt-2 text-white">
             <small>
               처음 사용하거나 잘 안된다? <font color="red">설명서 필독</font> (23-02-17 수정)
               <div>
-                <br><font color="orange">베스칼 카드 추가 대응</font>
+                <br>
+                <font color="orange">쿠르잔 카드 추가 대응</font>
               </div>
               <br>
               <div>
@@ -183,13 +210,14 @@
           <button type="button" class="btn btn-outline-light btn-lg" id="matchstart">인식 시작</button>
           <p class="text-white" id="searchingcardlist"></p>
 
-          <br><span class="text-white" id="matchstatus" style="display: none;">상태 : </span><span class="text-white" id="matchwhich"></span><span class="text-white" id="matchingment"></span>
+          <br><span class="text-white" id="matchstatus" style="display: none;">상태 : </span><span class="text-white"
+            id="matchwhich"></span><span class="text-white" id="matchingment"></span>
           <br><span class="text-white" id="matchtime"></span></span>
 
           <div id="matchfinish" style="display: none;">
             <span class="text-white">인게임 카드 보관함에있는 총 카드 개수와 똑같습니까?</span>
             <br>
-            
+
             <div class="w-50 mx-auto" id="cardpushzone">
 
             </div>
@@ -197,7 +225,8 @@
             <br>
             <button type="button" class="btn btn-outline-success btn-lg" id="finishyes">네</button>
             <button type="button" class="btn btn-outline-light btn-lg" id="cardpush">카드추가</button>
-            <button type="button" class="btn btn-outline-danger btn-lg" style="display: none;" id="finishno">아니요</button>
+            <button type="button" class="btn btn-outline-danger btn-lg" style="display: none;"
+              id="finishno">아니요</button>
           </div>
         </div>
 
@@ -303,25 +332,57 @@
                 </table>
                 <div class="autocomplete input-group">
                   <input id="manualEditNameInput" class="form-control w-50" type="text" placeholder="수동 수정">
-                  <select id="manualEditAwakeInput" class="form-select"><option value="5">5각</option><option value="4">4각</option><option value="3">3각</option><option value="2">2각</option><option value="1">1각</option><option value="0">0각</option><option value="-1" selected>없음</option></select>
-                  <select id="manualEditQtyInput" class="form-select"><option value="15">15장</option><option value="14">14장</option><option value="13">13장</option><option value="12">12장</option><option value="11">11장</option><option value="10">10장</option><option value="9">9장</option><option value="8">8장</option><option value="7">7장</option><option value="6">6장</option><option value="5">5장</option><option value="4">4장</option><option value="3">3장</option><option value="2">2장</option><option value="1">1장</option><option value="0" selected>0장</option></select>
+                  <select id="manualEditAwakeInput" class="form-select">
+                    <option value="5">5각</option>
+                    <option value="4">4각</option>
+                    <option value="3">3각</option>
+                    <option value="2">2각</option>
+                    <option value="1">1각</option>
+                    <option value="0">0각</option>
+                    <option value="-1" selected>없음</option>
+                  </select>
+                  <select id="manualEditQtyInput" class="form-select">
+                    <option value="15">15장</option>
+                    <option value="14">14장</option>
+                    <option value="13">13장</option>
+                    <option value="12">12장</option>
+                    <option value="11">11장</option>
+                    <option value="10">10장</option>
+                    <option value="9">9장</option>
+                    <option value="8">8장</option>
+                    <option value="7">7장</option>
+                    <option value="6">6장</option>
+                    <option value="5">5장</option>
+                    <option value="4">4장</option>
+                    <option value="3">3장</option>
+                    <option value="2">2장</option>
+                    <option value="1">1장</option>
+                    <option value="0" selected>0장</option>
+                  </select>
                 </div>
                 <br>
                 <small class="text-white">
-                  <div>※ 과거에 카드 삭제한번이라도 했으면 수집 효과가<br>인게임 효과와 차이가 있을 수 있음<br>(카드 삭제를 해도 도감에서는<br>수집 유무로 효과가 올라가기 때문)</div>
-                  <br><div class="mt-2">※ 카드 인식 개수가 안맞으면 사용법대로<br>밝기 50%, NVIDIA 필터를 꺼주시기 바랍니다.</div>
-                  <br><div class="mt-2">※ 각 도감 수치에 커서를 올리면 다음 각성단계까지<br>강화 방법을 표시합니다.</div>
-                  <br><div class="mt-2">※ 도감 각성 후 왼쪽 클릭시 계산기에 반영합니다.</div>
-                  <br><div class="mt-2">※ <font color="orange">주황색</font>은 바로 각성 가능한 도감입니다.</div>
+                  <div>※ 과거에 카드 삭제한번이라도 했으면 수집 효과가<br>인게임 효과와 차이가 있을 수 있음<br>(카드 삭제를 해도 도감에서는<br>수집 유무로 효과가 올라가기 때문)
+                  </div>
+                  <br>
+                  <div class="mt-2">※ 카드 인식 개수가 안맞으면 사용법대로<br>밝기 50%, NVIDIA 필터를 꺼주시기 바랍니다.</div>
+                  <br>
+                  <div class="mt-2">※ 각 도감 수치에 커서를 올리면 다음 각성단계까지<br>강화 방법을 표시합니다.</div>
+                  <br>
+                  <div class="mt-2">※ 도감 각성 후 왼쪽 클릭시 계산기에 반영합니다.</div>
+                  <br>
+                  <div class="mt-2">※ <font color="orange">주황색</font>은 바로 각성 가능한 도감입니다.</div>
                 </small>
               </div>
-              
+
 
               <div class="col-12 col-md-7 px-0 mb-5">
                 <div class="mb-3 mx-auto" style="max-width: 410px; max-height: 230px;">
                   <div class="vm-placement" id="vm-av" data-format="isvideo"></div>
                 </div>
-                <button type="button" class="btn btn-outline-light btn-lg mb-1" id="allBonusDmg"><pre class="mb-0">        <span>전체</span>        </pre></button>
+                <button type="button" class="btn btn-outline-light btn-lg mb-1" id="allBonusDmg">
+                  <pre class="mb-0">        <span>전체</span>        </pre>
+                </button>
                 <div id="bonusdamageBtns">
                   <button type="button" class="btn btn-outline-light btn-lg mb-1">악마</button>
                   <button type="button" class="btn btn-outline-light btn-lg mb-1">야수</button>
@@ -335,16 +396,19 @@
                   <button type="button" class="btn btn-outline-light btn-lg mb-1">기계</button>
                   <button type="button" class="btn btn-outline-light btn-lg mb-1">곤충</button>
                 </div>
-                
+
                 <div class="text-white" id="allBonusDmgDiv" style="display: none;">
-                  <br><p>※ 카드 풀각 했을 때 기준입니다.</p>
+                  <br>
+                  <p>※ 카드 풀각 했을 때 기준입니다.</p>
                   <p>※ 밑에 목록에 없는 카드는 현재 기준 풀각을 해도 오르는 추피가 없어서입니다.</p>
                   <table class="table table-dark float-end table-hover col align-middle">
                     <thead>
                       <tr>
                         <th scope="col" class="align-middle">카드 이름</th>
-                        <th scope="col" class="align-middle sortable ascdesc" onclick="multiSort(this,'exp');" style="cursor: pointer;">풀각 필요 카경</th>
-                        <th scope="col" class="align-middle sortable ascdesc" onclick="multiSort(this,'bonus');" style="cursor: pointer;">총 증가</th>
+                        <th scope="col" class="align-middle sortable ascdesc" onclick="multiSort(this,'exp');"
+                          style="cursor: pointer;">풀각 필요 카경</th>
+                        <th scope="col" class="align-middle sortable ascdesc" onclick="multiSort(this,'bonus');"
+                          style="cursor: pointer;">총 증가</th>
                         <th scope="col" class="align-middle">/</th>
                       </tr>
                     </thead>
@@ -357,24 +421,30 @@
                   <div class="row mx-0 my-3 text-white">
                     <div class="col-3 px-0">전체 각성률</div>
                     <div class="progress col-9 my-auto px-0 position-relative">
-                      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
-                      <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;" id="all-exp-progress-bar">0 / 0 [0%]</div>
+                      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                      <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;"
+                        id="all-exp-progress-bar">0 / 0 [0%]</div>
                     </div>
                     <div class="col-3 px-0" id="this-progress">추피 각성률</div>
                     <div class="progress col-9 my-auto px-0 position-relative">
-                      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
-                      <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;" id="this-exp-progress-bar">0 / 0 [0%]</div>
+                      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                      <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;"
+                        id="this-exp-progress-bar">0 / 0 [0%]</div>
                     </div>
                   </div>
 
                   <div class="accordion mb-3" id="recCardAccordion">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="recCardHeading">
-                        <button class="accordion-button py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#recCardcollapse" aria-expanded="false" aria-controls="recCardcollapse">
+                        <button class="accordion-button py-2 collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#recCardcollapse" aria-expanded="false" aria-controls="recCardcollapse">
                           도카팩 추천 순위
                         </button>
                       </h2>
-                      <div id="recCardcollapse" class="accordion-collapse collapse" aria-labelledby="headingitem" data-bs-parent="#recCardAccordion">
+                      <div id="recCardcollapse" class="accordion-collapse collapse" aria-labelledby="headingitem"
+                        data-bs-parent="#recCardAccordion">
                         <div class="accordion-body p-0">
                           <table class="table table-dark table-hover mb-0">
                             <thead>
@@ -418,11 +488,14 @@
     <div id="tempdiv"></div>
     -->
 
-    <div id="ad-container-2" class="mt-3" style="min-height: 250px;"></div>   
-    <footer><script>includeHTML('footer');</script></footer>
+    <div id="ad-container-2" class="mt-3" style="min-height: 250px;"></div>
+    <footer>
+      <script>includeHTML('footer');</script>
+    </footer>
   </div>
-  
-  <div class="modal fade bd-example-modal-lg text-center" id="help" tabindex="-1" aria-labelledby="helpLabel" aria-hidden="true">
+
+  <div class="modal fade bd-example-modal-lg text-center" id="help" tabindex="-1" aria-labelledby="helpLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -431,7 +504,10 @@
         </div>
         <div class="modal-body text-black">
           <div style="position:relative;height:0;padding-bottom:56.25%;">
-            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/54T_TeLBnoo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;"
+              src="https://www.youtube.com/embed/54T_TeLBnoo" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
           </div>
           <p>필수 설정과 방법을 지키면 1분대에 인식이 끝납니다.</p>
           <h3>※ <font COLOR='#0000FF'>인게임 필수 설정</font> ※</h3>
@@ -439,19 +515,24 @@
           <p>2. [21:9 강제 설정] 옵션 끄기</p>
           <p>3. 정렬 : 이름(오름차순) [가나다···.]</p>
           <p>4. 밝기 : 50%(권장)<br>너무 밝거나 어두운 경우 카드 인식이 안되거나 틀릴 수 있습니다.<br>또한 NVIDIA 필터의 영향도 받으니 끄고 진행해 주시기 바랍니다.</p>
-          
-          <br><h3>※ <font COLOR='orange'>방법</font> ※</h3>
+
+          <br>
+          <h3>※ <font COLOR='orange'>방법</font> ※</h3>
           <p>1. 인게임 내 스크린샷 기능(<kbd>Insert</kbd>키 위에있는 <kbd>PrintScreenCapture</kbd>키)으로 찍은 사진
-            <br>일반적인 스크린샷 위치 : C:\Program Files (x86)\Smilegate\Games\LOSTARK\EFGame\Screenshots</p>
+            <br>일반적인 스크린샷 위치 : C:\Program Files (x86)\Smilegate\Games\LOSTARK\EFGame\Screenshots
+          </p>
           <p>2. 각 사진마다 중복없이(오인식 방지)
-            <br>예) 첫번째 사진에서 마지막 카드 '반다' 까지 찍혔으면<br>그 바로 밑에줄인 '베르투스'부터 시작해서 끝까지 찍기 반복</p>
+            <br>예) 첫번째 사진에서 마지막 카드 '반다' 까지 찍혔으면<br>그 바로 밑에줄인 '베르투스'부터 시작해서 끝까지 찍기 반복
+          </p>
           <p id="modalimg"></p>
 
-          <br><h3>※ <font COLOR='#00FF00'>사용방법</font> ※</h3>
+          <br>
+          <h3>※ <font COLOR='#00FF00'>사용방법</font> ※</h3>
           <p>1. 카드 보관함을 찍은 사진들을 선택</p>
           <p>2. '인식 시작' 클릭</p>
 
-          <br><h3>※ <font COLOR='#FF0000'>주의사항</font> ※</h3>
+          <br>
+          <h3>※ <font COLOR='#FF0000'>주의사항</font> ※</h3>
           <p>1. 노란 영역안에 아무것도 없어야 합니다.(강화 전광판X, 친구 접속 안내문구X)</p>
           <p id="modalimg2"></p>
           <p>이미지를 클릭하면 크게 볼 수 있습니다.</p>
@@ -464,7 +545,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- tippyJS -->
   <script src="https://unpkg.com/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
   <script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
@@ -473,18 +554,20 @@
   <!-- toastify -->
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
 
   <!-- custom -->
   <script src="/js/custom.js?v=12041400"></script>
-  <script src="/js/cardcalc/cardcalc.js?v=12041400"></script>
+  <script src="/js/cardcalc/cardcalc.js?v=01171705"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD44D79GLY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-XD44D79GLY');
@@ -493,23 +576,25 @@
   <!-- Naver Analytics -->
   <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
   <script type="text/javascript">
-    if(!wcs_add) var wcs_add = {};
+    if (!wcs_add) var wcs_add = {};
     wcs_add["wa"] = "11c6a9ddab2d680";
-    if(window.wcs) {
+    if (window.wcs) {
       wcs_do();
     }
   </script>
 
   <!-- Mircrosoft Clarity -->
   <script async type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "bohv5f4wfu");
   </script>
 
-  <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css?display=swap" type="text/css">
+  <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css?display=swap"
+    type="text/css">
   </div>
 </body>
+
 </html>
