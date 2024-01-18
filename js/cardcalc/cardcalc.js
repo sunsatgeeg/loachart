@@ -137,7 +137,7 @@ document.querySelector("#matchstart").addEventListener('click', async function (
     document.querySelector('#matchingment').textContent = '필요 작업 진행중...(환경에 따라 최대 30초 소요)';
     document.querySelector('#notice').style.display = "none";
 
-    await loadJavascript('/js/cardcalc/cardocr.js?v=01171705');
+    await loadJavascript('/js/cardcalc/cardocr.js?v=01182203');
 });
 
 document.querySelector('#finishyes').addEventListener('click', async function () {
@@ -148,7 +148,7 @@ document.querySelector('#finishyes').addEventListener('click', async function ()
             hasCardDeck[document.querySelector(`#cardname${i}`).value] = [parseInt(document.querySelector(`#cardstar${i}`).value), parseInt(document.querySelector(`#cardqty${i}`).value)]
         }
     }
-    await loadJavascript('/js/cardcalc/cardcalcul.js?v=01171705');
+    await loadJavascript('/js/cardcalc/cardcalcul.js?v=01182203');
     await cardsetcalcstart();
     document.querySelector('#bonusdamageBtns > button:nth-child(1)').click();
 }, false)
@@ -167,14 +167,14 @@ if (getCookie('savecarddeck') != '') {
 
         cObject = JSON.parse(getCVal);
 
-        await loadJavascript('/js/cardcalc/cardeffect.js?v=01171705');
+        await loadJavascript('/js/cardcalc/cardeffect.js?v=01182203');
 
         for (let i = 0; i < Object.keys(cObject).length; i++) {
             cNum = Object.keys(cObject)[i]
             hasCardDeck[Object.keys(cardgrade)[Object.keys(cObject)[i]]] = cObject[cNum];
         }
 
-        await loadJavascript('/js/cardcalc/cardcalcul.js?v=01171705');
+        await loadJavascript('/js/cardcalc/cardcalcul.js?v=01182203');
         cardsetcalcstart();
     })();
 }
