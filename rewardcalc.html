@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head class="h-100">
   <title>더보기 계산기 :: LoaChart|로아차트</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="로스트아크 실시간 더보기 이득 계산기">
-  <meta name="keywords" content="로아차트,loachart,로차트,로스트,아크,로아,차트,마리샵,비밀,지도,카게,경매,분배금,제작,영지,더보기,도감작,악추피,인추피,야추피,계산기,전설,각인,각인서,베른,파푸,오레하,쌀산기"/>
-  <meta property="og:title" content="로아 더보기 계산기 :: LoaChart|로아차트"/>
-  <meta property="og:description" content="로스트아크 실시간 더보기 이득 계산기"/>
-  <meta property="og:url" content="https://loachart.com/rewardcalc"/>
-  <meta property="og:site_name" content="로아차트"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="https://loachart.com/img/ogimage.png"/>
+  <meta name="keywords"
+    content="로아차트,loachart,로차트,로스트,아크,로아,차트,마리샵,비밀,지도,카게,경매,분배금,제작,영지,더보기,도감작,악추피,인추피,야추피,계산기,전설,각인,각인서,베른,파푸,오레하,쌀산기" />
+  <meta property="og:title" content="로아 더보기 계산기 :: LoaChart|로아차트" />
+  <meta property="og:description" content="로스트아크 실시간 더보기 이득 계산기" />
+  <meta property="og:url" content="https://loachart.com/rewardcalc" />
+  <meta property="og:site_name" content="로아차트" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://loachart.com/img/ogimage.png" />
   <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png">
@@ -20,59 +22,76 @@
   <link rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-icon-144x144.png">
   <link rel="apple-touch-icon" sizes="152x152" href="/img/favicon/apple-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="/img/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon/android-icon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/img/favicon/manifest.json">
   <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
-  <script>var url='https://api.loachart.com';if(location.hostname==='127.0.0.1'){url='http://127.0.0.1:5000';}</script>
+  <script>var url = 'https://api.loachart.com'; if (location.hostname === '127.0.0.1') { url = 'http://127.0.0.1:5000'; }</script>
   <script>var here = "rewardcalc";</script>
   <script src="/js/includeHTML.js?v=09231422"></script>
-  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false" data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
+  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false"
+    data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="css/custom.css?v=12041400">
 
   <style>
     @media (max-width: 992px) {
       .w-50 {
-        width: 100%!important;
+        width: 100% !important;
       }
     }
-    .itemTitle{
+
+    .itemTitle {
       display: flex;
       flex-wrap: wrap;
       position: relative;
       height: 68px;
       padding-left: 83px;
     }
-    .itemTitleMini{
+
+    .itemTitleMini {
       display: flex;
       flex-wrap: wrap;
       position: relative;
     }
 
-    .slotData[data-grade="0"], .slotDataMini[data-grade="0"]{
-      background: linear-gradient(135deg,#232323,#575757);
+    .slotData[data-grade="0"],
+    .slotDataMini[data-grade="0"] {
+      background: linear-gradient(135deg, #232323, #575757);
     }
-    .slotData[data-grade="2"], .slotDataMini[data-grade="2"]{
-      background: linear-gradient(135deg,#111f2c,#113d5d);
+
+    .slotData[data-grade="2"],
+    .slotDataMini[data-grade="2"] {
+      background: linear-gradient(135deg, #111f2c, #113d5d);
     }
-    .slotData[data-grade="3"], .slotDataMini[data-grade="3"]{
-      background: linear-gradient(135deg,#261331,#480d5d);
+
+    .slotData[data-grade="3"],
+    .slotDataMini[data-grade="3"] {
+      background: linear-gradient(135deg, #261331, #480d5d);
     }
-    .slotData[data-grade="4"], .slotDataMini[data-grade="4"]{
-      background: linear-gradient(135deg,#362003,#9e5f04);
+
+    .slotData[data-grade="4"],
+    .slotDataMini[data-grade="4"] {
+      background: linear-gradient(135deg, #362003, #9e5f04);
     }
-    .slotData[data-grade="5"], .slotDataMini[data-grade="5"]{
-      background: linear-gradient(135deg,#232323,#575757);background: linear-gradient(135deg,#341a09,#a24006);
+
+    .slotData[data-grade="5"],
+    .slotDataMini[data-grade="5"] {
+      background: linear-gradient(135deg, #232323, #575757);
+      background: linear-gradient(135deg, #341a09, #a24006);
     }
-    .slotData[data-grade="6"], .slotDataMini[data-grade="6"]{
-      background: linear-gradient(135deg,#3d3325,#dcc999);
+
+    .slotData[data-grade="6"],
+    .slotDataMini[data-grade="6"] {
+      background: linear-gradient(135deg, #3d3325, #dcc999);
     }
-    .slotData{
+
+    .slotData {
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       word-break: keep-all;
@@ -89,7 +108,8 @@
       border: 1px solid #000;
       box-sizing: border-box;
     }
-    .slotDataMini{
+
+    .slotDataMini {
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       word-break: keep-all;
@@ -108,31 +128,35 @@
 
 <body>
   <div id="root">
-    <header><script>includeHTML('header');</script></header>
+    <header>
+      <script>includeHTML('header');</script>
+    </header>
     <div id="ad-container-1" class="mt-3" style="min-height: 250px;"></div>
     <div id="rich-media-placement"></div>
 
     <main class="container py-3 mt-3 box-dark rounded-4 text-center">
-      <div>     
+      <div>
         <div class="clearfix text-white">
-          <h6 class="float-start"><span>더보기 보상 기준 : 2023-09-13 카멘 레이드 출시</span></h6>
+          <h6 class="float-start"><span>더보기 보상 기준 : 2024-01-31 에키드나 레이드 출시</span></h6>
           <h6 class="float-end"><span>아이템 값 기준 : </span><span id="date"></span></h6>
         </div>
         <div class="accordion mb-3" id="itemaccordion" data-bs-theme="dark">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseitem" aria-expanded="true" aria-controls="collapseitem">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseitem"
+                aria-expanded="true" aria-controls="collapseitem">
                 더보기 아이템 목록
               </button>
             </h2>
-            <div id="collapseitem" class="accordion-collapse collapse show" aria-labelledby="headingitem" data-bs-parent="#itemaccordion">
+            <div id="collapseitem" class="accordion-collapse collapse show" aria-labelledby="headingitem"
+              data-bs-parent="#itemaccordion">
               <div class="accordion-body bg-dark">
                 <div class="row">
                   <div class="col-md my-3">
                     모든 아이템들은 귀속 기준입니다.<br>계산기에 제외하고 싶은 아이템을 선택해 주세요.
                   </div>
                   <div class="col-auto my-auto mx-auto">
-                    재련 재료 : 
+                    재련 재료 :
                     <select class="form-select bg-dark d-inline w-auto" aria-label="." id="material">
                       <option value="1" selected>(1415+)위명돌, 결정</option>
                       <option value="2">(1490+)경명돌, 강석</option>
@@ -156,8 +180,10 @@
                       <span class="slotData" data-grade="5"><img
                           src="https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_6_89.png" alt=""></span>
                       <div class="form-check mt-auto mb-auto">
-                        <input class="form-check-input" type="checkbox" value="혼돈의 돌" id="flexCheckDefaultstone" checked>
-                        <label class="form-check-label d-none d-md-inline" for="flexCheckDefaultstone">레이드 재료 1개당<br>100골 계산(혼돈의돌)</label>
+                        <input class="form-check-input" type="checkbox" value="혼돈의 돌" id="flexCheckDefaultstone"
+                          checked>
+                        <label class="form-check-label d-none d-md-inline" for="flexCheckDefaultstone">레이드 재료
+                          1개당<br>100골 계산(혼돈의돌)</label>
                       </div>
                     </div>
                   </div>
@@ -263,8 +289,8 @@
                   </div>
                 </div>
               </div>
-              </div>
-              </div>
+            </div>
+          </div>
         </div>
         <div class="accordion" id="bossaccordion">
 
@@ -273,21 +299,25 @@
     </main>
 
     <div id="ad-container-2" class="mt-3" style="min-height: 250px;"></div>
-    <footer><script>includeHTML('footer');</script></footer>
+    <footer>
+      <script>includeHTML('footer');</script>
+    </footer>
   </div>
-  
+
   <!-- bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
   <!-- custom -->
   <script src="/js/custom.js?v=12041400"></script>
-  <script src="/js/rewardcalc.js?v=12041400"></script>
-  
+  <script src="/js/rewardcalc.js?v=02040255"></script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD44D79GLY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-XD44D79GLY');
@@ -296,23 +326,25 @@
   <!-- Naver Analytics -->
   <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
   <script type="text/javascript">
-    if(!wcs_add) var wcs_add = {};
+    if (!wcs_add) var wcs_add = {};
     wcs_add["wa"] = "11c6a9ddab2d680";
-    if(window.wcs) {
+    if (window.wcs) {
       wcs_do();
     }
   </script>
 
   <!-- Mircrosoft Clarity -->
   <script async type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "bohv5f4wfu");
   </script>
 
-  <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css?display=swap" type="text/css">
+  <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css?display=swap"
+    type="text/css">
   </div>
 </body>
+
 </html>
