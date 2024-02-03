@@ -1,4 +1,4 @@
-const allCardTotalExp = 54388200;
+const allCardTotalExp = 55069200;
 const docapack = {
     '삭막한 초원의 카드 팩': ['마리 파우렌츠', '바스티안', '사샤', '예지의 아크 아가톤', '진화의 군주 카인', '카인', '타나토스', '도굴단장 우고', '레온하트 네리아', '루드릭', '바루투', '불칸', '소금거인', '슈테른 네리아', '시그나투스', '아드모스', '아이히만 박사', '안톤', '에스', '역병 인도자', '제이', '천둥', '칼라도세', '하르잘', '다단', '모리나', '세비엘', '시이라', '용병 세이라', '자이언트 웜', '지휘관 솔', '한이 서린 여인', '기자 마티아스'],
     '용감한 기사의 카드 팩': ['검은이빨', '마법사 로나운', '슈헤리트', '신뢰의 아크 아스타', '알레그로', '자간', '천둥날개', '갈기파도 항구 네리아', '녹스', '로블롬', '루테란 성 네리아', '리게아스', '릭투스', '미한', '사교도 대제사장', '세리아', '윌리윌리', '자히아', '칼스 모론토', '패자의 검', '하셀링크', '하울로크', '히바이크', '가비슈', '모르페오', '몬테르크', '베나르', '베르하트', '비슈츠', '아자란', '집행관 솔라스', '카도건', '푸름 전사 브리뉴', '리웰라', '멜피셔스', '비비안', '크란테루스'],
@@ -410,7 +410,7 @@ bonusDamageBtns.forEach(function (e) {
 });
 
 document.querySelector('#reconBtn').addEventListener('click', function () {
-    delCookie('savecarddeck');
+    localStorage.removeItem("CardStorage");
     location.reload();
 });
 
@@ -423,7 +423,7 @@ async function cardsetcalcstart() {
     document.querySelector('#matchstatus').style.display = '';
     document.querySelector('#matchingment').textContent = '필요 작업 진행중...(환경에 따라 최대 30초 소요)';
 
-    await loadJavascript('/js/cardcalc/cardeffect.js?v=01182203');
+    await loadJavascript('/js/cardcalc/cardeffect.js?v=02040346');
     autocomplete(document.getElementById("manualEditNameInput"), Object.keys(cardgrade));
 
     document.querySelector('#matchingment').textContent = '도감작 계산 시작';
@@ -545,11 +545,7 @@ async function cardsetcalcstart() {
     document.querySelector('#matchzone').style.display = "none";
     document.querySelector('#mycard').style.display = "";
 
-    let saveCVal = "";
-    for (let i = 0; i < Object.keys(hasCardDeck).length; i++) {
-        saveCVal += `${Object.keys(cardgrade).indexOf(Object.keys(hasCardDeck)[i])}:[${Object.values(hasCardDeck)[i]}],`;
-    }
-    setCookie('savecarddeck', saveCVal, 365)
+    localStorage.setItem("CardStorage", JSON.stringify(hasCardDeck));
 };
 
 let tippyToggle = null;

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head class="h-100">
   <title>Lostark Card Books Calculator :: Loachart</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Lostark Card Books Calculator">
-  <meta name="keywords" content="loachart,lost,ark,loa,card,book,calculator,bonuses,helper,calc,damage,humanoids,insects,metallic,machines,demons,beasts,undead,plants,elementals,awake,collect,steam,recommand"/>
-  <meta property="og:title" content="Lostark Card Books Calculator :: Loachart"/>
-  <meta property="og:description" content="Lostark Card Books Calculator"/>
-  <meta property="og:url" content="https://loachart.com/cardcalc_steam"/>
-  <meta property="og:site_name" content="Loachart"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="https://loachart.com/img/ogimage.png"/>
+  <meta name="keywords"
+    content="loachart,lost,ark,loa,card,book,calculator,bonuses,helper,calc,damage,humanoids,insects,metallic,machines,demons,beasts,undead,plants,elementals,awake,collect,steam,recommand" />
+  <meta property="og:title" content="Lostark Card Books Calculator :: Loachart" />
+  <meta property="og:description" content="Lostark Card Books Calculator" />
+  <meta property="og:url" content="https://loachart.com/cardcalc_steam" />
+  <meta property="og:site_name" content="Loachart" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://loachart.com/img/ogimage.png" />
   <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png">
@@ -26,28 +28,33 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/img/favicon/manifest.json">
   <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
-  <script>var url='https://api.loachart.com';if(location.hostname==='127.0.0.1'){url='http://127.0.0.1:5000';}</script>
+  <script>var url = 'https://api.loachart.com'; if (location.hostname === '127.0.0.1') { url = 'http://127.0.0.1:5000'; }</script>
   <script>var here = "cardcalc_steam";</script>
   <script src="/js/includeHTML.js?v=09231422"></script>
-  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false" data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
+  <script src="https://hb.vntsm.com/v3/live/ad-manager.min.js" type="text/javascript" data-cfasync="false"
+    data-site-id="654b46ff96a6256ebdf129f0" data-mode="scan" async></script>
 
   <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="css/custom.css?v=12041400">
-  
+
   <style>
     @media (max-width: 992px) {
       .w-50 {
-        width: 100%!important;
+        width: 100% !important;
       }
     }
+
     body {
       font-family: sans-serif;
     }
+
     a {
       color: #369;
     }
+
     .note {
       width: 500px;
       margin: 50px auto;
@@ -55,6 +62,7 @@
       color: #333;
       text-align: justify;
     }
+
     #drop-area {
       border: 2px dashed #ccc;
       border-radius: 20px;
@@ -62,47 +70,58 @@
       margin: 50px auto;
       padding: 20px;
     }
+
     #drop-area.highlight {
       border-color: purple;
     }
+
     p {
       margin-top: 0;
     }
+
     .my-form {
       margin-bottom: 10px;
     }
+
     #gallery {
       margin-top: 10px;
     }
+
     #gallery img {
       width: 48%;
       margin-bottom: 10px;
       margin-right: 10px;
       vertical-align: middle;
     }
+
     #fileElem {
       display: none;
     }
-    
-    #bookstbody tr:hover > *, #allBonusDmgTable tr:hover > *{
-      color:var(--hover-color-var);
+
+    #bookstbody tr:hover>*,
+    #allBonusDmgTable tr:hover>* {
+      color: var(--hover-color-var);
     }
 
     .autocomplete {
       /*the container must be positioned relative:*/
       position: relative;
     }
+
     .autocomplete input {
       padding: 10px;
     }
+
     .autocomplete input[type=text] {
       background-color: white;
       width: 100%;
     }
+
     .autocomplete input[type=submit] {
       background-color: rgb(105, 105, 105);
       color: #fff;
     }
+
     .autocomplete-items {
       position: absolute;
       border: 1px solid #d4d4d4;
@@ -114,6 +133,7 @@
       left: 0;
       right: 0;
     }
+
     .autocomplete-items div {
       padding: 10px;
       cursor: pointer;
@@ -121,15 +141,18 @@
       background-color: #fff;
       border-bottom: 1px solid #d4d4d4;
     }
+
     .autocomplete-items div:hover {
       /*when hovering an item:*/
       background-color: #e9e9e9;
     }
+
     .autocomplete-active {
       /*when navigating through the items using the arrow keys:*/
-      background-color: #e9e9e9 !important; 
+      background-color: #e9e9e9 !important;
       color: #ffffff;
     }
+
     .table-dark {
       --bs-table-color: #fff;
       --bs-table-bg: #222324;
@@ -148,20 +171,24 @@
 
 <body>
   <div id="root">
-    <header><script>includeHTML('header');</script></header>
+    <header>
+      <script>includeHTML('header');</script>
+    </header>
     <div id="ad-container-1" class="mt-3" style="min-height: 250px;"></div>
     <div id="rich-media-placement" data-instream="true"></div>
 
     <main class="container py-3 mt-3 box-dark rounded-4 text-center">
-      <div>     
+      <div>
         <div id="matchzone">
           <div>
-            <button type="button" class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#help" id="helpbtn">Guide</button>
+            <button type="button" class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#help"
+              id="helpbtn">Guide</button>
           </div>
           <div id="notice" class="mt-2 text-white">
             <small>
               <div>
-                <br><font color="orange">Voldis Cards Update</font>
+                <br>
+                <font color="orange">Voldis Cards Update</font>
               </div>
               <br>
               <div>
@@ -182,13 +209,14 @@
           <button type="button" class="btn btn-outline-light btn-lg" id="matchstart">Match Start</button>
           <p class="text-white" id="searchingcardlist"></p>
 
-          <br><span class="text-white" id="matchstatus" style="display: none;">Status : </span><span class="text-white" id="matchwhich"></span><span class="text-white" id="matchingment"></span>
+          <br><span class="text-white" id="matchstatus" style="display: none;">Status : </span><span class="text-white"
+            id="matchwhich"></span><span class="text-white" id="matchingment"></span>
           <br><span class="text-white" id="matchtime"></span></span>
 
           <div id="matchfinish" style="display: none;">
             <span class="text-white">Is the number of cards the same as the in-game card locker?</span>
             <br>
-            
+
             <div class="w-50 mx-auto" id="cardpushzone">
 
             </div>
@@ -302,41 +330,92 @@
                 </table>
                 <div class="autocomplete input-group">
                   <input id="manualEditNameInput" class="form-control w-50" type="text" placeholder="Card Name">
-                  <select id="manualEditAwakeInput" class="form-select"><option value="5">5Awake</option><option value="4">4Awake</option><option value="3">3Awake</option><option value="2">2Awake</option><option value="1">1Awake</option><option value="0">0Awake</option><option value="-1" selected>No Have</option></select>
-                  <select id="manualEditQtyInput" class="form-select"><option value="15">15Pcs</option><option value="14">14Pcs</option><option value="13">13Pcs</option><option value="12">12Pcs</option><option value="11">11Pcs</option><option value="10">10Pcs</option><option value="9">9Pcs</option><option value="8">8Pcs</option><option value="7">7Pcs</option><option value="6">6Pcs</option><option value="5">5Pcs</option><option value="4">4Pcs</option><option value="3">3Pcs</option><option value="2">2Pcs</option><option value="1">1Pcs</option><option value="0" selected>0Pcs</option></select>
+                  <select id="manualEditAwakeInput" class="form-select">
+                    <option value="5">5Awake</option>
+                    <option value="4">4Awake</option>
+                    <option value="3">3Awake</option>
+                    <option value="2">2Awake</option>
+                    <option value="1">1Awake</option>
+                    <option value="0">0Awake</option>
+                    <option value="-1" selected>No Have</option>
+                  </select>
+                  <select id="manualEditQtyInput" class="form-select">
+                    <option value="15">15Pcs</option>
+                    <option value="14">14Pcs</option>
+                    <option value="13">13Pcs</option>
+                    <option value="12">12Pcs</option>
+                    <option value="11">11Pcs</option>
+                    <option value="10">10Pcs</option>
+                    <option value="9">9Pcs</option>
+                    <option value="8">8Pcs</option>
+                    <option value="7">7Pcs</option>
+                    <option value="6">6Pcs</option>
+                    <option value="5">5Pcs</option>
+                    <option value="4">4Pcs</option>
+                    <option value="3">3Pcs</option>
+                    <option value="2">2Pcs</option>
+                    <option value="1">1Pcs</option>
+                    <option value="0" selected>0Pcs</option>
+                  </select>
                 </div>
                 <br>
                 <small class="text-white">
-                  <div>※ If you delete a card in the past,<br>the collection effect may differ from the game effect that is <br>(Even if you delete a card, the effect will increase with collection or not in the book.)</div>
-                  <br><div class="mt-2">※ Hover your cursor over each line to show how to strengthen to the next awakening step.</div>
-                  <br><div class="mt-2">※ After awakening, left-click to reflect it on the calculator.</div>
-                  <br><div class="mt-2">※ <font color="orange">Orange</font> is a book that you can awaken right now</div>
+                  <div>※ If you delete a card in the past,<br>the collection effect may differ from the game effect that
+                    is <br>(Even if you delete a card, the effect will increase with collection or not in the book.)
+                  </div>
+                  <br>
+                  <div class="mt-2">※ Hover your cursor over each line to show how to strengthen to the next awakening
+                    step.</div>
+                  <br>
+                  <div class="mt-2">※ After awakening, left-click to reflect it on the calculator.</div>
+                  <br>
+                  <div class="mt-2">※ <font color="orange">Orange</font> is a book that you can awaken right now</div>
                 </small>
               </div>
-              
+
 
               <div class="col-12 col-md-7 px-0 mb-5">
                 <div class="mb-3 mx-auto" style="max-width: 410px; max-height: 230px;">
                   <div class="vm-placement" id="vm-av" data-format="isvideo"></div>
                 </div>
-                <button type="button" class="btn btn-outline-light btn-lg mb-1" id="allBonusDmg"><pre class="mb-0">        <span>All</span>        </pre></button>
+                <button type="button" class="btn btn-outline-light btn-lg mb-1" id="allBonusDmg">
+                  <pre class="mb-0">        <span>All</span>        </pre>
+                </button>
                 <div id="bonusdamageBtns" class="mx-auto w-75">
-                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Demons</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Beasts</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Humanoids</button>
+                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap"
+                    style="text-overflow: ellipsis;">Demons</button><button type="button"
+                    class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap"
+                    style="text-overflow: ellipsis;">Beasts</button><button type="button"
+                    class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap"
+                    style="text-overflow: ellipsis;">Humanoids</button>
                   <br>
-                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Undead</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Metallic</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Elementals</button>
+                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap"
+                    style="text-overflow: ellipsis;">Undead</button><button type="button"
+                    class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap"
+                    style="text-overflow: ellipsis;">Metallic</button><button type="button"
+                    class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap"
+                    style="text-overflow: ellipsis;">Elementals</button>
                   <br>
-                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Plants</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Machines</button><button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap" style="text-overflow: ellipsis;">Insects</button>
+                  <button type="button" class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap"
+                    style="text-overflow: ellipsis;">Plants</button><button type="button"
+                    class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap"
+                    style="text-overflow: ellipsis;">Machines</button><button type="button"
+                    class="btn btn-outline-light btn-lg mb-1 col-4 overflow-hidden text-nowrap"
+                    style="text-overflow: ellipsis;">Insects</button>
                 </div>
-                
+
                 <div class="text-white" id="allBonusDmgDiv" style="display: none;">
-                  <br><p>※ Card full Awakening Criteria</p>
+                  <br>
+                  <p>※ Card full Awakening Criteria</p>
                   <p>※ Cards that are not on the list below<br>don't have any bonus damage even if you wake up</p>
                   <table class="table table-dark float-end table-hover col align-middle">
                     <thead>
                       <tr>
                         <th scope="col" class="align-middle">Card Name</th>
-                        <th scope="col" class="align-middle sortable ascdesc" onclick="multiSort(this,'exp');" style="cursor: pointer;">Req. Exp for<br>Full Awakening</th>
-                        <th scope="col" class="align-middle sortable ascdesc" onclick="multiSort(this,'bonus');" style="cursor: pointer;">Total<br>increase</th>
+                        <th scope="col" class="align-middle sortable ascdesc" onclick="multiSort(this,'exp');"
+                          style="cursor: pointer;">Req. Exp for<br>Full Awakening</th>
+                        <th scope="col" class="align-middle sortable ascdesc" onclick="multiSort(this,'bonus');"
+                          style="cursor: pointer;">Total<br>increase</th>
                         <th scope="col" class="align-middle">/</th>
                       </tr>
                     </thead>
@@ -349,24 +428,30 @@
                   <div class="row mx-0 my-3 text-white">
                     <div class="col-4 px-0">All Awakening Rate</div>
                     <div class="progress col-8 my-auto px-0 position-relative">
-                      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
-                      <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;" id="all-exp-progress-bar">0 / 0 [0%]</div>
+                      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                      <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;"
+                        id="all-exp-progress-bar">0 / 0 [0%]</div>
                     </div>
                     <div class="col-4" id="this-progress">Awakening Rate</div>
                     <div class="progress col-8 my-auto px-0 position-relative">
-                      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
-                      <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;" id="this-exp-progress-bar">0 / 0 [0%]</div>
+                      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                      <div class="justify-content-center d-flex position-absolute w-100 fw-bold" style="color: black;"
+                        id="this-exp-progress-bar">0 / 0 [0%]</div>
                     </div>
                   </div>
 
                   <div class="accordion mb-3" id="recCardAccordion">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="recCardHeading">
-                        <button class="accordion-button py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#recCardcollapse" aria-expanded="false" aria-controls="recCardcollapse">
+                        <button class="accordion-button py-2 collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#recCardcollapse" aria-expanded="false" aria-controls="recCardcollapse">
                           Challenger's Card Pack Recommendation Ranking
                         </button>
                       </h2>
-                      <div id="recCardcollapse" class="accordion-collapse collapse" aria-labelledby="headingitem" data-bs-parent="#recCardAccordion">
+                      <div id="recCardcollapse" class="accordion-collapse collapse" aria-labelledby="headingitem"
+                        data-bs-parent="#recCardAccordion">
                         <div class="accordion-body p-0">
                           <table class="table table-dark table-hover mb-0">
                             <thead>
@@ -399,7 +484,7 @@
         </div>
       </div>
     </main>
-    
+
     <!-- 추후 안쓰게 수정 -->
     <canvas id="uploadImage" style="display: none;"></canvas>
     <canvas id="unitUploadHalfCard0" style="display: none;"></canvas>
@@ -420,10 +505,13 @@
     <div id="tempdiv"></div>
     -->
     <div id="ad-container-2" class="mt-3" style="min-height: 250px;"></div>
-    <footer><script>includeHTML('footer');</script></footer>
+    <footer>
+      <script>includeHTML('footer');</script>
+    </footer>
   </div>
-  
-  <div class="modal fade bd-example-modal-lg text-center" id="help" tabindex="-1" aria-labelledby="helpLabel" aria-hidden="true">
+
+  <div class="modal fade bd-example-modal-lg text-center" id="help" tabindex="-1" aria-labelledby="helpLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -432,26 +520,36 @@
         </div>
         <div class="modal-body text-black">
           <div style="position:relative;height:0;padding-bottom:56.25%;">
-            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/54T_TeLBnoo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;"
+              src="https://www.youtube.com/embed/54T_TeLBnoo" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
           </div>
           <p>If you follow the required settings and methods, the recognition will be completed in one minute.</p>
           <h3>※ <font COLOR='#0000FF'>Set in-game required options</font> ※</h3>
           <p>1. Resolution : 1920x1080 <b>Or</b> 2560x1440 <b>Or</b> 2560x1080 <b>Or</b> 3440x1440</p>
           <p>2. [Force 21:9 Aspect Ratio] uncheck</p>
           <p>3. Sort: Name (In ascending order) [ABC···.]</p>
-          <p>4. Brigthness : 50%(recommend)<br>If it is too bright or too dark, may not be recognized or incorrect.<br>Also, please turn off the NVDIA filter and proceed.</p>
-          
-          <br><h3>※ <font COLOR='orange'>How to take a picture</font> ※</h3>
-          <p>1. Pictures taken with the in-game screenshot function<br>(<kbd>PrintScreenCapture</kbd> key above the <kbd>Insert</kbd> key)
+          <p>4. Brigthness : 50%(recommend)<br>If it is too bright or too dark, may not be recognized or
+            incorrect.<br>Also, please turn off the NVDIA filter and proceed.</p>
+
+          <br>
+          <h3>※ <font COLOR='orange'>How to take a picture</font> ※</h3>
+          <p>1. Pictures taken with the in-game screenshot function<br>(<kbd>PrintScreenCapture</kbd> key above the
+            <kbd>Insert</kbd> key)
           <p>2. No duplication for each picture (prevent misrecognition)
-            <br>Ex. If the last card "Banda" was taken in the first picture, take a picture of "Vertus", the line below it,<br>and repeat this process until the last card</p>
+            <br>Ex. If the last card "Banda" was taken in the first picture, take a picture of "Vertus", the line below
+            it,<br>and repeat this process until the last card
+          </p>
           <p id="modalimg"></p>
 
-          <br><h3>※ <font COLOR='#00FF00'>How</font> ※</h3>
+          <br>
+          <h3>※ <font COLOR='#00FF00'>How</font> ※</h3>
           <p>1. Upload images of your card locker</p>
           <p>2. 'Match Start' Button Click</p>
 
-          <br><h3>※ <font COLOR='#FF0000'>Warning</font> ※</h3>
+          <br>
+          <h3>※ <font COLOR='#FF0000'>Warning</font> ※</h3>
           <p>1. There should be nothing in the yellow area.(Reinforced display board X, friend online alram X)</p>
           <p id="modalimg2"></p>
           <p>Click on the image to see it larger.</p>
@@ -462,7 +560,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- tippyJS -->
   <script src="https://unpkg.com/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
   <script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
@@ -471,18 +569,20 @@
   <!-- toastify -->
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
 
   <!-- custom -->
   <script src="/js/custom.js?v=12041400"></script>
-  <script src="/js/cardcalc_steam/cardcalc.js?v=12151617"></script>
+  <script src="/js/cardcalc_steam/cardcalc.js?v=02040352"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD44D79GLY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-XD44D79GLY');
@@ -491,22 +591,24 @@
   <!-- Naver Analytics -->
   <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
   <script type="text/javascript">
-    if(!wcs_add) var wcs_add = {};
+    if (!wcs_add) var wcs_add = {};
     wcs_add["wa"] = "11c6a9ddab2d680";
-    if(window.wcs) {
+    if (window.wcs) {
       wcs_do();
     }
   </script>
 
   <!-- Mircrosoft Clarity -->
   <script async type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "bohv5f4wfu");
   </script>
 
-  <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css?display=swap" type="text/css">
+  <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css?display=swap"
+    type="text/css">
 </body>
+
 </html>

@@ -1,14 +1,14 @@
-const allCardTotalExp=50605200;
+const allCardTotalExp = 50605200;
 const docapack = {
-    'Desolate Meadow Card Pack':    ["Admos","Agaton","Anton","Bastian","Bergstrom","Celedan","Dadan","Giant Worm","Harzal","J","Krause","Lord of Evolution Krause","Mari","Mathias","Morina","Plaguebringer","Prideholme Neria","Rudric","S","Salt Giant","Sasha","Seville","Siera","Signatus","Sol","Stern Neria","Thanatos","Thunder","Ugo","Varut","Velkan","Vengeful Spirit","Zeira"],
-    'Fearless Knight Card Pack':    ["Allegro","Asta","Azaran","Benard","Berhart","Bishu","Blackfang","Brinewt","Cadogan","Cals","Cassleford","Executor Solas","Gabrian","Halrock","Heretic High Priest","Hiebike","Jagan","Jahia","Kranterus","Ligheas","Luterra Castle Neria","Meehan","Mephitious","Monterque","Morpheo","Mage Nahun","Nox","Rictus","Riwella","Rovlen","Scherrit","Seria","Thunderwings","Vanquisher","Vivian","Wavestrand Port Neria","Wili-Wili"],
-    'Melodious Snow Card Pack':     ["Butcher Arre","Banda","Chaotic Chuo","Dochul","Elpon","Gildal","Gumga","Habeck","Hari","Hodon","Javern","Lion Mask","Madam Moonscent","Madnick","Maneth","Manpo","Miru","Nakshun","Onehand","Pahan","Poppy","Ramis","Rekiel of Despair","Ruave","Sakkul","Sian","Sir Druden","Sir Valleylead","Tarsila","Plague Legion Varto","Vrad","Wonpho","Yuul"],
-    'Dawning Leaf Card Pack':       ["Anabel","Avele","Goblin Elder Balu","Caspiel the Giant God","Dakudaku","Ealyn","Ed the Red","Egg of Creation","Guardian Eolh","Garum","Gideon","Gorgon","Hybee Executioner","Icy Legoros","Lumerus","Mokamoka","Mystic","Naruni","Navegal","Ark Guardian Occel","Ortuus","Payla","Guardian Peroth","Proxima","Setino","Sigmund","Ternark","Thar","Guardian Tir","Totoiki","Totoma","Ur'nil","Vertus"],
-    'Mysterious Elegant Card Pack': ["Alifer","Butcher Arre","Aven","Banda","Chamkuri","Chaotic Chuo","Chromanium","Dochul","Enviska","Ephernia","Flame Fox Yoho","Gherdia","Gildal","Gnosis","Gumga","Habeck","Hari","Hodon","Lenora","Lion Mask","Madam Moonscent","Manpo","Miru","Nacrasena","Onehand","Orelda","Pahan","Phantom Bishop","Phantom King","Phantom Knight","Phantom Pawn","Phantom Queen","Phantom Rook","Ratik","Rekiel of Despair","Sakkul","Sir Druden","Sir Valleylead","Sylperion","Turan","Tytalos","Undart","Plague Legion Varto","Wonpho","Yuul"],
-    'Strong Courage Card Pack':     ["Achates","Allegro","Asta","Azaran","Bishu","Blackfang","Brinewt","Cals","Calventus","Cassleford","Dark Legoros","Eikerr","Executor Solas","Fjorgin","Gabrian","Great Castle Neria","Halrock","Helgaia","Heretic High Priest","Hiebike","Imar","Indar","Jahia","Kaishur","Kaishuter","Kaysarr","Kyzra","Ligheas","Luterra Castle Neria","Meehan","Mephitious","Monterque","Morpheo","Naber","Nazan","Nox","Piyer","Telpa","Thunderwings","Urr","Velcruze","Vivian","Wavestrand Port Neria","Wili-Wili"],
-    'Ebony Leaf Card Pack':         ["Alaric","Alberhastic","Caspiel the Giant God","Chaotic Zaika","Chella","Dakudaku","Demetar","Ed the Red","Egg of Creation","Guardian Eolh","Frost Helgaia","Geppetto","Goulding","Hybee Executioner","Jederico","Kaldor","Kalmaris","Karta","Lava Chromanium","Levanos","Levi","Lutia","Mokamoka","Nabi","Naruni","Ark Guardian Occel","Ortuus","Perkunas","Guardian Peroth","Setino","Spear of Annihilation","Guardian Tir","Tookalibur","Totoiki","Totoma","Zaika"],
-    'Dancing Snow Card Pack':       ["Albion","Argos","Armored Nacrasena","Berver","Cicerra","Elpon","Hariya","Igrexion","Jahara","Javern","Liru","Madnick","Maneth","Nagi","Nakshun","Navinos","Nia","Night Fox Yoho","Poppy","Ramis","Ruave","Seto","Shana","Sian","Stella","Tarsila","Velganos","Vrad"],
-    'Harmonious Sea Card Pack':     ["Abyssina","Adrinne","Sea God Aporas","Bellita","Brealeos","Cadri","Calvasus","Erasmo","Ezrebet","Favreau","Gobius XXIV","Kagros","Knut","Krissa","Lena","Mikeel and Nomed","Neth","Pamil","Puppa","Rubenstein del Orzo","Samly","Sapiano","Sol Grande","Tanay","Experimental Tarmakum","Temma","Tooki King","Yom","Zenri"],
+    'Desolate Meadow Card Pack': ["Admos", "Agaton", "Anton", "Bastian", "Bergstrom", "Celedan", "Dadan", "Giant Worm", "Harzal", "J", "Krause", "Lord of Evolution Krause", "Mari", "Mathias", "Morina", "Plaguebringer", "Prideholme Neria", "Rudric", "S", "Salt Giant", "Sasha", "Seville", "Siera", "Signatus", "Sol", "Stern Neria", "Thanatos", "Thunder", "Ugo", "Varut", "Velkan", "Vengeful Spirit", "Zeira"],
+    'Fearless Knight Card Pack': ["Allegro", "Asta", "Azaran", "Benard", "Berhart", "Bishu", "Blackfang", "Brinewt", "Cadogan", "Cals", "Cassleford", "Executor Solas", "Gabrian", "Halrock", "Heretic High Priest", "Hiebike", "Jagan", "Jahia", "Kranterus", "Ligheas", "Luterra Castle Neria", "Meehan", "Mephitious", "Monterque", "Morpheo", "Mage Nahun", "Nox", "Rictus", "Riwella", "Rovlen", "Scherrit", "Seria", "Thunderwings", "Vanquisher", "Vivian", "Wavestrand Port Neria", "Wili-Wili"],
+    'Melodious Snow Card Pack': ["Butcher Arre", "Banda", "Chaotic Chuo", "Dochul", "Elpon", "Gildal", "Gumga", "Habeck", "Hari", "Hodon", "Javern", "Lion Mask", "Madam Moonscent", "Madnick", "Maneth", "Manpo", "Miru", "Nakshun", "Onehand", "Pahan", "Poppy", "Ramis", "Rekiel of Despair", "Ruave", "Sakkul", "Sian", "Sir Druden", "Sir Valleylead", "Tarsila", "Plague Legion Varto", "Vrad", "Wonpho", "Yuul"],
+    'Dawning Leaf Card Pack': ["Anabel", "Avele", "Goblin Elder Balu", "Caspiel the Giant God", "Dakudaku", "Ealyn", "Ed the Red", "Egg of Creation", "Guardian Eolh", "Garum", "Gideon", "Gorgon", "Hybee Executioner", "Icy Legoros", "Lumerus", "Mokamoka", "Mystic", "Naruni", "Navegal", "Ark Guardian Occel", "Ortuus", "Payla", "Guardian Peroth", "Proxima", "Setino", "Sigmund", "Ternark", "Thar", "Guardian Tir", "Totoiki", "Totoma", "Ur'nil", "Vertus"],
+    'Mysterious Elegant Card Pack': ["Alifer", "Butcher Arre", "Aven", "Banda", "Chamkuri", "Chaotic Chuo", "Chromanium", "Dochul", "Enviska", "Ephernia", "Flame Fox Yoho", "Gherdia", "Gildal", "Gnosis", "Gumga", "Habeck", "Hari", "Hodon", "Lenora", "Lion Mask", "Madam Moonscent", "Manpo", "Miru", "Nacrasena", "Onehand", "Orelda", "Pahan", "Phantom Bishop", "Phantom King", "Phantom Knight", "Phantom Pawn", "Phantom Queen", "Phantom Rook", "Ratik", "Rekiel of Despair", "Sakkul", "Sir Druden", "Sir Valleylead", "Sylperion", "Turan", "Tytalos", "Undart", "Plague Legion Varto", "Wonpho", "Yuul"],
+    'Strong Courage Card Pack': ["Achates", "Allegro", "Asta", "Azaran", "Bishu", "Blackfang", "Brinewt", "Cals", "Calventus", "Cassleford", "Dark Legoros", "Eikerr", "Executor Solas", "Fjorgin", "Gabrian", "Great Castle Neria", "Halrock", "Helgaia", "Heretic High Priest", "Hiebike", "Imar", "Indar", "Jahia", "Kaishur", "Kaishuter", "Kaysarr", "Kyzra", "Ligheas", "Luterra Castle Neria", "Meehan", "Mephitious", "Monterque", "Morpheo", "Naber", "Nazan", "Nox", "Piyer", "Telpa", "Thunderwings", "Urr", "Velcruze", "Vivian", "Wavestrand Port Neria", "Wili-Wili"],
+    'Ebony Leaf Card Pack': ["Alaric", "Alberhastic", "Caspiel the Giant God", "Chaotic Zaika", "Chella", "Dakudaku", "Demetar", "Ed the Red", "Egg of Creation", "Guardian Eolh", "Frost Helgaia", "Geppetto", "Goulding", "Hybee Executioner", "Jederico", "Kaldor", "Kalmaris", "Karta", "Lava Chromanium", "Levanos", "Levi", "Lutia", "Mokamoka", "Nabi", "Naruni", "Ark Guardian Occel", "Ortuus", "Perkunas", "Guardian Peroth", "Setino", "Spear of Annihilation", "Guardian Tir", "Tookalibur", "Totoiki", "Totoma", "Zaika"],
+    'Dancing Snow Card Pack': ["Albion", "Argos", "Armored Nacrasena", "Berver", "Cicerra", "Elpon", "Hariya", "Igrexion", "Jahara", "Javern", "Liru", "Madnick", "Maneth", "Nagi", "Nakshun", "Navinos", "Nia", "Night Fox Yoho", "Poppy", "Ramis", "Ruave", "Seto", "Shana", "Sian", "Stella", "Tarsila", "Velganos", "Vrad"],
+    'Harmonious Sea Card Pack': ["Abyssina", "Adrinne", "Sea God Aporas", "Bellita", "Brealeos", "Cadri", "Calvasus", "Erasmo", "Ezrebet", "Favreau", "Gobius XXIV", "Kagros", "Knut", "Krissa", "Lena", "Mikeel and Nomed", "Neth", "Pamil", "Puppa", "Rubenstein del Orzo", "Samly", "Sapiano", "Sol Grande", "Tanay", "Experimental Tarmakum", "Temma", "Tooki King", "Yom", "Zenri"],
 };
 
 let bonusDamageBtns = document.querySelectorAll('#bonusdamageBtns button');
@@ -16,33 +16,33 @@ document.querySelector('#allBonusDmg').addEventListener('click', allBonusDmg);
 
 // 되돌리기 기능
 const myHistory = [];
-function historyADD(dict){
+function historyADD(dict) {
     myHistory.push(dict)
 
-    if(myHistory.length >= 1) document.querySelector('#undoBtn').removeAttribute('disabled');
-    else document.querySelector('#undoBtn').setAttribute('disabled','');
+    if (myHistory.length >= 1) document.querySelector('#undoBtn').removeAttribute('disabled');
+    else document.querySelector('#undoBtn').setAttribute('disabled', '');
 }
-document.querySelector('#undoBtn').addEventListener('click', async()=>{
+document.querySelector('#undoBtn').addEventListener('click', async () => {
     let recentDict = myHistory[myHistory.length - 1];
     for (let i = 0; i < Object.keys(recentDict).length; i++) {
         let cardName = Object.keys(recentDict)[i];
         let cardAwake = recentDict[cardName][0];
         let cardQty = recentDict[cardName][1];
-        
+
         hasCardDeck[cardName] = [hasCardDeck[cardName][0] - cardAwake,
-                                 hasCardDeck[cardName][1] + cardQty]
+        hasCardDeck[cardName][1] + cardQty]
     }
     myHistory.pop();
 
-    if(document.querySelector("#allBonusDmg").classList.contains('active')){
+    if (document.querySelector("#allBonusDmg").classList.contains('active')) {
         allBonusDmg();
-    }else{
+    } else {
         bonusdamagelistup();
     }
     await cardsetcalcstart();
 
-    if(myHistory.length >= 1) document.querySelector('#undoBtn').removeAttribute('disabled');
-    else document.querySelector('#undoBtn').setAttribute('disabled','');
+    if (myHistory.length >= 1) document.querySelector('#undoBtn').removeAttribute('disabled');
+    else document.querySelector('#undoBtn').setAttribute('disabled', '');
 });
 
 // 수동 수정
@@ -51,7 +51,7 @@ function autocomplete(inp, arr) {
     the text field element and an array of possible autocompleted values:*/
     let currentFocus;
 
-    function autocompleteEvent(e){
+    function autocompleteEvent(e) {
         let a, b, i, val = e.value;
         /*close any already open lists of autocompleted values*/
         closeAllLists();
@@ -86,9 +86,9 @@ function autocomplete(inp, arr) {
             }
         }
     }
-    inp.addEventListener('click', (e)=>{autocompleteEvent(e.target)})
+    inp.addEventListener('click', (e) => { autocompleteEvent(e.target) })
     /*execute a function when someone writes in the text field:*/
-    inp.addEventListener("input", (e)=>{autocompleteEvent(e.target)});
+    inp.addEventListener("input", (e) => { autocompleteEvent(e.target) });
     /*execute a function presses a key on the keyboard:*/
     inp.addEventListener("keydown", function (e) {
         let x = document.getElementById(this.id + "autocomplete-list");
@@ -111,7 +111,7 @@ function autocomplete(inp, arr) {
             if (currentFocus > -1) {
                 /*and simulate a click on the "active" item:*/
                 if (x) x[currentFocus].click();
-            }else{
+            } else {
                 if (x) x[0].click();
             }
         } else if (e.keyCode == 18) {
@@ -151,29 +151,29 @@ function autocomplete(inp, arr) {
         closeAllLists(e.target);
     });
 }
-function manualEditInfo(name){
+function manualEditInfo(name) {
     name = name.replace(/\b[a-z]/g, char => char.toUpperCase());
     name = name.replace("Of", "of");
 
     document.querySelector('#manualEditQtyInput').value = '';
-    if(cardgrade?.[name] == undefined){
+    if (cardgrade?.[name] == undefined) {
         document.querySelector('#manualEditAwakeInput').value = '';
-    }else if(hasCardDeck[name]?.[0] == undefined){
+    } else if (hasCardDeck[name]?.[0] == undefined) {
         document.querySelector('#manualEditAwakeInput').value = -1;
-    }else{
+    } else {
         document.querySelector('#manualEditAwakeInput').value = hasCardDeck[name][0];
         document.querySelector('#manualEditQtyInput').value = hasCardDeck[name][1];
     }
 
 }
-async function manualEdit(){
+async function manualEdit() {
     let name = document.querySelector('#manualEditNameInput').value;
     name = name.replace(/\b[a-z]/g, char => char.toUpperCase());
 
-    if(cardgrade?.[name] == undefined){
+    if (cardgrade?.[name] == undefined) {
         return;
     }
-    if(document.querySelector('#manualEditAwakeInput').value == '-1'){
+    if (document.querySelector('#manualEditAwakeInput').value == '-1') {
         delete hasCardDeck[name];
         await cardsetcalcstart();
         bonusdamagelistup();
@@ -188,14 +188,14 @@ document.querySelector('#manualEditNameInput').addEventListener('input', e => ma
 document.querySelector('#manualEditAwakeInput').addEventListener('change', manualEdit)
 document.querySelector('#manualEditQtyInput').addEventListener('change', manualEdit);
 
-function allBonusDmg(){
-    bonusDamageBtns.forEach(function(f){
-        if(f.classList.contains('active')){
+function allBonusDmg() {
+    bonusDamageBtns.forEach(function (f) {
+        if (f.classList.contains('active')) {
             f.classList.remove('active');
             return false;
         }
     })
-    if(tippyToggle){
+    if (tippyToggle) {
         tippyToggle.destroy();
         tippyToggle = null;
     }
@@ -207,22 +207,22 @@ function allBonusDmg(){
     while (targetTable.hasChildNodes()) {
         targetTable.removeChild(targetTable.firstChild);
     }
-    
+
     for (let i = 0; i < Object.keys(hasCardDeck).length; i++) {
         let cardName = Object.keys(hasCardDeck)[i];
         let cardAwake = hasCardDeck[cardName][0];
-        if(cardAwake == 5) continue;
-        
+        if (cardAwake == 5) continue;
+
         let finishAwakeDmg = {
-            'Demons':0.00,
-            'Beasts':0.00,
-            'Humanoids':0.00,
-            'Undead':0.00,
-            'Metallic':0.00,
-            'Elementals':0.00,
-            'Plants':0.00,
-            'Machines':0.00,
-            'Insects':0.00,
+            'Demons': 0.00,
+            'Beasts': 0.00,
+            'Humanoids': 0.00,
+            'Undead': 0.00,
+            'Metallic': 0.00,
+            'Elementals': 0.00,
+            'Plants': 0.00,
+            'Machines': 0.00,
+            'Insects': 0.00,
         };
         let totalDmg = 0;
         for (let j = 0; j < Object.keys(cardeffect).length; j++) {
@@ -231,31 +231,31 @@ function allBonusDmg(){
             let setBonusDmgTri = cardeffect[setName][3];
             let setAwakeInfoList = cardeffect[setName][4];
 
-            if(setCardList.includes(cardName)){
+            if (setCardList.includes(cardName)) {
                 let simulSetTotalAwake = 0;
                 let k = 0
                 for (k = 0; k < setCardList.length; k++) {
-                    try{
+                    try {
                         simulSetTotalAwake += parseInt(hasCardDeck[setCardList[k]][0]);
-                    }catch{break;}
+                    } catch { break; }
                 }
-                if(k != setCardList.length){
+                if (k != setCardList.length) {
                     continue;
                 }
 
                 let targetSetTotalAwake, targetSetTotalAwakeDmg = null;
-                for (let k = Object.keys(setAwakeInfoList).length-1; k >= 0; k--) {
-                    if(parseInt(Object.keys(setAwakeInfoList)[k]) <= simulSetTotalAwake){
-                        targetSetTotalAwake = parseInt(Object.keys(setAwakeInfoList)[k+1]);
+                for (let k = Object.keys(setAwakeInfoList).length - 1; k >= 0; k--) {
+                    if (parseInt(Object.keys(setAwakeInfoList)[k]) <= simulSetTotalAwake) {
+                        targetSetTotalAwake = parseInt(Object.keys(setAwakeInfoList)[k + 1]);
                         targetSetTotalAwakeDmg = setAwakeInfoList[targetSetTotalAwake];
                         break;
-                    }else if(k==0){
+                    } else if (k == 0) {
                         targetSetTotalAwake = parseInt(Object.keys(setAwakeInfoList)[0]);
                         targetSetTotalAwakeDmg = setAwakeInfoList[targetSetTotalAwake];
                     }
                 }
 
-                if((5 - cardAwake) + simulSetTotalAwake >= targetSetTotalAwake){
+                if ((5 - cardAwake) + simulSetTotalAwake >= targetSetTotalAwake) {
                     finishAwakeDmg[setBonusDmgTri] = finishAwakeDmg[setBonusDmgTri] + parseFloat(targetSetTotalAwakeDmg);
                     totalDmg += parseFloat(targetSetTotalAwakeDmg);
                 }
@@ -266,14 +266,14 @@ function allBonusDmg(){
         for (let j = 0; j < Object.keys(finishAwakeDmg).length; j++) {
             let triName = Object.keys(finishAwakeDmg)[j];
             let triDmg = finishAwakeDmg[triName];
-            if(triDmg == 0) continue;
+            if (triDmg == 0) continue;
 
-            if(content == "") content += `${triName} : ${(triDmg.toFixed(2)).padEnd(4,'0')}`;
-            else content += `<br>${triName} : ${(triDmg.toFixed(2)).padEnd(4,'0')}`;
+            if (content == "") content += `${triName} : ${(triDmg.toFixed(2)).padEnd(4, '0')}`;
+            else content += `<br>${triName} : ${(triDmg.toFixed(2)).padEnd(4, '0')}`;
         }
-        
 
-        if(content != ""){
+
+        if (content != "") {
             let needExp = 0;
             let cardQty = hasCardDeck[cardName][1];
             for (let j = cardAwake; j < 5; j++) {
@@ -287,20 +287,20 @@ function allBonusDmg(){
             let tdTotal = document.createElement('td');
             let tdDmg = document.createElement('td');
 
-            if(cardQty == 0){
+            if (cardQty == 0) {
                 trElement.style.setProperty('--bs-table-color', 'orange');
                 trElement.style.setProperty('--hover-color-var', 'orange');
             }
             trElement.style.cursor = 'pointer';
-            trElement.addEventListener('click', async (e)=>{
+            trElement.addEventListener('click', async (e) => {
                 let thisTr = e.target.parentElement;
                 let thisName = thisTr.childNodes[0].textContent;
 
                 let temp = {}
-                temp[thisName] = [5-hasCardDeck[thisName][0], hasCardDeck[thisName][1]]
+                temp[thisName] = [5 - hasCardDeck[thisName][0], hasCardDeck[thisName][1]]
                 historyADD(temp)
 
-                hasCardDeck[thisName] = [5,0];
+                hasCardDeck[thisName] = [5, 0];
 
                 await cardsetcalcstart();
                 allBonusDmg();
@@ -308,7 +308,7 @@ function allBonusDmg(){
 
             tdName.textContent = cardName;
             tdExp.textContent = (needExp).toLocaleString();
-            tdTotal.textContent = (totalDmg.toFixed(2)).padEnd(4,'0');
+            tdTotal.textContent = (totalDmg.toFixed(2)).padEnd(4, '0');
             tdDmg.innerHTML = content;
 
             trElement.appendChild(tdName);
@@ -321,7 +321,7 @@ function allBonusDmg(){
     }
 
     let sortables = document.querySelectorAll('.sortable');
-    sortables.forEach((t)=>{
+    sortables.forEach((t) => {
         t.classList.remove('asc');
         t.classList.remove('desc');
         t.classList.add('ascdesc');
@@ -329,26 +329,26 @@ function allBonusDmg(){
     multiSort(document.querySelector("#allBonusDmgDiv table th:nth-child(2)"), 'exp')
 }
 
-function multiSort(e, what){
+function multiSort(e, what) {
     let sortables = document.querySelectorAll('.sortable');
-    sortables.forEach((t)=>{
-        if(t!=e){
+    sortables.forEach((t) => {
+        if (t != e) {
             t.classList.remove('asc');
             t.classList.remove('desc');
             t.classList.add('ascdesc');
-        }else{
+        } else {
             t.classList.add('desc');
             t.classList.remove('ascdesc');
         }
     });
 
     let sortMethodA, sortMethodB = 0;
-    if(e.classList.contains('asc')){
+    if (e.classList.contains('asc')) {
         e.classList.add('desc');
         e.classList.remove('asc');
         sortMethodA = -1;
         sortMethodB = 1;
-    }else{
+    } else {
         e.classList.remove('desc');
         e.classList.add('asc');
         sortMethodA = 1;
@@ -362,18 +362,18 @@ function multiSort(e, what){
     }
 
     tagarr.sort(function (a, b) {
-        let exp1 = parseInt(a.querySelectorAll('td')[1].textContent.replace(',',''));
-        let exp2 = parseInt(b.querySelectorAll('td')[1].textContent.replace(',',''));
+        let exp1 = parseInt(a.querySelectorAll('td')[1].textContent.replace(',', ''));
+        let exp2 = parseInt(b.querySelectorAll('td')[1].textContent.replace(',', ''));
         let dmg1 = parseFloat(a.querySelectorAll('td')[2].textContent);
         let dmg2 = parseFloat(b.querySelectorAll('td')[2].textContent);
-        
-        if(what == 'bonus'){
+
+        if (what == 'bonus') {
             if (dmg1 < dmg2) return sortMethodB;
             if (dmg1 > dmg2) return sortMethodA;
             if (exp1 < exp2) return sortMethodB;
             if (exp1 > exp2) return sortMethodA;
             return 0;
-        }else{
+        } else {
             if (exp1 < exp2) return sortMethodB;
             if (exp1 > exp2) return sortMethodA;
             if (dmg1 < dmg2) return sortMethodB;
@@ -381,7 +381,7 @@ function multiSort(e, what){
             return 0;
         }
     });
-    
+
 
     for (let i = 0; i < tagarr.length; i++) {
         targetTable.append(tagarr[i])
@@ -390,23 +390,23 @@ function multiSort(e, what){
 
 let tri;
 bonusDamageBtns = document.querySelectorAll('#bonusdamageBtns button');
-bonusDamageBtns.forEach(function(e){
-    e.addEventListener('click', function(){
+bonusDamageBtns.forEach(function (e) {
+    e.addEventListener('click', function () {
         document.querySelector('#allBonusDmg').classList.remove('active');
-        bonusDamageBtns.forEach(function(f){
-            if(f.classList.contains('active')){
+        bonusDamageBtns.forEach(function (f) {
+            if (f.classList.contains('active')) {
                 f.classList.remove('active');
                 return false;
             }
         })
-        if(tippyToggle){
+        if (tippyToggle) {
             tippyToggle.destroy();
             tippyToggle = null;
         }
 
         document.querySelector('#allBonusDmgDiv').style.display = 'none';
         document.querySelector('#unitBonusDmgDiv').style.display = '';
-        
+
         e.classList.add('active');
 
         tri = this.innerText;
@@ -415,8 +415,8 @@ bonusDamageBtns.forEach(function(e){
     })
 });
 
-document.querySelector('#reconBtn').addEventListener('click', function(){
-    delCookie('savecarddeck_steam');
+document.querySelector('#reconBtn').addEventListener('click', function () {
+    localStorage.removeItem("CardStorage_steam");
     location.reload();
 });
 
@@ -424,36 +424,36 @@ let thisTriCardList = {};
 
 let recommendExp = null;
 let recommendCard = null;
-async function cardsetcalcstart(){
+async function cardsetcalcstart() {
     document.querySelector('#matchfinish').style.display = 'none';
     document.querySelector('#matchstatus').style.display = '';
     document.querySelector('#matchingment').textContent = 'Required operation in progress... (up to 30 seconds depending on environment)';
-    
-    await loadJavascript('/js/cardcalc_steam/cardeffect.js?v=12151617');
+
+    await loadJavascript('/js/cardcalc_steam/cardeffect.js?v=02040352');
     autocomplete(document.getElementById("manualEditNameInput"), Object.keys(cardgrade));
 
     document.querySelector('#matchingment').textContent = 'Start books calculating';
     let myStat = {
-        "Strength"          : 0,
-        "Vitality"          : 0,
-        "Crit"              : 0,
-        "Specialization"    : 0,
-        "Domination"        : 0,
-        "Swiftness"         : 0,
-        "Endurance"         : 0,
-        "Expertise"         : 0,
-        "Defense"           : 0,
+        "Strength": 0,
+        "Vitality": 0,
+        "Crit": 0,
+        "Specialization": 0,
+        "Domination": 0,
+        "Swiftness": 0,
+        "Endurance": 0,
+        "Expertise": 0,
+        "Defense": 0,
     }
     let myBonusDamage = {
-        "Humanoids"     : 0,
-        "Demons"        : 0,
-        "Metallic"      : 0,
-        "Undead"        : 0,
-        "Plants"        : 0,
-        "Insects"       : 0,
-        "Elementals"    : 0,
-        "Beasts"        : 0,
-        "Machines"      : 0
+        "Humanoids": 0,
+        "Demons": 0,
+        "Metallic": 0,
+        "Undead": 0,
+        "Plants": 0,
+        "Insects": 0,
+        "Elementals": 0,
+        "Beasts": 0,
+        "Machines": 0
     };
 
     let cardeffectlength = Object.keys(cardeffect).length;
@@ -474,45 +474,45 @@ async function cardsetcalcstart(){
         let setStatPlus = set[2];
         let setBonusDmgInfo = set[3];
         let setBonusDmgPlusList = set[4];
-        
+
         let j = null;
         for (j = 0; j < setcardlist.length; j++) {
             let unitName = setcardlist[j];
             let unitLevel = null;
 
-            try{
-                if(!thisTriCardList[setBonusDmgInfo].includes(unitName)) thisTriCardList[setBonusDmgInfo].push(unitName);
-            }catch{thisTriCardList[setBonusDmgInfo] = [unitName];}
+            try {
+                if (!thisTriCardList[setBonusDmgInfo].includes(unitName)) thisTriCardList[setBonusDmgInfo].push(unitName);
+            } catch { thisTriCardList[setBonusDmgInfo] = [unitName]; }
 
-            try{
+            try {
                 unitLevel = hasCardDeck[unitName][0];
-            }catch{break;}
+            } catch { break; }
 
             leveltotal += unitLevel;
 
-            for (let k = 4; k > -1+unitLevel; k--) {
+            for (let k = 4; k > -1 + unitLevel; k--) {
                 nextlevels.push([unitName, cardLevelUpExp[cardgrade[unitName]][k]])
             }
         }
         // console.log(setname, setcardlist.length)
         // 기존에 있던 도감에 카드가 추가된 도감
-        if(
+        if (
             (setname == "Trixion" && setcardlist.length >= 6)
         ) {
             // Pass
         }
-        else if(j != setcardlist.length) continue;
-        
-        nextlevels.sort((a,b)=>{
+        else if (j != setcardlist.length) continue;
+
+        nextlevels.sort((a, b) => {
             return a[1] - b[1];
         })
 
         myStat[setStatInfo] += setStatPlus;
 
         for (let j = 0; j < Object.keys(setBonusDmgPlusList).length; j++) {
-            if(Object.keys(setBonusDmgPlusList)[j] <= leveltotal){
+            if (Object.keys(setBonusDmgPlusList)[j] <= leveltotal) {
                 myBonusDamage[setBonusDmgInfo] += setBonusDmgPlusList[Object.keys(setBonusDmgPlusList)[j]];
-            }else{
+            } else {
                 nextbonusdamage = setBonusDmgPlusList[Object.keys(setBonusDmgPlusList)[j]];
                 nextleveldiff = parseInt(Object.keys(setBonusDmgPlusList)[j]) - leveltotal;
                 for (let k = 0; k < nextleveldiff; k++) {
@@ -522,46 +522,41 @@ async function cardsetcalcstart(){
                 break;
             }
         }
-        
-        try{
-            recommendCard[set[3]].push({[setname]:nextUpSetLevel});
-            recommendExp[set[3]].push({[setname]:[nextLevelExp,nextbonusdamage]});
-        }catch{
-            recommendCard[set[3]] = [{[setname]:nextUpSetLevel}];
-            recommendExp[set[3]] = [({[setname]:[nextLevelExp,nextbonusdamage]})];
+
+        try {
+            recommendCard[set[3]].push({ [setname]: nextUpSetLevel });
+            recommendExp[set[3]].push({ [setname]: [nextLevelExp, nextbonusdamage] });
+        } catch {
+            recommendCard[set[3]] = [{ [setname]: nextUpSetLevel }];
+            recommendExp[set[3]] = [({ [setname]: [nextLevelExp, nextbonusdamage] })];
         }
     }
 
     for (let i = 0; i < Object.keys(myStat).length; i++) {
-        document.querySelectorAll('#'+Object.keys(myStat)[i]).forEach(e => {
+        document.querySelectorAll('#' + Object.keys(myStat)[i]).forEach(e => {
             e.textContent = myStat[Object.keys(myStat)[i]];
         });
     }
     for (let i = 0; i < Object.keys(myBonusDamage).length; i++) {
-        document.querySelectorAll('#'+Object.keys(myBonusDamage)[i]).forEach(e => {
+        document.querySelectorAll('#' + Object.keys(myBonusDamage)[i]).forEach(e => {
             e.textContent = myBonusDamage[Object.keys(myBonusDamage)[i]].toFixed(2) + "%";
         });
     }
 
-    document.querySelector('#matchzone').style.display="none";
-    document.querySelector('#mycard').style.display="";
+    document.querySelector('#matchzone').style.display = "none";
+    document.querySelector('#mycard').style.display = "";
 
-    let saveCVal = "";
-    for (let i = 0; i < Object.keys(hasCardDeck).length; i++) {
-        // if(Object.values(hasCardDeck)[i][0] != 0) console.log(`${Object.keys(hasCardDeck)[i]} : ${Object.values(hasCardDeck)[i][0]}, ${Object.values(hasCardDeck)[i][1]}`);
-        saveCVal += `${Object.keys(cardgrade).indexOf(Object.keys(hasCardDeck)[i])}:[${Object.values(hasCardDeck)[i]}],`;
-    }
-    setCookie('savecarddeck_steam',saveCVal,365)
+    localStorage.setItem("CardStorage_steam", JSON.stringify(hasCardDeck));
 };
 
 let tippyToggle = null;
-function newTippy(ele,content,toggle,trigger,zindex){
-    if(toggle == null) toggle = true;
-    if(trigger == null) trigger = 'mouseenter focus';
-    if(zindex == null) zindex = 5555;
+function newTippy(ele, content, toggle, trigger, zindex) {
+    if (toggle == null) toggle = true;
+    if (trigger == null) trigger = 'mouseenter focus';
+    if (zindex == null) zindex = 5555;
 
     let popup = tippy(ele, {
-        allowHTML: true, 
+        allowHTML: true,
         content: content,
         theme: 'light',
         hideOnClick: toggle,
@@ -571,15 +566,15 @@ function newTippy(ele,content,toggle,trigger,zindex){
     });
     return popup
 }
-function bonusdamagelistup(){
+function bonusdamagelistup() {
     let target = document.querySelector('#bookstbody');
     while (target.hasChildNodes()) {
         target.removeChild(target.firstChild);
     }
 
-    try{
+    try {
         targetLength = recommendExp[tri].length;
-    }catch{
+    } catch {
         return;
     }
 
@@ -593,46 +588,46 @@ function bonusdamagelistup(){
         let exp = recommendExp[tri][i][name][0];
         let bonusDamage = recommendExp[tri][i][name][1];
         let orderCardList = recommendCard[tri][i][name];
-        if(exp == 0) continue;
+        if (exp == 0) continue;
 
         let myEffectStar = 0;
         for (let j = 0; j < cardeffect[name][0].length; j++) {
-            try{myEffectStar += hasCardDeck[cardeffect[name][0][j]][0];}
-            catch{continue;}
+            try { myEffectStar += hasCardDeck[cardeffect[name][0][j]][0]; }
+            catch { continue; }
         }
 
         let targetEffectStar = null;
-        for (let j = Object.keys(cardeffect[name][4]).length-1; j >= 0; j--) {
-            if(parseInt(Object.keys(cardeffect[name][4])[j]) <= myEffectStar){
-                targetEffectStar = parseInt(Object.keys(cardeffect[name][4])[j+1]);
+        for (let j = Object.keys(cardeffect[name][4]).length - 1; j >= 0; j--) {
+            if (parseInt(Object.keys(cardeffect[name][4])[j]) <= myEffectStar) {
+                targetEffectStar = parseInt(Object.keys(cardeffect[name][4])[j + 1]);
                 break;
-            }else if(j==0){
+            } else if (j == 0) {
                 targetEffectStar = parseInt(Object.keys(cardeffect[name][4])[0]);
             }
         }
-        
+
         let nextlevels = [];
         for (let j = 0; j < cardeffect[name][0].length; j++) {
             let cardname$ = cardeffect[name][0][j];
 
             let tempMyHasQty = null;
-            try{tempMyHasQty = parseInt(hasCardDeck[cardname$][1]);}
-            catch{continue;}
-            
+            try { tempMyHasQty = parseInt(hasCardDeck[cardname$][1]); }
+            catch { continue; }
+
 
             let tempk = 0;
-            for (let k = parseInt(hasCardDeck[cardname$][0])+1; k < 6; k++) {
-                if(tempMyHasQty >= k){
+            for (let k = parseInt(hasCardDeck[cardname$][0]) + 1; k < 6; k++) {
+                if (tempMyHasQty >= k) {
                     tempk += k;
                     tempMyHasQty -= k;
-                    nextlevels.push([cardname$, cardLevelUpExp[cardgrade[cardname$]][k-1]]);
-                    if(k != 5) continue;
+                    nextlevels.push([cardname$, cardLevelUpExp[cardgrade[cardname$]][k - 1]]);
+                    if (k != 5) continue;
                 }
                 else break;
             }
         }
-            
-        nextlevels.sort(function(a,b){
+
+        nextlevels.sort(function (a, b) {
             return a[1] - b[1];
         })
 
@@ -642,22 +637,22 @@ function bonusdamagelistup(){
         let simulTempDict = {};
         let tempdict = {};
         for (let j = 0; j < nextlevels.length; j++) {
-            myEffectStar ++;
+            myEffectStar++;
             simulNeedExp += nextlevels[j][1];
-            
-            try{
+
+            try {
                 star = simulTempDict[nextlevels[j][0]][0] + 1;
-            }catch{
+            } catch {
                 star = 1;
             }
-            try{
+            try {
                 needcard = simulTempDict[nextlevels[j][0]][1] + (cardLevelUpExp[cardgrade[nextlevels[j][0]]].indexOf(nextlevels[j][1]) + 1);
-            }catch{
+            } catch {
                 needcard = (cardLevelUpExp[cardgrade[nextlevels[j][0]]].indexOf(nextlevels[j][1])) + 1;
             }
 
-            simulTempDict[nextlevels[j][0]] = [star,needcard];
-            if(myEffectStar >= targetEffectStar) {
+            simulTempDict[nextlevels[j][0]] = [star, needcard];
+            if (myEffectStar >= targetEffectStar) {
                 tr.style.setProperty('--bs-table-color', 'orange');
                 tr.style.setProperty('--hover-color-var', 'orange');
                 tempdict = simulTempDict;
@@ -665,23 +660,23 @@ function bonusdamagelistup(){
                 break;
             }
         }
-        
-        if(Object.keys(tempdict).length == 0){
+
+        if (Object.keys(tempdict).length == 0) {
             for (let j = 0; j < orderCardList.length; j++) {
-                try{
+                try {
                     star = tempdict[orderCardList[j][0]][0] + 1;
-                }catch{
+                } catch {
                     star = 1;
                 }
-                try{
+                try {
                     needcard = tempdict[orderCardList[j][0]][1] + (cardLevelUpExp[cardgrade[orderCardList[j][0]]].indexOf(orderCardList[j][1]) + 1);
-                }catch{
+                } catch {
                     needcard = (cardLevelUpExp[cardgrade[orderCardList[j][0]]].indexOf(orderCardList[j][1])) + 1;
                 }
-        
-                tempdict[orderCardList[j][0]] = [star,needcard];
+
+                tempdict[orderCardList[j][0]] = [star, needcard];
             }
-        } 
+        }
 
         let tooltipcontent = '<div class="text-center"><FONT SIZE="5pt">'
         let clickcontent = "";
@@ -690,14 +685,14 @@ function bonusdamagelistup(){
             clickcontent += `${Object.keys(tempdict)[j]} +${tempdict[Object.keys(tempdict)[j]][0]} Awake, `
         }
         tooltipcontent += "</FONT></div>"
-        
+
         tdsetname.textContent = name;
         tdsetexp.textContent = `${(exp).toLocaleString()}`;
-        tdsetdmg.innerHTML = `${bonusDamage}%<br>[${(parseInt(exp/(bonusDamage/0.01))).toLocaleString()}]`;
+        tdsetdmg.innerHTML = `${bonusDamage}%<br>[${(parseInt(exp / (bonusDamage / 0.01))).toLocaleString()}]`;
 
-        tdsetexp.setAttribute('tooltipcontent',tooltipcontent);
-        tdsetexp.setAttribute('clickcontent',clickcontent);
-        tr.setAttribute('data',JSON.stringify(tempdict));
+        tdsetexp.setAttribute('tooltipcontent', tooltipcontent);
+        tdsetexp.setAttribute('clickcontent', clickcontent);
+        tr.setAttribute('data', JSON.stringify(tempdict));
 
         tr.append(tdsetname);
         tr.append(tdsetexp);
@@ -725,30 +720,30 @@ function bonusdamagelistup(){
 
         // console.log(myCardName)
         thisTriTotalExp += cardNeedExp[cardgrade[myCardName]][5];
-        try{
+        try {
             myCardStar = hasCardDeck[myCardName][0];
             myCardQty = hasCardDeck[myCardName][1];
-        }catch{continue;}
+        } catch { continue; }
 
         myThisTriTotalExp += cardNeedExp[cardgrade[myCardName]][myCardStar];
-        
+
         for (let j = 0; j < Object.keys(docapack).length; j++) {
             let capackName = Object.keys(docapack)[j];
-            if(docapack[capackName].includes(myCardName)){
+            if (docapack[capackName].includes(myCardName)) {
                 let tempvalue = null;
-                if(myCardStar==0) tempvalue=0;
-                else if(myCardStar==1) tempvalue=1;
-                else if(myCardStar==2) tempvalue=3;
-                else if(myCardStar==3) tempvalue=6;
-                else if(myCardStar==4) tempvalue=10;
-                else if(myCardStar==5) break;
+                if (myCardStar == 0) tempvalue = 0;
+                else if (myCardStar == 1) tempvalue = 1;
+                else if (myCardStar == 2) tempvalue = 3;
+                else if (myCardStar == 3) tempvalue = 6;
+                else if (myCardStar == 4) tempvalue = 10;
+                else if (myCardStar == 5) break;
 
                 recDocapack[capackName] = recDocapack[capackName] + (15 - (tempvalue + myCardQty))
             }
         }
 
     }
-    let sortRecDocapack = Object.entries(recDocapack).sort(function([,a],[,b]){
+    let sortRecDocapack = Object.entries(recDocapack).sort(function ([, a], [, b]) {
         return b - a;
     })
 
@@ -761,7 +756,7 @@ function bonusdamagelistup(){
         let tmeptdname = document.createElement('td');
         let tmeptdqty = document.createElement('td');
 
-        tmeptdname.textContent = `${i+1}. ${sortRecDocapack[i][0]}`;
+        tmeptdname.textContent = `${i + 1}. ${sortRecDocapack[i][0]}`;
         tmeptdqty.textContent = `${sortRecDocapack[i][1]}Pcs`;
 
         temptr.appendChild(tmeptdname);
@@ -781,8 +776,8 @@ function bonusdamagelistup(){
     let tagarr = Array.from(document.querySelectorAll("#bookstbody tr"));
     document.querySelector("#bookstbody").innerHTML = "";
     tagarr.sort(function (a, b) {
-        let val1 = parseInt(a.querySelectorAll('td')[1].textContent.replace(regex,""));
-        let val2 = parseInt(b.querySelectorAll('td')[1].textContent.replace(regex,""));
+        let val1 = parseInt(a.querySelectorAll('td')[1].textContent.replace(regex, ""));
+        let val2 = parseInt(b.querySelectorAll('td')[1].textContent.replace(regex, ""));
         return (val2 > val1) ? -1 : (val2 < val1) ? 1 : 0;
     });
 
@@ -790,13 +785,13 @@ function bonusdamagelistup(){
         document.querySelector("#bookstbody").append(tagarr[i])
     }
 
-    document.querySelectorAll('#bookstbody > tr > td:nth-child(2)').forEach((e)=>{
+    document.querySelectorAll('#bookstbody > tr > td:nth-child(2)').forEach((e) => {
         newTippy(e, `${e.getAttribute('tooltipcontent')}<div class="text-center"><FONT SIZE='2pt'>[Right-click fixed and copy]</FONT></div>`, null, null, null)
-        e.addEventListener('contextmenu', (event)=>{
-            if(tippyToggle){
+        e.addEventListener('contextmenu', (event) => {
+            if (tippyToggle) {
                 tippyToggle.destroy();
                 tippyToggle = null;
-            }else{
+            } else {
                 tippyToggle = newTippy(e, `${e.getAttribute('tooltipcontent')}<div class="text-center"><FONT SIZE='2pt'>[Right-click unfixed]</FONT></div>`, 'toggle', 'click', 9999);
                 tippyToggle.show()
             }
@@ -804,9 +799,9 @@ function bonusdamagelistup(){
             navigator.clipboard.writeText(e.getAttribute('clickcontent'));
         });
     });
-    
-    document.querySelectorAll('#bookstbody > tr').forEach(function(e){
-        e.addEventListener('click', async function(){
+
+    document.querySelectorAll('#bookstbody > tr').forEach(function (e) {
+        e.addEventListener('click', async function () {
             data = this.getAttribute('data');
             parsedata = JSON.parse(data);
             for (let i = 0; i < Object.keys(parsedata).length; i++) {
@@ -817,7 +812,7 @@ function bonusdamagelistup(){
                 hasCardDeck[upCardName] = [parseInt(hasCardDeck[upCardName][0]) + addStar, parseInt(hasCardDeck[upCardName][1]) - subQty];
             }
 
-            if(tippyToggle){
+            if (tippyToggle) {
                 tippyToggle.destroy();
                 tippyToggle = null;
             }
@@ -825,7 +820,7 @@ function bonusdamagelistup(){
             historyADD(parsedata);
 
             await cardsetcalcstart();
-            
+
             bonusdamagelistup();
         });
     })
